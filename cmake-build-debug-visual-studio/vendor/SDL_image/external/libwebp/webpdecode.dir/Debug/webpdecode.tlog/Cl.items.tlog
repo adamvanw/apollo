@@ -1,0 +1,10 @@
+C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp\src\dec\alpha_dec.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libwebp\webpdecode.dir\Debug\alpha_dec.obj
+C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp\src\dec\buffer_dec.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libwebp\webpdecode.dir\Debug\buffer_dec.obj
+C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp\src\dec\frame_dec.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libwebp\webpdecode.dir\Debug\frame_dec.obj
+C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp\src\dec\idec_dec.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libwebp\webpdecode.dir\Debug\idec_dec.obj
+C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp\src\dec\io_dec.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libwebp\webpdecode.dir\Debug\io_dec.obj
+C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp\src\dec\quant_dec.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libwebp\webpdecode.dir\Debug\quant_dec.obj
+C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp\src\dec\tree_dec.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libwebp\webpdecode.dir\Debug\tree_dec.obj
+C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp\src\dec\vp8_dec.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libwebp\webpdecode.dir\Debug\vp8_dec.obj
+C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp\src\dec\vp8l_dec.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libwebp\webpdecode.dir\Debug\vp8l_dec.obj
+C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp\src\dec\webp_dec.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libwebp\webpdecode.dir\Debug\webp_dec.obj

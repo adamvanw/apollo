@@ -1,0 +1,19 @@
+# CMake generation dependency list for this directory.
+C:/Users/adamv/AppData/Local/Programs/CLion Nova/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeASMInformation.cmake
+C:/Users/adamv/AppData/Local/Programs/CLion Nova/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeASM_NASMInformation.cmake
+C:/Users/adamv/AppData/Local/Programs/CLion Nova/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeDependentOption.cmake
+C:/Users/adamv/AppData/Local/Programs/CLion Nova/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakePackageConfigHelpers.cmake
+C:/Users/adamv/AppData/Local/Programs/CLion Nova/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeParseArguments.cmake
+C:/Users/adamv/AppData/Local/Programs/CLion Nova/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakePushCheckState.cmake
+C:/Users/adamv/AppData/Local/Programs/CLion Nova/bin/cmake/win/x64/share/cmake-3.29/Modules/CheckCCompilerFlag.cmake
+C:/Users/adamv/AppData/Local/Programs/CLion Nova/bin/cmake/win/x64/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake
+C:/Users/adamv/AppData/Local/Programs/CLion Nova/bin/cmake/win/x64/share/cmake-3.29/Modules/GNUInstallDirs.cmake
+C:/Users/adamv/AppData/Local/Programs/CLion Nova/bin/cmake/win/x64/share/cmake-3.29/Modules/WriteBasicConfigVersionFile.cmake
+C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/CMakeFiles/3.29.6/CMakeASM_NASMCompiler.cmake
+C:/Users/adamv/repos/apollo/vendor/SDL_image/CMakeLists.txt
+C:/Users/adamv/repos/apollo/vendor/SDL_image/cmake/CheckCPUArchitecture.cmake
+C:/Users/adamv/repos/apollo/vendor/SDL_image/cmake/GetGitRevisionDescription.cmake
+C:/Users/adamv/repos/apollo/vendor/SDL_image/cmake/PrivateSdlFunctions.cmake
+C:/Users/adamv/repos/apollo/vendor/SDL_image/cmake/sdlmanpages.cmake
+C:/Users/adamv/repos/apollo/vendor/SDL_image/cmake/sdlplatform.cmake
+C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\share\cmake-3.29\Templates\MSBuild\nasm.props.in

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\adamv\repos\apollo\cmake-build-debug\CMakeFiles\a50965ccd13c08739d8bf20caef96083\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{F221FEC3-6DB2-310C-83A0-CB0505ACB7C1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

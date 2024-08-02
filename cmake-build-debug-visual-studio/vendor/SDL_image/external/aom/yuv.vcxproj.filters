@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\source\convert_argb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\source\cpu_id.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\source\planar_functions.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\source\row_any.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\source\row_common.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\source\row_gcc.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\source\row_mips.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\source\row_neon.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\source\row_neon64.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\source\row_win.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\source\scale.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\source\scale_any.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\source\scale_common.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\source\scale_gcc.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\source\scale_mips.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\source\scale_neon.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\source\scale_neon64.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\source\scale_win.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\source\scale_uv.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\include\libyuv\basic_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\include\libyuv\convert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\include\libyuv\convert_argb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\include\libyuv\convert_from.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\include\libyuv\cpu_id.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\include\libyuv\planar_functions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\include\libyuv\rotate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\include\libyuv\row.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\include\libyuv\scale.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\third_party\libyuv\include\libyuv\scale_row.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{3AE5AD25-EED3-3B8F-8C41-C95F22109678}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{7C12867E-EECD-3D37-ADEF-341A4EA8B800}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

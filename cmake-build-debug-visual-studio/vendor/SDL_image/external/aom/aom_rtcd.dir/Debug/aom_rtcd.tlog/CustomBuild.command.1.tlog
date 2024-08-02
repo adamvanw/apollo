@@ -1,0 +1,52 @@
+^C:\USERS\ADAMV\REPOS\APOLLO\CMAKE-BUILD-DEBUG-VISUAL-STUDIO\CMAKEFILES\D35D8971EDBEFAB03EE5E3111FA1B3DE\AOM_DSP_RTCD.H.RULE
+setlocal
+cd C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\aom
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\msys64\usr\bin\perl.exe C:/Users/adamv/repos/apollo/vendor/SDL_image/external/aom/build/cmake/rtcd.pl --arch=x86_64 --sym=aom_dsp_rtcd --config=C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/config/aom_config.h C:/Users/adamv/repos/apollo/vendor/SDL_image/external/aom/aom_dsp/aom_dsp_rtcd_defs.pl > C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/config/aom_dsp_rtcd.h
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\ADAMV\REPOS\APOLLO\CMAKE-BUILD-DEBUG-VISUAL-STUDIO\CMAKEFILES\D35D8971EDBEFAB03EE5E3111FA1B3DE\AOM_SCALE_RTCD.H.RULE
+setlocal
+cd C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\aom
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\msys64\usr\bin\perl.exe C:/Users/adamv/repos/apollo/vendor/SDL_image/external/aom/build/cmake/rtcd.pl --arch=x86_64 --sym=aom_scale_rtcd --config=C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/config/aom_config.h C:/Users/adamv/repos/apollo/vendor/SDL_image/external/aom/aom_scale/aom_scale_rtcd.pl > C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/config/aom_scale_rtcd.h
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\ADAMV\REPOS\APOLLO\CMAKE-BUILD-DEBUG-VISUAL-STUDIO\CMAKEFILES\D35D8971EDBEFAB03EE5E3111FA1B3DE\AV1_RTCD.H.RULE
+setlocal
+cd C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\aom
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\msys64\usr\bin\perl.exe C:/Users/adamv/repos/apollo/vendor/SDL_image/external/aom/build/cmake/rtcd.pl --arch=x86_64 --sym=av1_rtcd --config=C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/config/aom_config.h C:/Users/adamv/repos/apollo/vendor/SDL_image/external/aom/av1/common/av1_rtcd_defs.pl > C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/config/av1_rtcd.h
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\ADAMV\REPOS\APOLLO\VENDOR\SDL_IMAGE\EXTERNAL\AOM\CMAKELISTS.TXT
+setlocal
+"C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\bin\cmake.exe" -SC:/Users/adamv/repos/apollo -BC:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio --check-stamp-file C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

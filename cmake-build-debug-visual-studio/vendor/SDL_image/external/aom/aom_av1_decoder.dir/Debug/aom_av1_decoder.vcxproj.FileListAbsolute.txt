@@ -1,0 +1,1 @@
+C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\aom\aom_av1_decoder.dir\Debug\aom_av1_decoder.lib

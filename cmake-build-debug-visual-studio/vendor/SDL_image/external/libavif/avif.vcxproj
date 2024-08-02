@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E9D925DA-319E-3264-BEC3-A806B9327CC0}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>avif</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libavif\avif.dir\nasm.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libavif\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">avif.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">libavif-16</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libavif\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">avif.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">libavif-16</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libavif\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">avif.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">libavif-16</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libavif\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">avif.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">libavif-16</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\src;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /source-charset:utf-8 /execution-charset:us-ascii</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;4324;4996</DisableSpecificWarnings>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_WIN32_WINNT=0x0601;AVIF_LIBSHARPYUV_ENABLED=1;AVIF_CODEC_DAV1D=1;AVIF_CODEC_AOM=1;AVIF_CODEC_AOM_ENCODE=1;AVIF_DLL;AVIF_BUILDING_SHARED_LIBS;CMAKE_INTDIR="Debug";avif_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_WIN32_WINNT=0x0601;AVIF_LIBSHARPYUV_ENABLED=1;AVIF_CODEC_DAV1D=1;AVIF_CODEC_AOM=1;AVIF_CODEC_AOM_ENCODE=1;AVIF_DLL;AVIF_BUILDING_SHARED_LIBS;CMAKE_INTDIR=\"Debug\";avif_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\src;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <NASM>
+      <IncludePaths>C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\include\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\include\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\src\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\dav1d\;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\dav1d\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp\;%(IncludePaths)</IncludePaths>
+      <AdditionalOptions>/W4 /wd4324 /wd4996 /source-charset:utf-8 /execution-charset:us-ascii</AdditionalOptions>
+      <Outputswitch>1</Outputswitch>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_WIN32_WINNT=0x0601;AVIF_LIBSHARPYUV_ENABLED=1;AVIF_CODEC_DAV1D=1;AVIF_CODEC_AOM=1;AVIF_CODEC_AOM_ENCODE=1;AVIF_DLL;AVIF_BUILDING_SHARED_LIBS;CMAKE_INTDIR="Debug";avif_EXPORTS</PreprocessorDefinitions>
+    </NASM>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\src;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\dav1d\Debug\dav1d.lib;..\aom\Debug\aom.lib;..\libwebp\Debug\libsharpyuv.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/libavif/Debug/avif.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/libavif/Debug/libavif-16.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\src;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /source-charset:utf-8 /execution-charset:us-ascii</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DisableSpecificWarnings>4996;4324;4996</DisableSpecificWarnings>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;AVIF_LIBSHARPYUV_ENABLED=1;AVIF_CODEC_DAV1D=1;AVIF_CODEC_AOM=1;AVIF_CODEC_AOM_ENCODE=1;AVIF_DLL;AVIF_BUILDING_SHARED_LIBS;CMAKE_INTDIR="Release";avif_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;AVIF_LIBSHARPYUV_ENABLED=1;AVIF_CODEC_DAV1D=1;AVIF_CODEC_AOM=1;AVIF_CODEC_AOM_ENCODE=1;AVIF_DLL;AVIF_BUILDING_SHARED_LIBS;CMAKE_INTDIR=\"Release\";avif_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\src;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <NASM>
+      <IncludePaths>C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\include\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\include\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\src\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\dav1d\;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\dav1d\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp\;%(IncludePaths)</IncludePaths>
+      <AdditionalOptions>/W4 /wd4324 /wd4996 /source-charset:utf-8 /execution-charset:us-ascii</AdditionalOptions>
+      <Outputswitch>1</Outputswitch>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;AVIF_LIBSHARPYUV_ENABLED=1;AVIF_CODEC_DAV1D=1;AVIF_CODEC_AOM=1;AVIF_CODEC_AOM_ENCODE=1;AVIF_DLL;AVIF_BUILDING_SHARED_LIBS;CMAKE_INTDIR="Release";avif_EXPORTS</PreprocessorDefinitions>
+    </NASM>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\src;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\dav1d\Release\dav1d.lib;..\aom\Release\aom.lib;..\libwebp\Release\libsharpyuv.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/libavif/Release/avif.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/libavif/Release/libavif-16.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\src;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /source-charset:utf-8 /execution-charset:us-ascii</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DisableSpecificWarnings>4996;4324;4996</DisableSpecificWarnings>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;AVIF_LIBSHARPYUV_ENABLED=1;AVIF_CODEC_DAV1D=1;AVIF_CODEC_AOM=1;AVIF_CODEC_AOM_ENCODE=1;AVIF_DLL;AVIF_BUILDING_SHARED_LIBS;CMAKE_INTDIR="MinSizeRel";avif_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;AVIF_LIBSHARPYUV_ENABLED=1;AVIF_CODEC_DAV1D=1;AVIF_CODEC_AOM=1;AVIF_CODEC_AOM_ENCODE=1;AVIF_DLL;AVIF_BUILDING_SHARED_LIBS;CMAKE_INTDIR=\"MinSizeRel\";avif_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\src;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <NASM>
+      <IncludePaths>C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\include\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\include\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\src\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\dav1d\;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\dav1d\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp\;%(IncludePaths)</IncludePaths>
+      <AdditionalOptions>/W4 /wd4324 /wd4996 /source-charset:utf-8 /execution-charset:us-ascii</AdditionalOptions>
+      <Outputswitch>1</Outputswitch>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;AVIF_LIBSHARPYUV_ENABLED=1;AVIF_CODEC_DAV1D=1;AVIF_CODEC_AOM=1;AVIF_CODEC_AOM_ENCODE=1;AVIF_DLL;AVIF_BUILDING_SHARED_LIBS;CMAKE_INTDIR="MinSizeRel";avif_EXPORTS</PreprocessorDefinitions>
+    </NASM>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\src;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\dav1d\MinSizeRel\dav1d.lib;..\aom\MinSizeRel\aom.lib;..\libwebp\MinSizeRel\libsharpyuv.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/libavif/MinSizeRel/avif.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/libavif/MinSizeRel/libavif-16.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\src;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /source-charset:utf-8 /execution-charset:us-ascii</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;4324;4996</DisableSpecificWarnings>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;AVIF_LIBSHARPYUV_ENABLED=1;AVIF_CODEC_DAV1D=1;AVIF_CODEC_AOM=1;AVIF_CODEC_AOM_ENCODE=1;AVIF_DLL;AVIF_BUILDING_SHARED_LIBS;CMAKE_INTDIR="RelWithDebInfo";avif_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;AVIF_LIBSHARPYUV_ENABLED=1;AVIF_CODEC_DAV1D=1;AVIF_CODEC_AOM=1;AVIF_CODEC_AOM_ENCODE=1;AVIF_DLL;AVIF_BUILDING_SHARED_LIBS;CMAKE_INTDIR=\"RelWithDebInfo\";avif_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\src;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <NASM>
+      <IncludePaths>C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\include\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\include\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\src\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\dav1d\;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\dav1d\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp\;%(IncludePaths)</IncludePaths>
+      <AdditionalOptions>/W4 /wd4324 /wd4996 /source-charset:utf-8 /execution-charset:us-ascii</AdditionalOptions>
+      <Outputswitch>1</Outputswitch>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32_WINNT=0x0601;AVIF_LIBSHARPYUV_ENABLED=1;AVIF_CODEC_DAV1D=1;AVIF_CODEC_AOM=1;AVIF_CODEC_AOM_ENCODE=1;AVIF_DLL;AVIF_BUILDING_SHARED_LIBS;CMAKE_INTDIR="RelWithDebInfo";avif_EXPORTS</PreprocessorDefinitions>
+    </NASM>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\src;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\include\dav1d;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom;C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libwebp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\dav1d\RelWithDebInfo\dav1d.lib;..\aom\RelWithDebInfo\aom.lib;..\libwebp\RelWithDebInfo\libsharpyuv.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/libavif/RelWithDebInfo/avif.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/libavif/RelWithDebInfo/libavif-16.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/adamv/repos/apollo/vendor/SDL_image/external/libavif/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\bin\cmake.exe" -SC:/Users/adamv/repos/apollo -BC:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio --check-stamp-file C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/libavif/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\share\cmake-3.29\Modules\CheckCCompilerFlag.cmake;C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\share\cmake-3.29\Modules\GNUInstallDirs.cmake;C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\share\cmake-3.29\Templates\MSBuild\nasm.props.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libavif\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/adamv/repos/apollo/vendor/SDL_image/external/libavif/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\bin\cmake.exe" -SC:/Users/adamv/repos/apollo -BC:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio --check-stamp-file C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/libavif/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\share\cmake-3.29\Modules\CheckCCompilerFlag.cmake;C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\share\cmake-3.29\Modules\GNUInstallDirs.cmake;C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\share\cmake-3.29\Templates\MSBuild\nasm.props.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libavif\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/adamv/repos/apollo/vendor/SDL_image/external/libavif/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\bin\cmake.exe" -SC:/Users/adamv/repos/apollo -BC:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio --check-stamp-file C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/libavif/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\share\cmake-3.29\Modules\CheckCCompilerFlag.cmake;C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\share\cmake-3.29\Modules\GNUInstallDirs.cmake;C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\share\cmake-3.29\Templates\MSBuild\nasm.props.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libavif\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/adamv/repos/apollo/vendor/SDL_image/external/libavif/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\bin\cmake.exe" -SC:/Users/adamv/repos/apollo -BC:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio --check-stamp-file C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/libavif/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\share\cmake-3.29\Modules\CheckCCompilerFlag.cmake;C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\share\cmake-3.29\Modules\GNUInstallDirs.cmake;C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\share\cmake-3.29\Templates\MSBuild\nasm.props.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libavif\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\src\alpha.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\src\avif.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\src\colr.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\src\diag.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\src\exif.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\src\io.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\src\mem.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\src\obu.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\src\rawdata.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\src\read.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\src\reformat.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\src\reformat_libsharpyuv.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\src\reformat_libyuv.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\src\scale.c">
+      <ObjectFileName>$(IntDir)/src/scale.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\src\stream.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\src\utils.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\src\write.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\source\scale.c">
+      <ObjectFileName>$(IntDir)/third_party/libyuv/source/scale.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\source\scale_common.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\source\scale_any.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\source\row_common.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\third_party\libyuv\source\planar_functions.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\src\codec_dav1d.c" />
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\libavif\src\codec_aom.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\ZERO_CHECK.vcxproj">
+      <Project>{A47341B3-78C4-3953-B232-2EA66C75F3F5}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\aom\aom.vcxproj">
+      <Project>{1BEDA861-692B-3F21-BEE6-20EAA70FE65A}</Project>
+      <Name>aom</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\dav1d\dav1d.vcxproj">
+      <Project>{4E98DAE9-8BB2-349D-B3FF-1F09B02697D0}</Project>
+      <Name>dav1d</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libwebp\sharpyuv.vcxproj">
+      <Project>{D7715725-E747-37F8-A48E-E97965FEF81D}</Project>
+      <Name>sharpyuv</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\share\cmake-3.29\Templates\MSBuild\nasm.targets" />
+  </ImportGroup>
+</Project>

@@ -1,0 +1,1 @@
+C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libwebp\webpencode.dir\Debug\webpencode.lib

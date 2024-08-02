@@ -1,0 +1,455 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "vendor/SDL_image/external/libavif/Debug/libavif-16.dll"
+		},
+		{
+			"path" : "vendor/SDL_image/external/libavif/Debug/avif.lib"
+		},
+		{
+			"path" : "vendor/SDL_image/external/libavif/Debug/libavif-16.pdb"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries",
+			"add_compile_options",
+			"target_compile_definitions",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"vendor/SDL_image/external/libavif/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 539,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 542,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 226,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 550,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 541,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 543,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 547,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "/DWIN32 /D_WINDOWS /Ob0 /Od /RTC1 -D_WIN32_WINNT=0x0601 /W3 /wd4996 -MDd -Zi"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "/W4"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "/wd4324"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "/wd4996"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "/source-charset:utf-8"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "/execution-charset:us-ascii"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 4,
+					"define" : "AVIF_BUILDING_SHARED_LIBS"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "AVIF_CODEC_AOM=1"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "AVIF_CODEC_AOM_ENCODE=1"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "AVIF_CODEC_DAV1D=1"
+				},
+				{
+					"backtrace" : 4,
+					"define" : "AVIF_DLL"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "AVIF_LIBSHARPYUV_ENABLED=1"
+				},
+				{
+					"define" : "avif_EXPORTS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 6,
+					"path" : "C:/Users/adamv/repos/apollo/vendor/SDL_image/external/libavif/include"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/Users/adamv/repos/apollo/vendor/SDL_image/external/libavif/third_party/libyuv/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/adamv/repos/apollo/vendor/SDL_image/external/dav1d/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/adamv/repos/apollo/vendor/SDL_image/external/dav1d/src"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/adamv/repos/apollo/vendor/SDL_image/external/dav1d/include/dav1d"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/dav1d/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/dav1d/include/dav1d"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/adamv/repos/apollo/vendor/SDL_image/external/aom"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/adamv/repos/apollo/vendor/SDL_image/external/libwebp"
+				}
+			],
+			"language" : "C",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "99"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "dav1d::@74198bbdecf5ff648cbc"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "aom::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "sharpyuv::@303f5a2e6359134e6e03"
+		}
+	],
+	"folder" : 
+	{
+		"name" : "ext/avif"
+	},
+	"id" : "avif::@69bf9df42d89f17207ab",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "/machine:x64 /debug /INCREMENTAL",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "..\\dav1d\\Debug\\dav1d.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "..\\aom\\Debug\\aom.lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "..\\libwebp\\Debug\\libsharpyuv.lib",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+				"role" : "libraries"
+			}
+		],
+		"language" : "C"
+	},
+	"name" : "avif",
+	"nameOnDisk" : "libavif-16.dll",
+	"paths" : 
+	{
+		"build" : "vendor/SDL_image/external/libavif",
+		"source" : "vendor/SDL_image/external/libavif"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/src/alpha.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/src/avif.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/src/colr.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/src/diag.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/src/exif.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/src/io.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/src/mem.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/src/obu.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/src/rawdata.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/src/read.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/src/reformat.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/src/reformat_libsharpyuv.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/src/reformat_libyuv.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/src/scale.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/src/stream.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/src/utils.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/src/write.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/third_party/libyuv/source/scale.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/third_party/libyuv/source/scale_common.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/third_party/libyuv/source/scale_any.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/third_party/libyuv/source/row_common.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/third_party/libyuv/source/planar_functions.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/src/codec_dav1d.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/libavif/src/codec_aom.c",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "SHARED_LIBRARY"
+}

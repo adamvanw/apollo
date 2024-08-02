@@ -1,0 +1,782 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/args_helper.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/arg_defs.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/alloccommon.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/av1_inv_txfm1d.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/av1_inv_txfm2d.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/av1_loopfilter.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/av1_txfm.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/blockd.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/cdef.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/cdef_block.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/cfl.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/common_data.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/convolve.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/debugmodes.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/entropy.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/entropymode.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/entropymv.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/frame_buffers.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/idct.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/mvref_common.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/obu_util.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/pred_common.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/quant_common.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/reconinter.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/reconintra.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/resize.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/restoration.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/scale.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/scan.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/seg_common.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/thread_common.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/tile_common.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/timing.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/txb_common.obj"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/aom_av1_common.dir/Release/warped_motion.obj"
+		}
+	],
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"setup_av1_targets",
+			"add_dependencies",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"vendor/SDL_image/external/aom/av1/av1.cmake",
+			"vendor/SDL_image/external/aom/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 359,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 501,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 364,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 210,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 469,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "/DWIN32 /D_WINDOWS /O2 /Ob2 /DNDEBUG -D_WIN32_WINNT=0x0601 /W3 /wd4996 -MD"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/adamv/repos/apollo/vendor/SDL_image/external/aom"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/aom"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/adamv/repos/apollo/vendor/SDL_image/external/aom/apps"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/adamv/repos/apollo/vendor/SDL_image/external/aom/common"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/adamv/repos/apollo/vendor/SDL_image/external/aom/examples"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "C:/Users/adamv/repos/apollo/vendor/SDL_image/external/aom/stats"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "C:/Users/adamv/repos/apollo/vendor/SDL_image/external/aom/third_party/libyuv/include"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				1,
+				3,
+				5,
+				8,
+				11,
+				12,
+				14,
+				16,
+				18,
+				20,
+				22,
+				25,
+				27,
+				29,
+				30,
+				32,
+				34,
+				38,
+				40,
+				43,
+				45,
+				47,
+				49,
+				51,
+				54,
+				56,
+				58,
+				60,
+				62,
+				64,
+				66,
+				68,
+				70,
+				73,
+				75
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 3,
+			"id" : "aom_rtcd::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "aom_av1_common::@f87d1d649d07125a0eaf",
+	"name" : "aom_av1_common",
+	"paths" : 
+	{
+		"build" : "vendor/SDL_image/external/aom",
+		"source" : "vendor/SDL_image/external/aom"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				0,
+				2,
+				4,
+				6,
+				7,
+				9,
+				10,
+				13,
+				15,
+				17,
+				19,
+				21,
+				23,
+				24,
+				26,
+				28,
+				31,
+				33,
+				35,
+				36,
+				37,
+				39,
+				41,
+				42,
+				44,
+				46,
+				48,
+				50,
+				52,
+				55,
+				57,
+				59,
+				61,
+				63,
+				65,
+				67,
+				69,
+				71,
+				72,
+				74,
+				76
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				1,
+				3,
+				5,
+				8,
+				11,
+				12,
+				14,
+				16,
+				18,
+				20,
+				22,
+				25,
+				27,
+				29,
+				30,
+				32,
+				34,
+				38,
+				40,
+				43,
+				45,
+				47,
+				49,
+				51,
+				54,
+				56,
+				58,
+				60,
+				62,
+				64,
+				66,
+				68,
+				70,
+				73,
+				75
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				53
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/common/args_helper.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/common/args_helper.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/arg_defs.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/arg_defs.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/av1_iface_common.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/alloccommon.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/alloccommon.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/av1_common_int.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/av1_inv_txfm1d.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/av1_inv_txfm1d.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/av1_inv_txfm1d_cfg.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/av1_inv_txfm2d.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/av1_loopfilter.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/av1_loopfilter.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/av1_txfm.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/av1_txfm.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/blockd.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/blockd.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/cdef.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/cdef.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/cdef_block.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/cdef_block.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/cfl.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/cfl.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/common.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/common_data.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/common_data.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/convolve.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/convolve.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/debugmodes.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/entropy.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/entropy.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/entropymode.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/entropymode.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/entropymv.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/entropymv.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/enums.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/filter.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/frame_buffers.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/frame_buffers.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/idct.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/idct.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/mv.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/mvref_common.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/mvref_common.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/obu_util.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/obu_util.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/pred_common.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/pred_common.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/quant_common.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/quant_common.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/reconinter.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/reconinter.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/reconinter_template.inc",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/reconintra.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/reconintra.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/resize.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/resize.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/restoration.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/restoration.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/scale.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/scale.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/scan.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/scan.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/seg_common.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/seg_common.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/thread_common.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/thread_common.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/tile_common.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/tile_common.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/timing.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/timing.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/token_cdfs.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/txb_common.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/txb_common.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/av1/common/warped_motion.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 2,
+			"path" : "vendor/SDL_image/external/aom/av1/common/warped_motion.h",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "OBJECT_LIBRARY"
+}

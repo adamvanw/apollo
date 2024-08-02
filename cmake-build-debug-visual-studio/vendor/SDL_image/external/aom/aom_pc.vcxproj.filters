@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\aom\gen_src\aom_pc_dummy.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\CMakeFiles\0bcb5bcba5ac47c3b279a2ef512ffbab\aom.pc.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{222C27C4-FBE1-3E8A-86E4-C07A214153E6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{7C12867E-EECD-3D37-ADEF-341A4EA8B800}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

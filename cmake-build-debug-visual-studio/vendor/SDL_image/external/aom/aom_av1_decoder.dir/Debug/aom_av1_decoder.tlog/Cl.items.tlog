@@ -1,0 +1,8 @@
+C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\av1_dx_iface.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\aom\aom_av1_decoder.dir\Debug\av1_dx_iface.obj
+C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\decoder\decodeframe.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\aom\aom_av1_decoder.dir\Debug\decodeframe.obj
+C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\decoder\decodemv.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\aom\aom_av1_decoder.dir\Debug\decodemv.obj
+C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\decoder\decoder.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\aom\aom_av1_decoder.dir\Debug\decoder.obj
+C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\decoder\decodetxb.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\aom\aom_av1_decoder.dir\Debug\decodetxb.obj
+C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\decoder\detokenize.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\aom\aom_av1_decoder.dir\Debug\detokenize.obj
+C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\decoder\grain_synthesis.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\aom\aom_av1_decoder.dir\Debug\grain_synthesis.obj
+C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\decoder\obu.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\aom\aom_av1_decoder.dir\Debug\obu.obj

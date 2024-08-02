@@ -1,0 +1,1 @@
+C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\aom\aom_dsp_encoder.dir\Debug\aom_dsp_encoder.lib

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\encoder\x86\av1_quantize_avx2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\encoder\x86\error_intrin_avx2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\encoder\x86\av1_fwd_txfm2d_avx2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\encoder\x86\highbd_fwd_txfm_avx2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\encoder\x86\wedge_utils_avx2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\encoder\x86\encodetxb_avx2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\encoder\x86\rdopt_avx2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\encoder\x86\av1_k_means_avx2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\encoder\x86\temporal_filter_avx2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\encoder\x86\pickrst_avx2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\encoder\x86\cnn_avx2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\encoder\x86\av1_highbd_quantize_avx2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\encoder\x86\highbd_block_error_intrin_avx2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\encoder\x86\highbd_temporal_filter_avx2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\av1\encoder\x86\av1_fwd_txfm_avx2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\adamv\repos\apollo\vendor\SDL_image\external\aom\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{3AE5AD25-EED3-3B8F-8C41-C95F22109678}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{7C12867E-EECD-3D37-ADEF-341A4EA8B800}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
