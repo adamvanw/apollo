@@ -345,6 +345,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\Users\adamv\repos\apollo\src\action.h" />
     <ClInclude Include="C:\Users\adamv\repos\apollo\src\draw.h" />
     <ClInclude Include="C:\Users\adamv\repos\apollo\src\general.h" />
+    <ClInclude Include="C:\Users\adamv\repos\apollo\src\qoi.h" />
     <ClCompile Include="C:\Users\adamv\repos\apollo\src\main.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -23,6 +23,7 @@ C:\Users\adamv\repos\apollo\vendor\SDL\src\camera\SDL_camera.c;C:\Users\adamv\re
 C:\Users\adamv\repos\apollo\vendor\SDL\src\core\SDL_core_unsupported.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL\SDL3-static.dir\Debug\SDL_core_unsupported.obj
 C:\Users\adamv\repos\apollo\vendor\SDL\src\cpuinfo\SDL_cpuinfo.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL\SDL3-static.dir\Debug\SDL_cpuinfo.obj
 C:\Users\adamv\repos\apollo\vendor\SDL\src\dynapi\SDL_dynapi.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL\SDL3-static.dir\Debug\SDL_dynapi.obj
+C:\Users\adamv\repos\apollo\vendor\SDL\src\events\SDL_categories.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL\SDL3-static.dir\Debug\SDL_categories.obj
 C:\Users\adamv\repos\apollo\vendor\SDL\src\events\SDL_clipboardevents.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL\SDL3-static.dir\Debug\SDL_clipboardevents.obj
 C:\Users\adamv\repos\apollo\vendor\SDL\src\events\SDL_displayevents.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL\SDL3-static.dir\Debug\SDL_displayevents.obj
 C:\Users\adamv\repos\apollo\vendor\SDL\src\events\SDL_dropevents.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL\SDL3-static.dir\Debug\SDL_dropevents.obj
@@ -167,6 +168,7 @@ C:\Users\adamv\repos\apollo\vendor\SDL\src\audio\wasapi\SDL_wasapi_win32.c;C:\Us
 C:\Users\adamv\repos\apollo\vendor\SDL\src\video\windows\SDL_windowsclipboard.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL\SDL3-static.dir\Debug\SDL_windowsclipboard.obj
 C:\Users\adamv\repos\apollo\vendor\SDL\src\video\windows\SDL_windowsevents.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL\SDL3-static.dir\Debug\SDL_windowsevents.obj
 C:\Users\adamv\repos\apollo\vendor\SDL\src\video\windows\SDL_windowsframebuffer.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL\SDL3-static.dir\Debug\SDL_windowsframebuffer.obj
+C:\Users\adamv\repos\apollo\vendor\SDL\src\video\windows\SDL_windowsgameinput.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL\SDL3-static.dir\Debug\SDL_windowsgameinput.obj
 C:\Users\adamv\repos\apollo\vendor\SDL\src\video\windows\SDL_windowskeyboard.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL\SDL3-static.dir\Debug\SDL_windowskeyboard.obj
 C:\Users\adamv\repos\apollo\vendor\SDL\src\video\windows\SDL_windowsmessagebox.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL\SDL3-static.dir\Debug\SDL_windowsmessagebox.obj
 C:\Users\adamv\repos\apollo\vendor\SDL\src\video\windows\SDL_windowsmodes.c;C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL\SDL3-static.dir\Debug\SDL_windowsmodes.obj

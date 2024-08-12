@@ -22,8 +22,15 @@ using namespace std;
 #include "SDL3_image/SDL_image.h"
 #endif
 
+
+#ifndef QOI
+#define QOI
+#include "qoi.h"
+#endif
+
 const int width = 1280, height = 720;
 const int menu = 20, sidebar = 250;
+const Uint64 refreshDelay = (Uint64)1000 / 360;   // 360 is temporary, but marks the rate the program is refreshed.
 
 int main() {
     SDL_Init(SDL_INIT_EVENTS | SDL_INIT_VIDEO);
@@ -135,44 +142,31 @@ int main() {
 
                         // undo code
                         if (lctrl && !UndoStack.empty()) {
-
-                            SDL_Log("Undo action called");
                             Action* action = UndoStack.top();
 
-                            SDL_Log("Undo action called");
                             RedoStack.push(new Action(STROKE, SDL_DuplicateSurface(layer)));
                             SDL_DestroySurface(layer);
                             layer = SDL_DuplicateSurface(action->surface);
-                            SDL_Log("Undo action called");
-
 
                             SDL_DestroySurface(action->surface);
-                            SDL_Log("Undo action called");
 
                             delete action;
                             UndoStack.pop();
-                            SDL_Log("Undo action called");
                         }
                         break;
                     case SDLK_Y:
                         // redo code
                         if (lctrl && !RedoStack.empty()) {
-                            SDL_Log("Redo action called");
                             Action* action = RedoStack.top();
 
-                            SDL_Log("Redo action called");
                             UndoStack.push(new Action(STROKE, SDL_DuplicateSurface(layer)));
                             SDL_DestroySurface(layer);
                             layer = SDL_DuplicateSurface(action->surface);
 
-                            SDL_Log("Redo action called");
-
                             SDL_DestroySurface(action->surface);
-                            SDL_Log("Redo action called");
 
                             delete action;
                             RedoStack.pop();
-                            SDL_Log("Redo action called");
                         }
                         break;
                 }
@@ -243,9 +237,9 @@ int main() {
 
         Uint64 frameTime = (SDL_GetPerformanceCounter() - start) / SDL_GetPerformanceFrequency() * 1000;
 
-        if (frameTime > 0.25f) SDL_Log("Missed frame refresh. Time taken: %lf ms", frameTime);
+        if (frameTime > refreshDelay) SDL_Log("Missed frame refresh. Time taken: %llu ms... Error: %s", frameTime, SDL_GetError());
 
-        SDL_Delay(0.25f - frameTime);
+        SDL_Delay(refreshDelay - frameTime);
     }
 
     delete canvasArea;

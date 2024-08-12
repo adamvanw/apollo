@@ -1,0 +1,106 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"vendor/SDL_image/external/libwebp/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "webputilsdecode::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "sharpyuv::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "webpdecoder::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "webpencode::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "webpdspdecode::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "webpdsp::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "imageioutil::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "imagedec::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "webpdemux::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "exampleutil::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "webp::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "webpdecode::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "webputils::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "imageenc::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "dwebp::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "cwebp::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "img2webp::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "extras::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "libwebpmux::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "webpinfo::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "webpmux::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "get_disto::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "webp_quality::@303f5a2e6359134e6e03"
+		},
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		}
+	],
+	"folder" : 
+	{
+		"name" : "CMakePredefinedTargets"
+	},
+	"id" : "ALL_BUILD::@303f5a2e6359134e6e03",
+	"isGeneratorProvided" : true,
+	"name" : "ALL_BUILD",
+	"paths" : 
+	{
+		"build" : "vendor/SDL_image/external/libwebp",
+		"source" : "vendor/SDL_image/external/libwebp"
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}

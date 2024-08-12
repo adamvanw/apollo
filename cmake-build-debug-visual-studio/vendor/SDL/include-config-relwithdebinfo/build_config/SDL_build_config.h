@@ -75,12 +75,10 @@
 #define HAVE_CALLOC 1
 #define HAVE_REALLOC 1
 #define HAVE_FREE 1
-#ifndef SDL_PLATFORM_WIN32 /* Don't use C runtime versions of these on Windows */
 #define HAVE_GETENV 1
 /* #undef HAVE_SETENV */
 #define HAVE_PUTENV 1
 /* #undef HAVE_UNSETENV */
-#endif
 #define HAVE_ABS 1
 /* #undef HAVE_BCOPY */
 #define HAVE_MEMSET 1
@@ -228,14 +226,13 @@
 /* #undef HAVE_LIBUDEV_H */
 /* #undef HAVE_LIBDECOR_H */
 
-#define HAVE_D3D_H 1
 #define HAVE_D3D11_H 1
-#define HAVE_D3D12_H 1
 #define HAVE_DDRAW_H 1
 #define HAVE_DSOUND_H 1
 #define HAVE_DINPUT_H 1
 #define HAVE_XINPUT_H 1
 #define HAVE_WINDOWS_GAMING_INPUT_H 1
+/* #undef HAVE_GAMEINPUT_H */
 #define HAVE_DXGI_H 1
 #define HAVE_DXGI1_6_H 1
 
@@ -268,7 +265,6 @@
 /* Enable various audio drivers */
 /* #undef SDL_AUDIO_DRIVER_ALSA */
 /* #undef SDL_AUDIO_DRIVER_ALSA_DYNAMIC */
-/* #undef SDL_AUDIO_DRIVER_ANDROID */
 /* #undef SDL_AUDIO_DRIVER_OPENSLES */
 /* #undef SDL_AUDIO_DRIVER_AAUDIO */
 /* #undef SDL_AUDIO_DRIVER_COREAUDIO */
@@ -299,25 +295,26 @@
 /* #undef SDL_INPUT_LINUXKD */
 /* #undef SDL_INPUT_FBSDKBIO */
 /* #undef SDL_INPUT_WSCONS */
-/* #undef SDL_JOYSTICK_ANDROID */
-/* #undef SDL_JOYSTICK_HAIKU */
-#define SDL_JOYSTICK_WGI 1
-#define SDL_JOYSTICK_DINPUT 1
-#define SDL_JOYSTICK_XINPUT 1
-/* #undef SDL_JOYSTICK_DUMMY */
-/* #undef SDL_JOYSTICK_IOKIT */
-/* #undef SDL_JOYSTICK_MFI */
-/* #undef SDL_JOYSTICK_LINUX */
-/* #undef SDL_JOYSTICK_USBHID */
 /* #undef SDL_HAVE_MACHINE_JOYSTICK_H */
-#define SDL_JOYSTICK_HIDAPI 1
-#define SDL_JOYSTICK_RAWINPUT 1
+/* #undef SDL_JOYSTICK_ANDROID */
+#define SDL_JOYSTICK_DINPUT 1
+/* #undef SDL_JOYSTICK_DUMMY */
 /* #undef SDL_JOYSTICK_EMSCRIPTEN */
+/* #undef SDL_JOYSTICK_GAMEINPUT */
+/* #undef SDL_JOYSTICK_HAIKU */
+#define SDL_JOYSTICK_HIDAPI 1
+/* #undef SDL_JOYSTICK_IOKIT */
+/* #undef SDL_JOYSTICK_LINUX */
+/* #undef SDL_JOYSTICK_MFI */
+/* #undef SDL_JOYSTICK_N3DS */
+/* #undef SDL_JOYSTICK_PS2 */
+/* #undef SDL_JOYSTICK_PSP */
+#define SDL_JOYSTICK_RAWINPUT 1
+/* #undef SDL_JOYSTICK_USBHID */
 #define SDL_JOYSTICK_VIRTUAL 1
 /* #undef SDL_JOYSTICK_VITA */
-/* #undef SDL_JOYSTICK_PSP */
-/* #undef SDL_JOYSTICK_PS2 */
-/* #undef SDL_JOYSTICK_N3DS */
+#define SDL_JOYSTICK_WGI 1
+#define SDL_JOYSTICK_XINPUT 1
 /* #undef SDL_HAPTIC_DUMMY */
 /* #undef SDL_HAPTIC_LINUX */
 /* #undef SDL_HAPTIC_IOKIT */

@@ -1,0 +1,3455 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "vendor/SDL_image/external/aom/MinSizeRel/aom.dll"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/MinSizeRel/aom.lib"
+		},
+		{
+			"path" : "vendor/SDL_image/external/aom/MinSizeRel/aom.pdb"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"install",
+			"setup_aom_install_targets",
+			"add_dependencies",
+			"setup_exports_target",
+			"include_directories",
+			"target_sources",
+			"setup_aom_dsp_targets",
+			"add_asm_library",
+			"add_intrinsics_object_library",
+			"setup_aom_mem_targets",
+			"setup_aom_ports_targets",
+			"setup_aom_util_targets",
+			"setup_aom_scale_targets",
+			"setup_av1_targets"
+		],
+		"files" : 
+		[
+			"vendor/SDL_image/external/aom/CMakeLists.txt",
+			"vendor/SDL_image/external/aom/build/cmake/aom_install.cmake",
+			"vendor/SDL_image/external/aom/build/cmake/exports.cmake",
+			"vendor/SDL_image/external/aom/aom_dsp/aom_dsp.cmake",
+			"vendor/SDL_image/external/aom/build/cmake/aom_optimization.cmake",
+			"vendor/SDL_image/external/aom/aom_mem/aom_mem.cmake",
+			"vendor/SDL_image/external/aom/aom_ports/aom_ports.cmake",
+			"vendor/SDL_image/external/aom/aom_util/aom_util.cmake",
+			"vendor/SDL_image/external/aom/aom_scale/aom_scale.cmake",
+			"vendor/SDL_image/external/aom/av1/av1.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 273,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 1027,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 92,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 364,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 842,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 52,
+				"parent" : 5
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 210,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 469,
+				"parent" : 0
+			},
+			{
+				"command" : 7,
+				"file" : 0,
+				"line" : 354,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 3,
+				"line" : 327,
+				"parent" : 9
+			},
+			{
+				"command" : 6,
+				"file" : 3,
+				"line" : 340,
+				"parent" : 9
+			},
+			{
+				"command" : 6,
+				"file" : 3,
+				"line" : 349,
+				"parent" : 9
+			},
+			{
+				"command" : 8,
+				"file" : 3,
+				"line" : 359,
+				"parent" : 9
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 13
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 13
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 13
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 13
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 13
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 13
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 13
+			},
+			{
+				"command" : 9,
+				"file" : 3,
+				"line" : 360,
+				"parent" : 9
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 21
+			},
+			{
+				"command" : 8,
+				"file" : 3,
+				"line" : 367,
+				"parent" : 9
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 23
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 23
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 23
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 23
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 23
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 23
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 23
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 23
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 23
+			},
+			{
+				"command" : 9,
+				"file" : 3,
+				"line" : 368,
+				"parent" : 9
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 33
+			},
+			{
+				"command" : 8,
+				"file" : 3,
+				"line" : 374,
+				"parent" : 9
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 35
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 35
+			},
+			{
+				"command" : 9,
+				"file" : 3,
+				"line" : 375,
+				"parent" : 9
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 38
+			},
+			{
+				"command" : 8,
+				"file" : 3,
+				"line" : 383,
+				"parent" : 9
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 40
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 40
+			},
+			{
+				"command" : 9,
+				"file" : 3,
+				"line" : 384,
+				"parent" : 9
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 43
+			},
+			{
+				"command" : 9,
+				"file" : 3,
+				"line" : 390,
+				"parent" : 9
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 45
+			},
+			{
+				"command" : 9,
+				"file" : 3,
+				"line" : 393,
+				"parent" : 9
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 47
+			},
+			{
+				"command" : 9,
+				"file" : 3,
+				"line" : 400,
+				"parent" : 9
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 49
+			},
+			{
+				"command" : 9,
+				"file" : 3,
+				"line" : 406,
+				"parent" : 9
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 51
+			},
+			{
+				"command" : 9,
+				"file" : 3,
+				"line" : 409,
+				"parent" : 9
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 53
+			},
+			{
+				"command" : 6,
+				"file" : 3,
+				"line" : 424,
+				"parent" : 9
+			},
+			{
+				"command" : 10,
+				"file" : 0,
+				"line" : 355,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 5,
+				"line" : 25,
+				"parent" : 56
+			},
+			{
+				"command" : 11,
+				"file" : 0,
+				"line" : 356,
+				"parent" : 0
+			},
+			{
+				"command" : 8,
+				"file" : 6,
+				"line" : 47,
+				"parent" : 58
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 59
+			},
+			{
+				"command" : 12,
+				"file" : 0,
+				"line" : 357,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 7,
+				"line" : 27,
+				"parent" : 61
+			},
+			{
+				"command" : 13,
+				"file" : 0,
+				"line" : 358,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 8,
+				"line" : 27,
+				"parent" : 63
+			},
+			{
+				"command" : 14,
+				"file" : 0,
+				"line" : 359,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 9,
+				"line" : 503,
+				"parent" : 65
+			},
+			{
+				"command" : 6,
+				"file" : 9,
+				"line" : 511,
+				"parent" : 65
+			},
+			{
+				"command" : 6,
+				"file" : 9,
+				"line" : 520,
+				"parent" : 65
+			},
+			{
+				"command" : 9,
+				"file" : 9,
+				"line" : 528,
+				"parent" : 65
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 69
+			},
+			{
+				"command" : 8,
+				"file" : 9,
+				"line" : 542,
+				"parent" : 65
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 71
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 71
+			},
+			{
+				"command" : 9,
+				"file" : 9,
+				"line" : 543,
+				"parent" : 65
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 74
+			},
+			{
+				"command" : 9,
+				"file" : 9,
+				"line" : 551,
+				"parent" : 65
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 76
+			},
+			{
+				"command" : 9,
+				"file" : 9,
+				"line" : 558,
+				"parent" : 65
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 78
+			},
+			{
+				"command" : 9,
+				"file" : 9,
+				"line" : 569,
+				"parent" : 65
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 80
+			},
+			{
+				"command" : 9,
+				"file" : 9,
+				"line" : 577,
+				"parent" : 65
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 82
+			},
+			{
+				"command" : 8,
+				"file" : 9,
+				"line" : 582,
+				"parent" : 65
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 175,
+				"parent" : 84
+			},
+			{
+				"command" : 9,
+				"file" : 9,
+				"line" : 587,
+				"parent" : 65
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 86
+			},
+			{
+				"command" : 9,
+				"file" : 9,
+				"line" : 597,
+				"parent" : 65
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 88
+			},
+			{
+				"command" : 9,
+				"file" : 9,
+				"line" : 605,
+				"parent" : 65
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 90
+			},
+			{
+				"command" : 9,
+				"file" : 9,
+				"line" : 609,
+				"parent" : 65
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 76,
+				"parent" : 92
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "/DWIN32 /D_WINDOWS /O1 /Ob1 /DNDEBUG -D_WIN32_WINNT=0x0601 /W3 /wd4996 -MD"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"define" : "aom_EXPORTS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 7,
+					"path" : "C:/Users/adamv/repos/apollo/vendor/SDL_image/external/aom"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/aom"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/Users/adamv/repos/apollo/vendor/SDL_image/external/aom/apps"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/Users/adamv/repos/apollo/vendor/SDL_image/external/aom/common"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/Users/adamv/repos/apollo/vendor/SDL_image/external/aom/examples"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "C:/Users/adamv/repos/apollo/vendor/SDL_image/external/aom/stats"
+				},
+				{
+					"backtrace" : 8,
+					"path" : "C:/Users/adamv/repos/apollo/vendor/SDL_image/external/aom/third_party/libyuv/include"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0,
+				14,
+				15,
+				16,
+				17,
+				18
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"id" : "aom_dsp::@f87d1d649d07125a0eaf"
+		},
+		{
+			"backtrace" : 4,
+			"id" : "aom_rtcd::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_common::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_encoder_avx2_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_mem::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_encoder_sse2_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_common_sse2_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_common_ssse3_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_decoder::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_common_sse4_1_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_encoder_sse4_1_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_encoder_ssse3_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_encoder::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_encoder_avx_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_common_avx2_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_encoder_sse4_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_common_avx2_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_encoder_avx2_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_util::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_common_ssse3_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_encoder::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_common_sse4_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_scale::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_encoder_sse2_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_encoder_sse3_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_encoder_sse42_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_common_sse2_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_encoder_ssse3_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_common::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_decoder::@f87d1d649d07125a0eaf"
+		},
+		{
+			"backtrace" : 6,
+			"id" : "generate_exports::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "aom::@f87d1d649d07125a0eaf",
+	"install" : 
+	{
+		"destinations" : 
+		[
+			{
+				"backtrace" : 3,
+				"path" : "lib"
+			},
+			{
+				"backtrace" : 3,
+				"path" : "bin"
+			}
+		],
+		"prefix" : 
+		{
+			"path" : "C:/Program Files (x86)/apollo"
+		}
+	},
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "/machine:x64 /INCREMENTAL:NO /DEF:C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/libaom.def",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib",
+				"role" : "libraries"
+			}
+		],
+		"language" : "C"
+	},
+	"name" : "aom",
+	"nameOnDisk" : "aom.dll",
+	"paths" : 
+	{
+		"build" : "vendor/SDL_image/external/aom",
+		"source" : "vendor/SDL_image/external/aom"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				14,
+				15,
+				16,
+				17,
+				18
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13
+			]
+		},
+		{
+			"name" : "Object Libraries",
+			"sourceIndexes" : 
+			[
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58,
+				66,
+				67,
+				68,
+				69,
+				70,
+				71,
+				72,
+				73,
+				74,
+				84,
+				85,
+				86,
+				87,
+				88,
+				89,
+				90,
+				91,
+				92,
+				93,
+				94,
+				97,
+				98,
+				99,
+				102,
+				103,
+				104,
+				105,
+				106,
+				107,
+				108,
+				109,
+				110,
+				111,
+				112,
+				113,
+				114,
+				115,
+				116,
+				117,
+				118,
+				119,
+				120,
+				121,
+				122,
+				123,
+				124,
+				125,
+				126,
+				127,
+				128,
+				129,
+				130,
+				131,
+				132,
+				133,
+				134,
+				135,
+				136,
+				137,
+				138,
+				139,
+				140,
+				141,
+				142,
+				143,
+				144,
+				145,
+				146,
+				147,
+				148,
+				149,
+				150,
+				152,
+				153,
+				154,
+				155,
+				156,
+				157,
+				158,
+				159,
+				160,
+				161,
+				162,
+				163,
+				164,
+				165,
+				166,
+				167,
+				168,
+				169,
+				170,
+				171,
+				172,
+				173,
+				174,
+				175,
+				176,
+				177,
+				178,
+				179,
+				180,
+				181,
+				182,
+				183,
+				184,
+				185,
+				186,
+				187,
+				188,
+				189,
+				190,
+				191,
+				192,
+				193,
+				194,
+				195,
+				196,
+				197,
+				198,
+				199,
+				200,
+				201,
+				202,
+				203,
+				204,
+				205,
+				206,
+				207,
+				208,
+				209,
+				210,
+				211,
+				212,
+				213,
+				214,
+				215,
+				216,
+				217,
+				218,
+				219,
+				220,
+				221,
+				222,
+				223,
+				224,
+				225,
+				226,
+				227,
+				228,
+				229,
+				230,
+				231,
+				232,
+				233,
+				234,
+				235,
+				236,
+				237,
+				238,
+				239,
+				240,
+				241,
+				242,
+				243,
+				244,
+				245,
+				246,
+				247,
+				248,
+				249,
+				250,
+				251,
+				252,
+				253,
+				254,
+				255,
+				256,
+				257,
+				258,
+				259,
+				260,
+				261,
+				262,
+				263,
+				264,
+				265,
+				266,
+				267,
+				268,
+				269,
+				270,
+				271,
+				272,
+				273,
+				274,
+				275,
+				276,
+				279,
+				280,
+				281,
+				282,
+				283,
+				284,
+				285,
+				286,
+				287,
+				288,
+				289,
+				290,
+				291,
+				292,
+				293,
+				294,
+				295,
+				296,
+				297,
+				298,
+				299,
+				300,
+				301,
+				302,
+				303,
+				304,
+				305,
+				306,
+				307,
+				308,
+				309,
+				310,
+				311,
+				313,
+				314,
+				315,
+				316,
+				317,
+				318,
+				319,
+				320,
+				321,
+				322,
+				323,
+				324,
+				325,
+				326,
+				327,
+				328,
+				329,
+				330,
+				331,
+				332,
+				333,
+				334,
+				335,
+				336,
+				337,
+				338,
+				339,
+				340,
+				341,
+				342,
+				343,
+				344,
+				345,
+				346,
+				347,
+				348,
+				349
+			]
+		},
+		{
+			"name" : "Object Files",
+			"sourceIndexes" : 
+			[
+				59,
+				60,
+				61,
+				62,
+				63,
+				64,
+				65,
+				75,
+				76,
+				77,
+				78,
+				79,
+				80,
+				81,
+				82,
+				83,
+				95,
+				96,
+				100,
+				101,
+				151,
+				277,
+				278,
+				312
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				350,
+				351,
+				352,
+				353,
+				354,
+				355,
+				356,
+				357,
+				358,
+				359,
+				360,
+				361,
+				362,
+				363,
+				364,
+				365,
+				366,
+				367,
+				368,
+				369,
+				370,
+				371,
+				372,
+				373
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/config/aom_config.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/config/aom_config.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vendor/SDL_image/external/aom/aom/aom.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vendor/SDL_image/external/aom/aom/aom_codec.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vendor/SDL_image/external/aom/aom/aom_decoder.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vendor/SDL_image/external/aom/aom/aom_encoder.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vendor/SDL_image/external/aom/aom/aom_external_partition.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vendor/SDL_image/external/aom/aom/aom_frame_buffer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vendor/SDL_image/external/aom/aom/aom_image.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vendor/SDL_image/external/aom/aom/aom_integer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vendor/SDL_image/external/aom/aom/aomcx.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vendor/SDL_image/external/aom/aom/aomdx.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vendor/SDL_image/external/aom/aom/internal/aom_codec_internal.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vendor/SDL_image/external/aom/aom/internal/aom_image_internal.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/aom/src/aom_codec.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/aom/src/aom_decoder.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/aom/src/aom_encoder.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/aom/src/aom_image.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "vendor/SDL_image/external/aom/aom/src/aom_integer.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_rtcd.dir/$(Configuration)/aom_dsp_rtcd.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_rtcd.dir/$(Configuration)/aom_scale_rtcd.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_rtcd.dir/$(Configuration)/av1_rtcd.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 10,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common.dir/$(Configuration)/aom_convolve.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 10,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common.dir/$(Configuration)/bitreader_buffer.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 10,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common.dir/$(Configuration)/bitwriter_buffer.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 10,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common.dir/$(Configuration)/blend_a64_hmask.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 10,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common.dir/$(Configuration)/blend_a64_mask.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 10,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common.dir/$(Configuration)/blend_a64_vmask.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 10,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common.dir/$(Configuration)/entcode.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 10,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common.dir/$(Configuration)/fft.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 10,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common.dir/$(Configuration)/intrapred.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 10,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common.dir/$(Configuration)/loopfilter.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 10,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common.dir/$(Configuration)/odintrin.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 10,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common.dir/$(Configuration)/subtract.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 11,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_decoder.dir/$(Configuration)/binary_codes_reader.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 11,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_decoder.dir/$(Configuration)/bitreader.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 11,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_decoder.dir/$(Configuration)/entdec.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/avg.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/binary_codes_writer.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/bitwriter.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/blk_sse_sum.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/entenc.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/fwd_txfm.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/grain_table.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/noise_model.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/noise_util.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/psnr.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/quantize.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/sad.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/sad_av1.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/sse.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/ssim.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/sum_squares.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/variance.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/corner_detect.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/corner_match.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/disflow.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/flow_estimation.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 12,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder.dir/$(Configuration)/ransac.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 14,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_common_sse2_shared/aom_high_subpixel_8t_sse2.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 15,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_common_sse2_shared/aom_high_subpixel_bilinear_sse2.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 16,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_common_sse2_shared/aom_subpixel_8t_sse2.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 17,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_common_sse2_shared/aom_subpixel_bilinear_sse2.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 18,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_common_sse2_shared/highbd_intrapred_asm_sse2.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 19,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_common_sse2_shared/intrapred_asm_sse2.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 20,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_common_sse2_shared/inv_wht_sse2.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 22,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_sse2_intrinsics.dir/$(Configuration)/aom_convolve_copy_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 22,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_sse2_intrinsics.dir/$(Configuration)/aom_subpixel_8t_intrin_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 22,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_sse2_intrinsics.dir/$(Configuration)/aom_asm_stubs.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 22,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_sse2_intrinsics.dir/$(Configuration)/fft_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 22,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_sse2_intrinsics.dir/$(Configuration)/highbd_intrapred_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 22,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_sse2_intrinsics.dir/$(Configuration)/intrapred_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 22,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_sse2_intrinsics.dir/$(Configuration)/loopfilter_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 22,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_sse2_intrinsics.dir/$(Configuration)/highbd_convolve_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 22,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_sse2_intrinsics.dir/$(Configuration)/highbd_loopfilter_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 24,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_encoder_sse2_shared/sad4d_sse2.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 25,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_encoder_sse2_shared/sad_sse2.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 26,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_encoder_sse2_shared/subpel_variance_sse2.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 27,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_encoder_sse2_shared/subtract_sse2.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 28,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_encoder_sse2_shared/highbd_sad4d_sse2.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 29,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_encoder_sse2_shared/highbd_sad_sse2.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 30,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_encoder_sse2_shared/highbd_subpel_variance_impl_sse2.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 31,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_encoder_sse2_shared/highbd_variance_impl_sse2.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 32,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_encoder_sse2_shared/ssim_sse2_x86_64.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 34,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_sse2_intrinsics.dir/$(Configuration)/avg_intrin_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 34,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_sse2_intrinsics.dir/$(Configuration)/fwd_txfm_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 34,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_sse2_intrinsics.dir/$(Configuration)/quantize_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 34,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_sse2_intrinsics.dir/$(Configuration)/adaptive_quantize_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 34,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_sse2_intrinsics.dir/$(Configuration)/blk_sse_sum_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 34,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_sse2_intrinsics.dir/$(Configuration)/sum_squares_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 34,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_sse2_intrinsics.dir/$(Configuration)/variance_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 34,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_sse2_intrinsics.dir/$(Configuration)/highbd_adaptive_quantize_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 34,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_sse2_intrinsics.dir/$(Configuration)/highbd_quantize_intrin_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 34,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_sse2_intrinsics.dir/$(Configuration)/highbd_subtract_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 34,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_sse2_intrinsics.dir/$(Configuration)/highbd_variance_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 36,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_common_ssse3_shared/aom_subpixel_8t_ssse3.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 37,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_common_ssse3_shared/aom_subpixel_bilinear_ssse3.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 39,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_ssse3_intrinsics.dir/$(Configuration)/aom_subpixel_8t_intrin_ssse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 39,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_ssse3_intrinsics.dir/$(Configuration)/intrapred_ssse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 39,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_ssse3_intrinsics.dir/$(Configuration)/highbd_convolve_ssse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 41,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_encoder_ssse3_shared/fwd_txfm_ssse3_x86_64.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 42,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_dsp_encoder_ssse3_shared/quantize_ssse3_x86_64.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 44,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_ssse3_intrinsics.dir/$(Configuration)/masked_sad_intrin_ssse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 44,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_ssse3_intrinsics.dir/$(Configuration)/masked_sad4d_ssse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 44,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_ssse3_intrinsics.dir/$(Configuration)/masked_variance_intrin_ssse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 44,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_ssse3_intrinsics.dir/$(Configuration)/quantize_ssse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 44,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_ssse3_intrinsics.dir/$(Configuration)/variance_impl_ssse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 44,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_ssse3_intrinsics.dir/$(Configuration)/jnt_variance_ssse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 44,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_ssse3_intrinsics.dir/$(Configuration)/jnt_sad_ssse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 46,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_sse4_1_intrinsics.dir/$(Configuration)/blend_a64_hmask_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 46,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_sse4_1_intrinsics.dir/$(Configuration)/blend_a64_mask_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 46,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_sse4_1_intrinsics.dir/$(Configuration)/blend_a64_vmask_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 46,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_sse4_1_intrinsics.dir/$(Configuration)/intrapred_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 48,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_sse4_1_intrinsics.dir/$(Configuration)/corner_match_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 48,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_sse4_1_intrinsics.dir/$(Configuration)/avg_intrin_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 48,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_sse4_1_intrinsics.dir/$(Configuration)/sse_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 48,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_sse4_1_intrinsics.dir/$(Configuration)/obmc_sad_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 48,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_sse4_1_intrinsics.dir/$(Configuration)/obmc_variance_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 48,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_sse4_1_intrinsics.dir/$(Configuration)/highbd_variance_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 50,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx_intrinsics.dir/$(Configuration)/aom_quantize_avx.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 52,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_avx2_intrinsics.dir/$(Configuration)/aom_convolve_copy_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 52,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_avx2_intrinsics.dir/$(Configuration)/aom_subpixel_8t_intrin_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 52,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_avx2_intrinsics.dir/$(Configuration)/fft_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 52,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_avx2_intrinsics.dir/$(Configuration)/intrapred_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 52,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_avx2_intrinsics.dir/$(Configuration)/loopfilter_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 52,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_avx2_intrinsics.dir/$(Configuration)/blend_a64_mask_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 52,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_avx2_intrinsics.dir/$(Configuration)/highbd_convolve_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 52,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_common_avx2_intrinsics.dir/$(Configuration)/highbd_loopfilter_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/corner_match_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/avg_intrin_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/masked_sad_intrin_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/subtract_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/highbd_quantize_intrin_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/adaptive_quantize_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/highbd_adaptive_quantize_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/quantize_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/sad4d_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/sad_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/highbd_sad_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/sad_impl_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/variance_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/sse_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/variance_impl_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/obmc_sad_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/obmc_variance_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/blk_sse_sum_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/sum_squares_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 54,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp_encoder_avx2_intrinsics.dir/$(Configuration)/highbd_variance_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 55,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp.dir/$(Configuration)/aom_av1_dummy.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 55,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_dsp.dir/$(Configuration)/aom_dsp_dummy.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 57,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_mem.dir/$(Configuration)/aom_mem.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 60,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_ports_shared/float.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 62,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_util.dir/$(Configuration)/aom_thread.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 62,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_util.dir/$(Configuration)/debug_util.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 64,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_scale.dir/$(Configuration)/aom_scale.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 64,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_scale.dir/$(Configuration)/gen_scalers.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 64,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_scale.dir/$(Configuration)/yv12config.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 64,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_scale.dir/$(Configuration)/yv12extend.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/args_helper.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/arg_defs.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/alloccommon.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/av1_inv_txfm1d.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/av1_inv_txfm2d.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/av1_loopfilter.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/av1_txfm.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/blockd.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/cdef.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/cdef_block.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/cfl.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/common_data.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/convolve.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/debugmodes.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/entropy.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/entropymode.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/entropymv.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/frame_buffers.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/idct.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/mvref_common.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/obu_util.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/pred_common.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/quant_common.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/reconinter.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/reconintra.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/resize.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/restoration.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/scale.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/scan.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/seg_common.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/thread_common.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/tile_common.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/timing.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/txb_common.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 66,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common.dir/$(Configuration)/warped_motion.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 67,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_decoder.dir/$(Configuration)/av1_dx_iface.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 67,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_decoder.dir/$(Configuration)/decodeframe.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 67,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_decoder.dir/$(Configuration)/decodemv.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 67,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_decoder.dir/$(Configuration)/decoder.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 67,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_decoder.dir/$(Configuration)/decodetxb.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 67,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_decoder.dir/$(Configuration)/detokenize.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 67,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_decoder.dir/$(Configuration)/grain_synthesis.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 67,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_decoder.dir/$(Configuration)/obu.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/av1_cx_iface.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/aq_complexity.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/aq_cyclicrefresh.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/aq_variance.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/allintra_vis.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/av1_fwd_txfm1d.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/av1_fwd_txfm2d.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/av1_quantize.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/bitstream.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/cnn.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/compound_type.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/context_tree.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/cost.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/encodeframe.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/encodeframe_utils.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/encodemb.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/encodemv.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/encode_strategy.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/encoder.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/encoder_utils.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/encodetxb.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/ethread.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/extend.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/external_partition.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/firstpass.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/global_motion.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/global_motion_facade.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/gop_structure.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/hash.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/hash_motion.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/hybrid_fwd_txfm.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/interp_search.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/level.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/lookahead.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/mcomp.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/ml.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/motion_search_facade.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/mv_prec.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/palette.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/partition_search.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/partition_strategy.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/pass2_strategy.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/pickcdef.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/picklpf.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/pickrst.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/ratectrl.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/rd.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/rdopt.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/nonrd_pickmode.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/reconinter_enc.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/segmentation.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/speed_features.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/superres_scale.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/svc_layercontext.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/temporal_filter.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/thirdpass.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/tokenize.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/tpl_model.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/tx_search.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/txb_rdopt.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/intra_mode_search.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/wedge_utils.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/var_based_part.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/av1_noise_estimate.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/fast.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/fast_9.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/nonmax.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/vector.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 68,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder.dir/$(Configuration)/dwt.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 70,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse2_intrinsics.dir/$(Configuration)/cdef_block_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 70,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse2_intrinsics.dir/$(Configuration)/cfl_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 70,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse2_intrinsics.dir/$(Configuration)/convolve_2d_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 70,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse2_intrinsics.dir/$(Configuration)/convolve_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 70,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse2_intrinsics.dir/$(Configuration)/jnt_convolve_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 70,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse2_intrinsics.dir/$(Configuration)/warp_plane_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 70,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse2_intrinsics.dir/$(Configuration)/wiener_convolve_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 72,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_av1_encoder_sse2_shared/dct_sse2.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 73,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_av1_encoder_sse2_shared/error_sse2.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 75,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_sse2_intrinsics.dir/$(Configuration)/av1_fwd_txfm_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 75,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_sse2_intrinsics.dir/$(Configuration)/av1_k_means_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 75,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_sse2_intrinsics.dir/$(Configuration)/av1_quantize_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 75,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_sse2_intrinsics.dir/$(Configuration)/encodetxb_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 75,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_sse2_intrinsics.dir/$(Configuration)/error_intrin_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 75,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_sse2_intrinsics.dir/$(Configuration)/reconinter_enc_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 75,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_sse2_intrinsics.dir/$(Configuration)/temporal_filter_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 75,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_sse2_intrinsics.dir/$(Configuration)/wedge_utils_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 75,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_sse2_intrinsics.dir/$(Configuration)/highbd_block_error_intrin_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 75,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_sse2_intrinsics.dir/$(Configuration)/highbd_temporal_filter_sse2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 77,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_sse3_intrinsics.dir/$(Configuration)/ml_sse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 79,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_ssse3_intrinsics.dir/$(Configuration)/av1_inv_txfm_ssse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 79,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_ssse3_intrinsics.dir/$(Configuration)/cdef_block_ssse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 79,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_ssse3_intrinsics.dir/$(Configuration)/cfl_ssse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 79,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_ssse3_intrinsics.dir/$(Configuration)/jnt_convolve_ssse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 79,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_ssse3_intrinsics.dir/$(Configuration)/resize_ssse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 79,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_ssse3_intrinsics.dir/$(Configuration)/highbd_convolve_2d_ssse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 79,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_ssse3_intrinsics.dir/$(Configuration)/highbd_wiener_convolve_ssse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 79,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_ssse3_intrinsics.dir/$(Configuration)/reconinter_ssse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 81,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_ssse3_intrinsics.dir/$(Configuration)/reconinter_enc_ssse3.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 83,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse4_intrinsics.dir/$(Configuration)/av1_convolve_horiz_rs_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 83,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse4_intrinsics.dir/$(Configuration)/av1_convolve_scale_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 83,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse4_intrinsics.dir/$(Configuration)/av1_txfm_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 83,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse4_intrinsics.dir/$(Configuration)/cdef_block_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 83,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse4_intrinsics.dir/$(Configuration)/filterintra_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 83,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse4_intrinsics.dir/$(Configuration)/highbd_inv_txfm_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 83,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse4_intrinsics.dir/$(Configuration)/intra_edge_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 83,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse4_intrinsics.dir/$(Configuration)/reconinter_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 83,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse4_intrinsics.dir/$(Configuration)/selfguided_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 83,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse4_intrinsics.dir/$(Configuration)/warp_plane_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 83,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse4_intrinsics.dir/$(Configuration)/highbd_convolve_2d_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 83,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse4_intrinsics.dir/$(Configuration)/highbd_jnt_convolve_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 83,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_sse4_intrinsics.dir/$(Configuration)/highbd_warp_plane_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 85,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/asm_objects/aom_av1_encoder_ssse3_shared/av1_quantize_ssse3_x86_64.asm.o",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 87,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_sse4_intrinsics.dir/$(Configuration)/av1_fwd_txfm1d_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 87,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_sse4_intrinsics.dir/$(Configuration)/av1_fwd_txfm2d_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 87,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_sse4_intrinsics.dir/$(Configuration)/encodetxb_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 87,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_sse4_intrinsics.dir/$(Configuration)/highbd_fwd_txfm_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 87,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_sse4_intrinsics.dir/$(Configuration)/rdopt_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 87,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_sse4_intrinsics.dir/$(Configuration)/pickrst_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 87,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_sse4_intrinsics.dir/$(Configuration)/av1_highbd_quantize_sse4.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 89,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_sse42_intrinsics.dir/$(Configuration)/hash_sse42.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 91,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_avx2_intrinsics.dir/$(Configuration)/av1_inv_txfm_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 91,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_avx2_intrinsics.dir/$(Configuration)/cdef_block_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 91,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_avx2_intrinsics.dir/$(Configuration)/cfl_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 91,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_avx2_intrinsics.dir/$(Configuration)/convolve_2d_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 91,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_avx2_intrinsics.dir/$(Configuration)/convolve_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 91,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_avx2_intrinsics.dir/$(Configuration)/highbd_inv_txfm_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 91,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_avx2_intrinsics.dir/$(Configuration)/jnt_convolve_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 91,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_avx2_intrinsics.dir/$(Configuration)/reconinter_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 91,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_avx2_intrinsics.dir/$(Configuration)/selfguided_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 91,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_avx2_intrinsics.dir/$(Configuration)/warp_plane_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 91,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_avx2_intrinsics.dir/$(Configuration)/wiener_convolve_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 91,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_avx2_intrinsics.dir/$(Configuration)/highbd_convolve_2d_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 91,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_avx2_intrinsics.dir/$(Configuration)/highbd_jnt_convolve_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 91,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_avx2_intrinsics.dir/$(Configuration)/highbd_wiener_convolve_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 91,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_common_avx2_intrinsics.dir/$(Configuration)/highbd_warp_affine_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 93,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_avx2_intrinsics.dir/$(Configuration)/av1_quantize_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 93,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_avx2_intrinsics.dir/$(Configuration)/error_intrin_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 93,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_avx2_intrinsics.dir/$(Configuration)/av1_fwd_txfm2d_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 93,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_avx2_intrinsics.dir/$(Configuration)/highbd_fwd_txfm_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 93,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_avx2_intrinsics.dir/$(Configuration)/wedge_utils_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 93,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_avx2_intrinsics.dir/$(Configuration)/encodetxb_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 93,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_avx2_intrinsics.dir/$(Configuration)/rdopt_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 93,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_avx2_intrinsics.dir/$(Configuration)/av1_k_means_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 93,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_avx2_intrinsics.dir/$(Configuration)/temporal_filter_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 93,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_avx2_intrinsics.dir/$(Configuration)/pickrst_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 93,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_avx2_intrinsics.dir/$(Configuration)/cnn_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 93,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_avx2_intrinsics.dir/$(Configuration)/av1_highbd_quantize_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 93,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_avx2_intrinsics.dir/$(Configuration)/highbd_block_error_intrin_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 93,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/vendor/SDL_image/external/aom/aom_av1_encoder_avx2_intrinsics.dir/$(Configuration)/highbd_temporal_filter_avx2.obj",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/d57229a3a7ce18453e5c5278c500dd74/aom_high_subpixel_8t_sse2.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/d57229a3a7ce18453e5c5278c500dd74/aom_high_subpixel_bilinear_sse2.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/d57229a3a7ce18453e5c5278c500dd74/aom_subpixel_8t_sse2.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/d57229a3a7ce18453e5c5278c500dd74/aom_subpixel_bilinear_sse2.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/d57229a3a7ce18453e5c5278c500dd74/highbd_intrapred_asm_sse2.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/d57229a3a7ce18453e5c5278c500dd74/intrapred_asm_sse2.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/d57229a3a7ce18453e5c5278c500dd74/inv_wht_sse2.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/67cf652d79830132d80c11f8efcf8a42/sad4d_sse2.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/67cf652d79830132d80c11f8efcf8a42/sad_sse2.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/67cf652d79830132d80c11f8efcf8a42/subpel_variance_sse2.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/67cf652d79830132d80c11f8efcf8a42/subtract_sse2.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/67cf652d79830132d80c11f8efcf8a42/highbd_sad4d_sse2.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/67cf652d79830132d80c11f8efcf8a42/highbd_sad_sse2.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/67cf652d79830132d80c11f8efcf8a42/highbd_subpel_variance_impl_sse2.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/67cf652d79830132d80c11f8efcf8a42/highbd_variance_impl_sse2.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/67cf652d79830132d80c11f8efcf8a42/ssim_sse2_x86_64.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/fae6f4fa9d4085c9937d75a83dcc8709/aom_subpixel_8t_ssse3.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/fae6f4fa9d4085c9937d75a83dcc8709/aom_subpixel_bilinear_ssse3.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/23901db3ea9ba836ec20dd2148b0f117/fwd_txfm_ssse3_x86_64.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/23901db3ea9ba836ec20dd2148b0f117/quantize_ssse3_x86_64.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/986d6ffcf0851e01ee0abfe155759c22/float.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/9cd38f936f7373a56e028c0aeb25639a/dct_sse2.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/9cd38f936f7373a56e028c0aeb25639a/error_sse2.asm.o.rule",
+			"sourceGroupIndex" : 4
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-visual-studio/CMakeFiles/77d579bcf4b5bedde8304fbe108dcd2c/av1_quantize_ssse3_x86_64.asm.o.rule",
+			"sourceGroupIndex" : 4
+		}
+	],
+	"type" : "SHARED_LIBRARY"
+}

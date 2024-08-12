@@ -892,6 +892,15 @@ Perl_DIR:PATH=Perl_DIR-NOTFOUND
 //The directory containing a CMake configuration file for PkgConfig.
 PkgConfig_DIR:PATH=PkgConfig_DIR-NOTFOUND
 
+//Value Computed by CMake
+QOI_BINARY_DIR:STATIC=C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/qoi
+
+//Value Computed by CMake
+QOI_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+QOI_SOURCE_DIR:STATIC=C:/Users/adamv/repos/apollo/vendor/qoi
+
 //Support loading AVIF images
 SDL3IMAGE_AVIF:BOOL=ON
 
@@ -1199,6 +1208,9 @@ SDL_PIPEWIRE:BOOL=OFF
 //Enable the Power subsystem
 SDL_POWER:BOOL=ON
 
+//Preseed CMake cache to speed up configuration
+SDL_PRESEED:BOOL=ON
+
 //Use POSIX threads for multi-threading
 SDL_PTHREADS:BOOL=OFF
 
@@ -1208,8 +1220,14 @@ SDL_PULSEAUDIO:BOOL=OFF
 //Enable the Render subsystem
 SDL_RENDER:BOOL=ON
 
-//Enable the Direct3D render driver
+//Enable the Direct3D 9 render driver
 SDL_RENDER_D3D:BOOL=ON
+
+//Enable the Direct3D 11 render driver
+SDL_RENDER_D3D11:BOOL=ON
+
+//Enable the Direct3D 12 render driver
+SDL_RENDER_D3D12:BOOL=ON
 
 //Enable the Metal render driver
 SDL_RENDER_METAL:BOOL=ON
@@ -1860,6 +1878,8 @@ COMPILER_SUPPORTS_SSE3:INTERNAL=1
 COMPILER_SUPPORTS_SSE4_1:INTERNAL=1
 //Test COMPILER_SUPPORTS_SSE4_2
 COMPILER_SUPPORTS_SSE4_2:INTERNAL=1
+//Test /W3
+COMPILER_SUPPORTS_W3:INTERNAL=1
 //ADVANCED property for variable: CPACK_SOURCE_7Z
 CPACK_SOURCE_7Z-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CPACK_SOURCE_ZIP
@@ -1939,6 +1959,8 @@ HAVE_D3D11_H:INTERNAL=1
 //Test HAVE_D3D12_H
 HAVE_D3D12_H:INTERNAL=1
 //Have include d3d9.h
+HAVE_D3D9_H:INTERNAL=1
+//Have include d3d9.h
 HAVE_D3D_H:INTERNAL=1
 //Have include ddraw.h
 HAVE_DDRAW_H:INTERNAL=1
@@ -1956,6 +1978,8 @@ HAVE_DXGI_H:INTERNAL=1
 HAVE_FCNTL_H:INTERNAL=1
 //ADVANCED property for variable: HAVE_FEXCEPT
 HAVE_FEXCEPT-ADVANCED:INTERNAL=1
+//Test HAVE_GAMEINPUT_H
+HAVE_GAMEINPUT_H:INTERNAL=
 //Have symbol getopt
 HAVE_GETOPT:INTERNAL=
 //Have includes GLUT/glut.h

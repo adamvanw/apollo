@@ -29,7 +29,6 @@ C:/Users/adamv/AppData/Local/Programs/CLion Nova/bin/cmake/win/x64/share/cmake-3
 C:/Users/adamv/AppData/Local/Programs/CLion Nova/bin/cmake/win/x64/share/cmake-3.29/Modules/Internal/CheckSourceRuns.cmake
 C:/Users/adamv/AppData/Local/Programs/CLion Nova/bin/cmake/win/x64/share/cmake-3.29/Modules/WriteBasicConfigVersionFile.cmake
 C:/Users/adamv/repos/apollo/.git/modules/vendor/SDL/HEAD
-C:/Users/adamv/repos/apollo/.git/modules/vendor/SDL/refs/heads/main
 C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL/CMakeFiles/git-data/grabRef.cmake
 C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio/vendor/SDL/SDL_build_config.h.intermediate
 C:/Users/adamv/repos/apollo/vendor/SDL/CMakeLists.txt
@@ -37,6 +36,7 @@ C:/Users/adamv/repos/apollo/vendor/SDL/cmake/3rdparty.cmake
 C:/Users/adamv/repos/apollo/vendor/SDL/cmake/FindLibUSB.cmake
 C:/Users/adamv/repos/apollo/vendor/SDL/cmake/GetGitRevisionDescription.cmake
 C:/Users/adamv/repos/apollo/vendor/SDL/cmake/GetGitRevisionDescription.cmake.in
+C:/Users/adamv/repos/apollo/vendor/SDL/cmake/PreseedEmscriptenCache.cmake
 C:/Users/adamv/repos/apollo/vendor/SDL/cmake/PreseedMSVCCache.cmake
 C:/Users/adamv/repos/apollo/vendor/SDL/cmake/SDL3Config.cmake.in
 C:/Users/adamv/repos/apollo/vendor/SDL/cmake/cmake_uninstall.cmake.in

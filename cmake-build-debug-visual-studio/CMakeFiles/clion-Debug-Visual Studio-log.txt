@@ -1,5 +1,7 @@
 "C:\Users\adamv\AppData\Local\Programs\CLion Nova\bin\cmake\win\x64\bin\cmake.exe" -G "Visual Studio 17 2022" -DBUILD_SHARED_LIBS=OFF -S C:\Users\adamv\repos\apollo -B C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio
 -- Selecting Windows SDK version 10.0.22621.0 to target Windows 10.0.19045.
+-- Performing Test HAVE_GAMEINPUT_H
+-- Performing Test HAVE_GAMEINPUT_H - Failed
 -- Checking for module 'libusb-1.0>=1.0.16'
 --   Package 'libusb-1.0', required by 'virtual:world', not found
 -- Could NOT find LibUSB (missing: LibUSB_LIBRARY LibUSB_INCLUDE_PATH) (found version "LibUSB_VERSION-NOTFOUND")
@@ -9,7 +11,7 @@
 -- Platform: Windows-10.0.19045
 -- 64-bit:   TRUE
 -- Compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.40.33807/bin/Hostx64/x64/cl.exe
--- Revision: SDL-prerelease-3.0.0-5484-gf0363a046
+-- Revision: SDL-prerelease-3.0.0-5785-gb975babfa
 -- Vendor:   
 -- 
 -- Subsystems:
@@ -81,6 +83,8 @@
 --   SDL_PULSEAUDIO              (Wanted: OFF): OFF
 --   SDL_PULSEAUDIO_SHARED       (Wanted: OFF): OFF
 --   SDL_RENDER_D3D              (Wanted: ON): ON
+--   SDL_RENDER_D3D11            (Wanted: ON): ON
+--   SDL_RENDER_D3D12            (Wanted: ON): ON
 --   SDL_RENDER_METAL            (Wanted: ON): OFF
 --   SDL_RENDER_VULKAN           (Wanted: ON): ON
 --   SDL_ROCKCHIP                (Wanted: OFF): OFF
@@ -239,6 +243,6 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 -- SDL3_image backends:
 -- - enabled:  stb avif bmp gif jpg lbm pcx png pnm qoi svg tga tif webp xcf xpm xv
 -- - disabled: imageio wic jxl
--- Configuring done (10.3s)
--- Generating done (6.6s)
+-- Configuring done (15.2s)
+-- Generating done (5.7s)
 -- Build files have been written to: C:/Users/adamv/repos/apollo/cmake-build-debug-visual-studio

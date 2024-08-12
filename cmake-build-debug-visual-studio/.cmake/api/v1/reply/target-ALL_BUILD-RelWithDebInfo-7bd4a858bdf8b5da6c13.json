@@ -1,0 +1,46 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"vendor/SDL_image/external/dav1d/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "dav1d_depth_8::@74198bbdecf5ff648cbc"
+		},
+		{
+			"id" : "dav1d::@74198bbdecf5ff648cbc"
+		},
+		{
+			"id" : "dav1d_depth_16::@74198bbdecf5ff648cbc"
+		},
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		}
+	],
+	"folder" : 
+	{
+		"name" : "CMakePredefinedTargets"
+	},
+	"id" : "ALL_BUILD::@74198bbdecf5ff648cbc",
+	"isGeneratorProvided" : true,
+	"name" : "ALL_BUILD",
+	"paths" : 
+	{
+		"build" : "vendor/SDL_image/external/dav1d",
+		"source" : "vendor/SDL_image/external/dav1d"
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}
