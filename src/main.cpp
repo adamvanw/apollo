@@ -49,8 +49,8 @@ int main() {
     SDL_SetRenderDrawColor(renderer, bgColor.r, bgColor.g, bgColor.b, bgColor.a);
     SDL_Event event;
 
-    stack<Action*> UndoStack;
-    stack<Action*> RedoStack;
+    stack<QOISave*> UndoStack;
+    stack<QOISave*> RedoStack;
 
     vector<Vector2> points;
     vector<Vector2> displacements;
@@ -139,33 +139,33 @@ int main() {
                         escape = true;
                         break;
                     case SDLK_Z:
-
                         // undo code
                         if (lctrl && !UndoStack.empty()) {
-                            Action* action = UndoStack.top();
+                            QOISave* qoisave = UndoStack.top();
 
-                            RedoStack.push(new Action(STROKE, SDL_DuplicateSurface(layer)));
+                            RedoStack.push(QOISaveFromSurface(layer));
                             SDL_DestroySurface(layer);
-                            layer = SDL_DuplicateSurface(action->surface);
+                            layer = IMG_LoadQOI_IO(SDL_IOFromMem(qoisave->getData(), qoisave->getBytes()));
+                            SDL_Log("Bytes: %d", qoisave->getBytes());
 
-                            SDL_DestroySurface(action->surface);
+                            qoisave->free();
 
-                            delete action;
+                            delete qoisave;
                             UndoStack.pop();
                         }
                         break;
                     case SDLK_Y:
                         // redo code
                         if (lctrl && !RedoStack.empty()) {
-                            Action* action = RedoStack.top();
+                            QOISave* qoisave = RedoStack.top();
 
-                            UndoStack.push(new Action(STROKE, SDL_DuplicateSurface(layer)));
+                            UndoStack.push(QOISaveFromSurface(layer));
                             SDL_DestroySurface(layer);
-                            layer = SDL_DuplicateSurface(action->surface);
+                            layer = IMG_LoadQOI_IO(SDL_IOFromMem(qoisave->getData(), qoisave->getBytes()));
 
-                            SDL_DestroySurface(action->surface);
+                            qoisave->free();
 
-                            delete action;
+                            delete qoisave;
                             RedoStack.pop();
                         }
                         break;
@@ -177,11 +177,11 @@ int main() {
                         if (!isDrawing && (mouseX >= 0 && mouseX < 1280 && mouseY - 3*menu >= 0 && mouseY - 3*menu < 720)) {
                             SDL_Log("Detected mouse!");
 
-                            UndoStack.push(new Action(STROKE, SDL_DuplicateSurface(layer)));
+                            UndoStack.push(QOISaveFromSurface(layer));
                             while (!RedoStack.empty()) {
-                                Action *ptr = RedoStack.top();
+                                QOISave *ptr = RedoStack.top();
                                 
-                                SDL_DestroySurface(ptr->surface);
+                                ptr->free();
 
                                 RedoStack.pop();
                                 delete ptr;
@@ -237,9 +237,13 @@ int main() {
 
         Uint64 frameTime = (SDL_GetPerformanceCounter() - start) / SDL_GetPerformanceFrequency() * 1000;
 
-        if (frameTime > refreshDelay) SDL_Log("Missed frame refresh. Time taken: %llu ms... Error: %s", frameTime, SDL_GetError());
+        if (frameTime > refreshDelay) {
+            SDL_Log("Missed frame refresh. Time taken: %llu ms... Error: %s", frameTime, SDL_GetError());
+            SDL_Delay(refreshDelay);
+        } else {
+            SDL_Delay(refreshDelay - frameTime);
+        }
 
-        SDL_Delay(refreshDelay - frameTime);
     }
 
     delete canvasArea;
