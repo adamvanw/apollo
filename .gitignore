@@ -1,2 +1,5 @@
 build
 vendor
+cmake-build-debug
+cmake-build-debug-visual-studio
+.idea

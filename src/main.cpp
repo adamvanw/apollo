@@ -215,7 +215,7 @@ int main() {
         }
 
         if (currentNotif.time >= 10) {
-            unsigned char opacity = (currentNotif.time > 1) ? 255 : (currentNotif.time < 0) ? 0 : currentNotif.time * 255;
+            // unsigned char opacity = (currentNotif.time > 1) ? 255 : (currentNotif.time < 0) ? 0 : currentNotif.time * 255;
             // DrawText replacement: DrawText(currentNotif.text, width, -15, 15, {0, 0, 0, opacity});
             // GetFrameTime() replacement: currentNotification.time -= GetFrameTime();
         }
