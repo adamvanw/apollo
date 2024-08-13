@@ -1,1 +1,0 @@
-C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\aom\aom_dsp.dir\Debug\aom_dsp.lib

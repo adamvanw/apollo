@@ -1,1 +1,0 @@
-C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\libwebp\webpdsp.dir\Debug\webpdsp.lib

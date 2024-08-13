@@ -1,1 +1,0 @@
-C:\Users\adamv\repos\apollo\cmake-build-debug-visual-studio\vendor\SDL_image\external\aom\aom_av1_encoder_sse3_intrinsics.dir\Debug\aom_av1_encoder_sse3_intrinsics.lib
