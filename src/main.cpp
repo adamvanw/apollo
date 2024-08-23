@@ -1,32 +1,6 @@
-#include "general.h"
-#include "action.h"
-#include "draw.h"
-#include <stack>
-#include <queue>
+#include "includes.h"
 
 using namespace std;
-
-#ifndef SDL_RENDER_H
-#define SDL_RENDER_H
-#include "SDL3/SDL_render.h"
-#endif
-
-
-#ifndef SDL_TTF
-#define SDL_TTF
-#include "SDL3_ttf/SDL_ttf.h"
-#endif
-
-#ifndef SDL_IMAGE
-#define SDL_IMAGE
-#include "SDL3_image/SDL_image.h"
-#endif
-
-
-#ifndef QOI
-#define QOI
-#include "qoi.h"
-#endif
 
 const int width = 1280, height = 720;
 const int menu = 20, sidebar = 250;
@@ -34,7 +8,7 @@ const Uint64 refreshDelay = (Uint64)1000 / 360;   // 360 is temporary, but marks
 
 int main() {
     SDL_Init(SDL_INIT_EVENTS | SDL_INIT_VIDEO);
-    SDL_Window* window = SDL_CreateWindow("Apollo", width + sidebar, height + menu, SDL_WINDOW_RESIZABLE);
+    SDL_Window* window = SDL_CreateWindow("Apollo", width + sidebar, height + menu, SDL_WINDOW_RESIZABLE & SDL_WINDOW_SURFACE_VSYNC_ADAPTIVE);
 
     if(checkNull(window)) return 0;
 
@@ -46,20 +20,20 @@ int main() {
     if(checkNull(renderer)) return -1;
 
     SDL_Color bgColor = {0x88, 0x88, 0x88, 0xFF};
+    Uint32 white = 0xFFFFFFFF;
     SDL_SetRenderDrawColor(renderer, bgColor.r, bgColor.g, bgColor.b, bgColor.a);
     SDL_Event event;
 
     stack<QOISave*> UndoStack;
     stack<QOISave*> RedoStack;
 
-    vector<Vector2> points;
-    vector<Vector2> displacements;
-    vector<Vector2> velocities;
+    vector<Point2> points;
 
     SDL_Texture* layerT = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA32, SDL_TEXTUREACCESS_STREAMING, width, height);
 
     SDL_Surface* layer = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_RGBA32);
     SDL_Surface* backg = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_RGBA32);
+
 
     auto* canvasR = (SDL_Rect*)SDL_malloc(sizeof(SDL_Rect));
     canvasR->x = 0;
@@ -67,6 +41,8 @@ int main() {
     canvasR->w = width;
     canvasR->h = height;
 
+    SDL_FillSurfaceRect(backg, canvasR, white);
+    SDL_Texture* backgT = SDL_CreateTextureFromSurface(renderer, backg);
 
     SDL_FillSurfaceRect(layer, canvasR, SDL_MapRGBA(SDL_GetPixelFormatDetails(layer->format), SDL_GetSurfacePalette(layer), 0, 0, 0, 0));
     SDL_FillSurfaceRect(backg, canvasR, SDL_MapRGBA(SDL_GetPixelFormatDetails(backg->format), SDL_GetSurfacePalette(backg), 0, 0, 0, 255));
@@ -97,21 +73,7 @@ int main() {
     while(!escape) {
         Uint64 start = SDL_GetPerformanceCounter();
 
-        // points start at p0, p1, p2, p3...
         SDL_GetMouseState(&mouseX, &mouseY);
-        points.push_back({mouseX, mouseY});
-
-        if (points.size() >= 2) {
-            displacements.push_back(points[points.size() - 1] - points[points.size() - 2]);
-        }
-        if (points.size() >= 3) {
-            velocities.push_back((displacements[displacements.size() - 1] + displacements[displacements.size() - 2]) * 0.5f);
-        }
-
-        if (points.size() > 4) points.erase(points.begin());
-        if (displacements.size() > 3) displacements.erase(displacements.begin());
-        if (velocities.size() > 2) velocities.erase(velocities.begin());
-
 
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_EVENT_KEY_DOWN) {
@@ -175,7 +137,7 @@ int main() {
                 switch (event.button.button) {
                     case SDL_BUTTON_LEFT:
                         if (!isDrawing && (mouseX >= 0 && mouseX < 1280 && mouseY - 3*menu >= 0 && mouseY - 3*menu < 720)) {
-                            SDL_Log("Detected mouse!");
+                            points.push_back({mouseX, mouseY - 3*menu});
 
                             UndoStack.push(QOISaveFromSurface(layer));
                             while (!RedoStack.empty()) {
@@ -186,22 +148,25 @@ int main() {
                                 RedoStack.pop();
                                 delete ptr;
                             }
-
                             isDrawing = true;
-
-                            DrawPixel_CircleBrush(layer, {mouseX, mouseY - 3 * menu}, strokeSize, currentColor);
                         }
-
-                        // drawBrushStroke()...
-
                         break;
                 }
 
             }
             else if (event.type == SDL_EVENT_MOUSE_BUTTON_UP) {
-                SDL_GetMouseState(&mouseX, &mouseY);
-                if (points.size() >= 4 && velocities.size() >= 2 && isDrawing) DrawPixel_CubicCurve(layer, {points[points.size() - 2].x, points[points.size() - 2].y - 3 * menu}, velocities[1], {points[points.size() - 3].x, points[points.size() - 3].y - 3 * menu}, velocities[0], strokeSize, currentColor);
                 isDrawing = false;
+                SDL_GetMouseState(&mouseX, &mouseY);
+                points.push_back({mouseX, mouseY - 3*menu});
+                for (Point2 point : points) {
+                    DrawPixel_CircleBrush(layer, point, 5, currentColor);
+                }
+                auto* arr = (Point2*)malloc(sizeof(Point2) * points.size());
+                copy(points.begin(), points.end(), arr);
+                FitCurve(arr, points.size(), 1.0, layer);
+
+                free(arr);
+                points.clear();
             }
             else if (event.type == SDL_EVENT_KEY_UP) {
                 if (event.key.key == SDLK_LCTRL) {
@@ -211,7 +176,20 @@ int main() {
         }
 
         if (isDrawing) {
-            if (points.size() >= 4 && velocities.size() >= 2) DrawPixel_CubicCurve(layer, {points[points.size() - 2].x, points[points.size() - 2].y - 3 * menu}, velocities[1], {points[points.size() - 3].x, points[points.size() - 3].y - 3 * menu}, velocities[0], strokeSize, currentColor);
+            points.push_back({mouseX, mouseY - 3*menu});
+            if (points.size() > 500) {
+                SDL_GetMouseState(&mouseX, &mouseY);
+                for (Point2 point : points) {
+                    DrawPixel_CircleBrush(layer, point, 5, currentColor);
+                }
+                auto* arr = (Point2*)malloc(sizeof(Point2) * points.size());
+                copy(points.begin(), points.end(), arr);
+                FitCurve(arr, points.size(), 1.0, layer);
+
+                free(arr);
+                points.clear();
+                points.push_back({mouseX, mouseY - 3*menu});
+            }
         }
 
         if (currentNotif.time >= 10) {
@@ -220,20 +198,25 @@ int main() {
             // GetFrameTime() replacement: currentNotification.time -= GetFrameTime();
         }
 
-        error = SDL_UpdateTexture(layerT, updateArea, layer->pixels, layer->pitch);
-        if (checkError(error, 177)) return -1;
+        if (SDL_GetTicks() % 4 == 0) {
+            error = SDL_UpdateTexture(layerT, updateArea, layer->pixels, layer->pitch);
+            if (checkError(error, "UpdateTexture(layerT)")) return -1;
 
-        error = SDL_RenderClear(renderer);
-        if (checkError(error, 180)) return -1;
+            error = SDL_RenderClear(renderer);
+            if (checkError(error, "RenderClear()")) return -1;
 
-        error = SDL_SetRenderViewport(renderer, updateArea);
-        if (checkError(error, 183)) return -1;
+            error = SDL_SetRenderViewport(renderer, updateArea);
+            if (checkError(error, "SetRenderViewport()")) return -1;
 
-        error = SDL_RenderTexture(renderer, layerT, nullptr, canvasArea);
-        if (checkError(error, 186)) return -1;
+            error = SDL_RenderTexture(renderer, backgT, nullptr, canvasArea);
+            if (checkError(error, "RenderTexture(backgT)")) return -1;
 
-        error = SDL_RenderPresent(renderer);
-        if (checkError(error, 189)) return -1;
+            error = SDL_RenderTexture(renderer, layerT, nullptr, canvasArea);
+            if (checkError(error, "RenderTexture(layerT)")) return -1;
+
+            error = SDL_RenderPresent(renderer);
+            if (checkError(error, "RenderPresent()")) return -1;
+        }
 
         Uint64 frameTime = (SDL_GetPerformanceCounter() - start) / SDL_GetPerformanceFrequency() * 1000;
 
@@ -251,6 +234,9 @@ int main() {
 
     SDL_DestroySurface(layer);
     SDL_DestroyTexture(layerT);
+
+    SDL_DestroySurface(backg);
+    SDL_DestroyTexture(backgT);
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);

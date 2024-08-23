@@ -1,20 +1,17 @@
 #ifndef APOLLO_ACTION_H
 #define APOLLO_ACTION_H
 
-#ifndef SDL3
+#ifndef SDL3_H
 #define SDL3_H
 #include "SDL3/SDL.h"
 #endif
 
-#ifndef SDL3_VIDEO
-#define SDL3_VIDEO
+#ifndef SDL3_VIDEO_H
+#define SDL3_VIDEO_H
 #include "SDL3/SDL_video.h"
 #endif
 
-#ifndef QOI
-#define QOI
 #include "qoi.h"
-#endif
 
 typedef enum ActionType {STROKE, FILL, CROP} ActionType;
 
@@ -84,9 +81,9 @@ int checkNull(void* object) {
     return 0;
 }
 
-int checkError(int returnCode, unsigned int line) {
+int checkError(int returnCode, char* string) {
     if (returnCode) {
-        SDL_Log("Line %d. SDL has errored: %s", line, SDL_GetError());
+        SDL_Log("%s failed. SDL has errored: %s", string, SDL_GetError());
         return 1;
     }
     return 0;

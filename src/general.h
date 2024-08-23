@@ -2,8 +2,8 @@
 #define APOLLO_GENERAL_H
 
 typedef struct Vector2 {
-    float x;
-    float y;
+    double x;
+    double y;
 
     void flip() {
         x *= -1;
@@ -26,5 +26,6 @@ typedef struct Vector2 {
         return (a.x == x) && (a.y == y);
     }
 } Vector2;
+typedef Vector2 Point2;
 
 #endif //APOLLO_GENERAL_H
