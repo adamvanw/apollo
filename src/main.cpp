@@ -32,8 +32,15 @@ int main() {
     SDL_Texture* layerT = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA32, SDL_TEXTUREACCESS_STREAMING, width, height);
 
     SDL_Surface* layer = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_RGBA32);
+
+    // this will be the layer for any strokes in progress of being made. This will be cleared when a stroke/action is completed.
+    SDL_Surface* workLayer = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_RGBA32);
+
+    // a white surface for a background. can be customized in the future
     SDL_Surface* backg = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_RGBA32);
 
+    Point2 canvasCenter = {width / 2, height / 2 + menu};
+    auto* canvasCenterFP = new SDL_FPoint({(float)canvasCenter.x, (float)canvasCenter.y});
 
     auto* canvasR = (SDL_Rect*)SDL_malloc(sizeof(SDL_Rect));
     canvasR->x = 0;
@@ -45,22 +52,25 @@ int main() {
     SDL_Texture* backgT = SDL_CreateTextureFromSurface(renderer, backg);
 
     SDL_FillSurfaceRect(layer, canvasR, SDL_MapRGBA(SDL_GetPixelFormatDetails(layer->format), SDL_GetSurfacePalette(layer), 0, 0, 0, 0));
+    SDL_FillSurfaceRect(workLayer, canvasR, SDL_MapRGBA(SDL_GetPixelFormatDetails(layer->format), SDL_GetSurfacePalette(layer), 0, 0, 0, 0));
     SDL_FillSurfaceRect(backg, canvasR, SDL_MapRGBA(SDL_GetPixelFormatDetails(backg->format), SDL_GetSurfacePalette(backg), 0, 0, 0, 255));
 
     bool isDrawing = false;
     unsigned int strokeSize = 5;
 
-    Notification currentNotif("Starting up...", 1);
     bool escape = false, lctrl = false;
     int error;
     float mouseX, mouseY;
 
-    // TODO: Optimize code (rectangle can be smaller for updating, use previous mouse position...)
+    float angle = 0.0f;
+    float scale = 1.0f;
+
+    // TODO: Optimize code (rectangle can be smaller for updating, use previous mouse position and stroke size...)
     auto* updateArea = (SDL_Rect*)malloc(sizeof(SDL_Rect));
     updateArea->w = width;
     updateArea->h = height;
     updateArea->x = 0;
-    updateArea->y = menu;
+    updateArea->y = 0;
 
     auto* canvasArea = (SDL_FRect*)malloc(sizeof(SDL_FRect));
     canvasArea->w = (float)width;
@@ -82,20 +92,42 @@ int main() {
                         lctrl = true;
                         break;
                     case SDLK_KP_PLUS:
-                        strokeSize += 4;
-                        currentNotif = Notification("Stroke increased", 1.5);
+                        angle += 5.0;
+                        break;
+                    case SDLK_KP_4:
+                        canvasArea->x -= 4;
+                        canvasCenter.x -= 4;
+                        canvasCenterFP->x -= 4;
+                        break;
+                    case SDLK_KP_6:
+                        canvasArea->x += 4;
+                        canvasCenter.x += 4;
+                        canvasCenterFP->x += 4;
                         break;
                     case SDLK_B:
                         currentColor = SDL_MapRGBA(SDL_GetPixelFormatDetails(layer->format), SDL_GetSurfacePalette(layer), 0, 0, 0, 255);
-                        currentNotif = Notification("Brush tool selected...", 1.5);
                         break;
                     case SDLK_KP_MINUS:
-                        strokeSize = (strokeSize < 4) ? 1 : strokeSize - 4;
-                        currentNotif = Notification("Stroke decreased...", 1.5);
+                        angle -= 5.0;
+                        SDL_Log("%lf, %lf", canvasCenterFP->x, canvasCenterFP->y);
+                        break;
+                    case SDLK_KP_MULTIPLY:
+                        scale += 0.05f;
+                        canvasArea->w = scale * width;
+                        canvasArea->h = scale * height;
+                        canvasArea->y = canvasCenterFP->y - canvasCenterFP->y * scale + menu * scale;
+                        canvasArea->x = canvasCenterFP->x - canvasCenterFP->x * scale;
+                        break;
+                    case SDLK_KP_DIVIDE:
+                        scale -= 0.05f;
+                        canvasArea->w = scale * width;
+                        canvasArea->h = scale * height;
+                        canvasArea->y = canvasCenterFP->y - canvasCenterFP->y * scale + menu * scale;
+                        canvasArea->x = canvasCenterFP->x - canvasCenterFP->x * scale;
+                        SDL_Log("%lf %lf %lf %lf", canvasArea->w, canvasArea->h, canvasArea->x, canvasArea->y);
                         break;
                     case SDLK_E:
                         currentColor = SDL_MapRGBA(SDL_GetPixelFormatDetails(layer->format), SDL_GetSurfacePalette(layer), 0, 0, 0, 0);
-                        currentNotif = Notification("Eraser tool selected...", 1.5);
                         break;
                     case SDLK_ESCAPE:
                         escape = true;
@@ -136,8 +168,10 @@ int main() {
             if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
                 switch (event.button.button) {
                     case SDL_BUTTON_LEFT:
-                        if (!isDrawing && (mouseX >= 0 && mouseX < 1280 && mouseY - 3*menu >= 0 && mouseY - 3*menu < 720)) {
-                            points.push_back({mouseX, mouseY - 3*menu});
+                        if (!isDrawing && (mouseX >= 0 && mouseX < 1280 && mouseY - menu >= 0 && mouseY - menu < 720)) {
+                            Point2 mouse = MapPoint(mouseX, mouseY, canvasCenterFP, angle, scale, SDL_FLIP_NONE);
+
+                            points.push_back({mouse.x, mouse.y});
 
                             UndoStack.push(QOISaveFromSurface(layer));
                             while (!RedoStack.empty()) {
@@ -155,18 +189,36 @@ int main() {
 
             }
             else if (event.type == SDL_EVENT_MOUSE_BUTTON_UP) {
-                isDrawing = false;
-                SDL_GetMouseState(&mouseX, &mouseY);
-                points.push_back({mouseX, mouseY - 3*menu});
-                for (Point2 point : points) {
-                    DrawPixel_CircleBrush(layer, point, 5, currentColor);
-                }
-                auto* arr = (Point2*)malloc(sizeof(Point2) * points.size());
-                copy(points.begin(), points.end(), arr);
-                FitCurve(arr, points.size(), 1.0, layer);
+                switch (event.button.button) {
+                    case SDL_BUTTON_LEFT:
+                        isDrawing = false;
+                        SDL_GetMouseState(&mouseX, &mouseY);
 
-                free(arr);
-                points.clear();
+                        Point2 mouse = MapPoint(mouseX, mouseY, canvasCenterFP, angle, scale, SDL_FLIP_NONE);
+
+                        points.push_back({mouse.x, mouse.y});
+
+                        bool allPointsSame = true;
+                        Point2 firstPoint = points[0];
+                        for (Vector2 point: points) {
+                            if (point != firstPoint) {
+                                allPointsSame = false;
+                                break;
+                            }
+                        }
+                        if (allPointsSame) {
+                            DrawPixel_CircleBrush(layer, firstPoint, strokeSize, currentColor);
+                        } else {
+                            auto *arr = (Point2 *) malloc(sizeof(Point2) * points.size());
+                            copy(points.begin(), points.end(), arr);
+                            FitCurve(arr, points.size(), 4.0, layer);
+
+                            free(arr);
+                        }
+                        points.clear();
+                        break;
+                }
+
             }
             else if (event.type == SDL_EVENT_KEY_UP) {
                 if (event.key.key == SDLK_LCTRL) {
@@ -176,26 +228,21 @@ int main() {
         }
 
         if (isDrawing) {
-            points.push_back({mouseX, mouseY - 3*menu});
+            SDL_GetMouseState(&mouseX, &mouseY);
+
+            Point2 mouse = MapPoint(mouseX, mouseY, canvasCenterFP, angle, scale, SDL_FLIP_NONE);
+
+            points.push_back({mouse.x, mouse.y});
+
             if (points.size() > 500) {
-                SDL_GetMouseState(&mouseX, &mouseY);
-                for (Point2 point : points) {
-                    DrawPixel_CircleBrush(layer, point, 5, currentColor);
-                }
                 auto* arr = (Point2*)malloc(sizeof(Point2) * points.size());
                 copy(points.begin(), points.end(), arr);
-                FitCurve(arr, points.size(), 1.0, layer);
+                FitCurve(arr, points.size(), 4.0, layer);
 
                 free(arr);
                 points.clear();
-                points.push_back({mouseX, mouseY - 3*menu});
+                points.push_back(mouse);
             }
-        }
-
-        if (currentNotif.time >= 10) {
-            // unsigned char opacity = (currentNotif.time > 1) ? 255 : (currentNotif.time < 0) ? 0 : currentNotif.time * 255;
-            // DrawText replacement: DrawText(currentNotif.text, width, -15, 15, {0, 0, 0, opacity});
-            // GetFrameTime() replacement: currentNotification.time -= GetFrameTime();
         }
 
         if (SDL_GetTicks() % 4 == 0) {
@@ -205,14 +252,11 @@ int main() {
             error = SDL_RenderClear(renderer);
             if (checkError(error, "RenderClear()")) return -1;
 
-            error = SDL_SetRenderViewport(renderer, updateArea);
-            if (checkError(error, "SetRenderViewport()")) return -1;
+            error = SDL_RenderTextureRotated(renderer, backgT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
+            if (checkError(error, "RenderTextureRotated(backgT)")) return -1;
 
-            error = SDL_RenderTexture(renderer, backgT, nullptr, canvasArea);
-            if (checkError(error, "RenderTexture(backgT)")) return -1;
-
-            error = SDL_RenderTexture(renderer, layerT, nullptr, canvasArea);
-            if (checkError(error, "RenderTexture(layerT)")) return -1;
+            error = SDL_RenderTextureRotated(renderer, layerT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
+            if (checkError(error, "RenderTextureRotated(layerT)")) return -1;
 
             error = SDL_RenderPresent(renderer);
             if (checkError(error, "RenderPresent()")) return -1;
@@ -234,6 +278,8 @@ int main() {
 
     SDL_DestroySurface(layer);
     SDL_DestroyTexture(layerT);
+
+    SDL_DestroySurface(workLayer);
 
     SDL_DestroySurface(backg);
     SDL_DestroyTexture(backgT);

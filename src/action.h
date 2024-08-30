@@ -26,17 +26,6 @@ public:
     }
 } Action;
 
-typedef class Notification {
-public:
-    const char* text;
-    float time;
-
-    Notification(const char* str, float t) {
-        time = t;
-        text = str;
-    }
-} Notification;
-
 // class for encoding a SDL_Surface into a QOI file in memory.
 typedef class QOISave {
 public:

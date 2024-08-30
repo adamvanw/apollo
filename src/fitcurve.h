@@ -45,17 +45,15 @@ static  Vector2     *V2Add(Vector2*, Vector2*, Vector2*);
 
 #define MAXPOINTS	1000		/* The most points you can have */
 
-
-
 void DrawBezierCurve(int n, BezierCurve curve, SDL_Surface* sur) {
-    int radius = 2;
-    SDL_Log("%d", sizeof(curve));
+    int radius = 5;
+    float increment = 0.01;
     if (n == 3) {
-        SDL_Log("Curve: p0: %lf, %lf, p1: %lf, %lf, p2: %lf, %lf", curve[0].x, curve[0].y, curve[1].x, curve[1].y, curve[2].x, curve[2].y);
-        for (float t = 0; t <= 1; t += 0.01) {
+        // we have generated a cubic Bezier curve.
+        for (float t = 0.0f; t <= 1; t += increment) {
             double x = pow(1-t, 3)*curve[0].x + 3*t*pow(1-t, 2)*curve[1].x + 3*t*t*(1-t)*curve[2].x + pow(t, 3)*curve[3].x;
             double y = pow(1-t, 3)*curve[0].y + 3*t*pow(1-t, 2)*curve[1].y + 3*t*t*(1-t)*curve[2].y + pow(t, 3)*curve[3].y;
-            DrawPixel_CircleBrush(sur, {x, y}, radius, 0xFF0000FF);
+            DrawPixel_CircleBrush(sur, {x, y}, radius, 0xFF000000);
         }
     }
 }

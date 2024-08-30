@@ -16,7 +16,7 @@ void DrawPixel_Line(SDL_Surface*, Vector2, Vector2, int, Uint32);
 void DrawPixel_QuadCurve(SDL_Surface*, Vector2, Vector2, Vector2, int, Uint32);
 void DrawPixel_CircleBrush(SDL_Surface*, Vector2, int, Uint32);
 
-void DrawPixel(SDL_Surface* sur, Vector2 mousePos, Uint32 newColor, Uint8 opacity) { // TODO: Will eventually need a PaintMode parameter
+void DrawPixel(SDL_Surface* sur, Vector2 mousePos, Uint32 newColor, Uint8 opacity) { // TOHell DO: Will eventually need a PaintMode parameter
     if (mousePos.x < 0 || mousePos.y < 0 || (int)mousePos.x >= sur->w || (int)mousePos.y >= sur->h) return;
     auto* ptr = (Uint32*)sur->pixels + 1280*(int)mousePos.y + (int)mousePos.x;
     *ptr = newColor;
@@ -69,6 +69,24 @@ void DrawPixel_QuadCurve(SDL_Surface* sur, Vector2 p0, Vector2 p1, Vector2 p2, i
         double y = (1-t)*(1-t)*p0.y + 2*(1-t)*t*p1.y + t*t*p2.y;
         DrawPixel_CircleBrush(sur, {x, y}, radius, color);
     }
+}
+
+// Maps point to current surface based on rotation, scale, and translation.
+Point2 MapPoint(double x, double y, SDL_FPoint* center, float angle, float scale, SDL_FlipMode flipMode) {
+    Point2 mouse = {x, y};
+    double rads = -angle * SDL_PI_D / 180;
+    Point2 offset = {0, 20 * scale};
+
+    mouse.x = mouse.x - center->x;
+    mouse.y = mouse.y - center->y;
+    Matrix2 rotation = {cos(rads), sin(rads), -sin(rads), cos(rads)};
+    mouse = rotation.multiplyV2(mouse);
+    mouse = mouse - offset;
+    mouse = mouse * (1 / scale);
+    mouse.x = mouse.x + center->x;
+    mouse.y = mouse.y + center->y;
+
+    return mouse;
 }
 
 #endif //APOLLO_DRAW_H
