@@ -49,6 +49,14 @@ void DrawBezierCurve(int n, BezierCurve curve, SDL_Surface* sur) {
     int radius = 5;
     float increment = 0.01;
     if (n == 3) {
+        if (V2DistanceBetween2Points(&curve[0], &curve[1]) > V2DistanceBetween2Points(&curve[0], &curve[3])) {
+            printf("Detected large distance, may result in weird curve.");
+            for (int i = 0; i < 4; ++i) {
+                DrawPixel_Line(sur, curve[3], curve[0], 5, 0xFF000000);
+            }
+            return;
+        }
+
         // we have generated a cubic Bezier curve.
         for (float t = 0.0f; t <= 1; t += increment) {
             double x = pow(1-t, 3)*curve[0].x + 3*t*pow(1-t, 2)*curve[1].x + 3*t*t*(1-t)*curve[2].x + pow(t, 3)*curve[3].x;
@@ -56,6 +64,7 @@ void DrawBezierCurve(int n, BezierCurve curve, SDL_Surface* sur) {
             DrawPixel_CircleBrush(sur, {x, y}, radius, 0xFF000000);
         }
     }
+
 }
 
 #ifdef TESTMODE

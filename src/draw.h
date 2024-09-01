@@ -18,7 +18,7 @@ void DrawPixel_CircleBrush(SDL_Surface*, Vector2, int, Uint32);
 
 void DrawPixel(SDL_Surface* sur, Vector2 mousePos, Uint32 newColor, Uint8 opacity) { // TOHell DO: Will eventually need a PaintMode parameter
     if (mousePos.x < 0 || mousePos.y < 0 || (int)mousePos.x >= sur->w || (int)mousePos.y >= sur->h) return;
-    auto* ptr = (Uint32*)sur->pixels + 1280*(int)mousePos.y + (int)mousePos.x;
+    auto* ptr = (Uint32*)sur->pixels + sur->w*(int)mousePos.y + (int)mousePos.x;
     *ptr = newColor;
 }
 
@@ -62,7 +62,7 @@ void DrawPixel_CircleBrush(SDL_Surface* sur, Vector2 origin, int radius, Uint32 
 
 
 void DrawPixel_QuadCurve(SDL_Surface* sur, Vector2 p0, Vector2 p1, Vector2 p2, int radius, Uint32 color) {
-    if (p1 == p2) return;
+    if (p0 == p2) return;
 
     for (float t = 0; t <= 1; t += 0.025) {
         double x = (1-t)*(1-t)*p0.x + 2*(1-t)*t*p1.x + t*t*p2.x;

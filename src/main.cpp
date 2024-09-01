@@ -1,3 +1,4 @@
+#include <string>
 #include "includes.h"
 
 using namespace std;
@@ -8,7 +9,7 @@ const Uint64 refreshDelay = (Uint64)1000 / 360;   // 360 is temporary, but marks
 
 int main() {
     SDL_Init(SDL_INIT_EVENTS | SDL_INIT_VIDEO);
-    SDL_Window* window = SDL_CreateWindow("Apollo", width + sidebar, height + menu, SDL_WINDOW_RESIZABLE & SDL_WINDOW_SURFACE_VSYNC_ADAPTIVE);
+    SDL_Window* window = SDL_CreateWindow("Apollo", 1280 + sidebar, 720 + menu, SDL_WINDOW_RESIZABLE & SDL_WINDOW_SURFACE_VSYNC_ADAPTIVE);
 
     if(checkNull(window)) return 0;
 
@@ -35,6 +36,7 @@ int main() {
 
     // this will be the layer for any strokes in progress of being made. This will be cleared when a stroke/action is completed.
     SDL_Surface* workLayer = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_RGBA32);
+    SDL_Texture* workLayerT = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA32, SDL_TEXTUREACCESS_STREAMING, width, height);
 
     // a white surface for a background. can be customized in the future
     SDL_Surface* backg = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_RGBA32);
@@ -77,6 +79,8 @@ int main() {
     canvasArea->h = (float)height;
     canvasArea->x = 0.00f;
     canvasArea->y = (float)menu;
+
+    Uint64 startDraw;
 
     Uint32 currentColor = SDL_MapRGBA(SDL_GetPixelFormatDetails(layer->format), SDL_GetSurfacePalette(layer), 0, 0, 0, 255);
 
@@ -163,20 +167,67 @@ int main() {
                             RedoStack.pop();
                         }
                         break;
+                    case SDLK_S:
+                        if (lctrl) {
+                            const char* path = SDL_GetBasePath();
+                            const char* file = "test.png";
+                            size_t length = strlen(path) + strlen(file) + 1;
+                            char* result = (char*)malloc((length) * sizeof(char));
+
+                            // Concatenate the two strings
+                            SDL_Log("Both strings: %s\n%s", path, file);
+                            int i;
+                            for (i = 0; path[i] != '\0'; i++) {
+                                result[i] = path[i];
+                            }
+                            SDL_Log("%d %d", i, strlen(path));
+                            for (int j = 0; file[j] != '\0'; j++) {
+                                result[i++] = file[j];
+                            }
+
+                            result[i] = '\0';
+                            SDL_bool hi = IMG_SavePNG(layer, result);
+                            if (hi == false) SDL_Log("Saved here: %s", result);
+                        }
+                        break;
+                }
+            }
+            if (event.type == SDL_EVENT_MOUSE_MOTION) {
+                if (isDrawing) {
+                    mouseX = event.motion.x;
+                    mouseY = event.motion.y;
+
+                    Point2 mouse = MapPoint(mouseX, mouseY, canvasCenterFP, angle, scale, SDL_FLIP_NONE);
+
+                    points.push_back({mouse.x, mouse.y});
+                    DrawPixel_Line(workLayer, points[points.size() - 1], points[points.size() - 2], 5, currentColor);
+
+                    if (points.size() > 500) {
+                        auto* arr = (Point2*)malloc(sizeof(Point2) * points.size());
+                        copy(points.begin(), points.end(), arr);
+                        FitCurve(arr, points.size(), 3.0, layer);
+
+                        free(arr);
+                        points.clear();
+                        points.push_back(mouse);
+                    }
                 }
             }
             if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
                 switch (event.button.button) {
                     case SDL_BUTTON_LEFT:
-                        if (!isDrawing && (mouseX >= 0 && mouseX < 1280 && mouseY - menu >= 0 && mouseY - menu < 720)) {
+                        if (!isDrawing && (mouseX >= 0 && mouseX < width && mouseY - menu >= 0 && mouseY - menu < height)) {
+                            startDraw = SDL_GetPerformanceCounter();
                             Point2 mouse = MapPoint(mouseX, mouseY, canvasCenterFP, angle, scale, SDL_FLIP_NONE);
 
                             points.push_back({mouse.x, mouse.y});
 
+                            DrawPixel_CircleBrush(workLayer, points[0], 5, currentColor);
+
                             UndoStack.push(QOISaveFromSurface(layer));
                             while (!RedoStack.empty()) {
                                 QOISave *ptr = RedoStack.top();
-                                
+
                                 ptr->free();
 
                                 RedoStack.pop();
@@ -186,36 +237,43 @@ int main() {
                         }
                         break;
                 }
-
             }
             else if (event.type == SDL_EVENT_MOUSE_BUTTON_UP) {
                 switch (event.button.button) {
                     case SDL_BUTTON_LEFT:
-                        isDrawing = false;
-                        SDL_GetMouseState(&mouseX, &mouseY);
+                        if (isDrawing) {
+                            isDrawing = false;
+                            SDL_GetMouseState(&mouseX, &mouseY);
 
-                        Point2 mouse = MapPoint(mouseX, mouseY, canvasCenterFP, angle, scale, SDL_FLIP_NONE);
+                            Point2 mouse = MapPoint(mouseX, mouseY, canvasCenterFP, angle, scale, SDL_FLIP_NONE);
 
-                        points.push_back({mouse.x, mouse.y});
+                            points.push_back({mouse.x, mouse.y});
 
-                        bool allPointsSame = true;
-                        Point2 firstPoint = points[0];
-                        for (Vector2 point: points) {
-                            if (point != firstPoint) {
-                                allPointsSame = false;
-                                break;
+                            // Uint64 endDraw = (SDL_GetPerformanceCounter() - startDraw) / SDL_GetPerformanceFrequency() * 1000;
+
+                            // printf("Avg points per second: %llu", points.size() / endDraw);
+
+                            SDL_FillSurfaceRect(workLayer, updateArea, SDL_MapRGBA(SDL_GetPixelFormatDetails(workLayer->format),SDL_GetSurfacePalette(workLayer), 0, 0, 0, 0));
+
+                            bool allPointsSame = true;
+                            Point2 firstPoint = points[0];
+                            for (Vector2 point: points) {
+                                if (point != firstPoint) {
+                                    allPointsSame = false;
+                                    break;
+                                }
                             }
-                        }
-                        if (allPointsSame) {
-                            DrawPixel_CircleBrush(layer, firstPoint, strokeSize, currentColor);
-                        } else {
-                            auto *arr = (Point2 *) malloc(sizeof(Point2) * points.size());
-                            copy(points.begin(), points.end(), arr);
-                            FitCurve(arr, points.size(), 4.0, layer);
+                            if (allPointsSame) {
+                                DrawPixel_CircleBrush(layer, firstPoint, strokeSize, currentColor);
+                            } else {
+                                auto *arr = (Point2 *) malloc(sizeof(Point2) * points.size());
+                                copy(points.begin(), points.end(), arr);
+                                FitCurve(arr, points.size(), 3.0, layer);
 
-                            free(arr);
+                                free(arr);
+                            }
+                            points.clear();
                         }
-                        points.clear();
                         break;
                 }
 
@@ -227,25 +285,10 @@ int main() {
             }
         }
 
-        if (isDrawing) {
-            SDL_GetMouseState(&mouseX, &mouseY);
-
-            Point2 mouse = MapPoint(mouseX, mouseY, canvasCenterFP, angle, scale, SDL_FLIP_NONE);
-
-            points.push_back({mouse.x, mouse.y});
-
-            if (points.size() > 500) {
-                auto* arr = (Point2*)malloc(sizeof(Point2) * points.size());
-                copy(points.begin(), points.end(), arr);
-                FitCurve(arr, points.size(), 4.0, layer);
-
-                free(arr);
-                points.clear();
-                points.push_back(mouse);
-            }
-        }
-
         if (SDL_GetTicks() % 4 == 0) {
+            error = SDL_UpdateTexture(workLayerT, updateArea, workLayer->pixels, workLayer->pitch);
+            if (checkError(error, "UpdateTexture(workLayerT)")) return -1;
+
             error = SDL_UpdateTexture(layerT, updateArea, layer->pixels, layer->pitch);
             if (checkError(error, "UpdateTexture(layerT)")) return -1;
 
@@ -254,6 +297,9 @@ int main() {
 
             error = SDL_RenderTextureRotated(renderer, backgT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
             if (checkError(error, "RenderTextureRotated(backgT)")) return -1;
+
+            error = SDL_RenderTextureRotated(renderer, workLayerT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
+            if (checkError(error, "RenderTextureRotated(workLayerT)")) return -1;
 
             error = SDL_RenderTextureRotated(renderer, layerT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
             if (checkError(error, "RenderTextureRotated(layerT)")) return -1;
@@ -280,6 +326,7 @@ int main() {
     SDL_DestroyTexture(layerT);
 
     SDL_DestroySurface(workLayer);
+    SDL_DestroyTexture(workLayerT);
 
     SDL_DestroySurface(backg);
     SDL_DestroyTexture(backgT);
