@@ -67,26 +67,6 @@ void DrawBezierCurve(int n, BezierCurve curve, SDL_Surface* sur) {
 
 }
 
-#ifdef TESTMODE
-
-int main2()
-{
-    static Point2 d[7] = {	/*  Digitized points */
-            { 0.0, 0.0 },
-            { 0.0, 0.5 },
-            { 1.1, 1.4 },
-            { 2.1, 1.6 },
-            { 3.2, 1.1 },
-            { 4.0, 0.2 },
-            { 4.0, 0.0 },
-    };
-    double	error = 4.0;		/*  Squared error */
-    SDL_Surface* sur;
-    FitCurve(d, 7, error, sur);		/*  Fit the Bezier curves */
-
-    return 0;
-}
-#endif						 /* TESTMODE */
 
 /*
  *  FitCurve :
