@@ -180,19 +180,16 @@ int main() {
                             char* result = (char*)malloc((length) * sizeof(char));
 
                             // Concatenate the two strings
-                            SDL_Log("Both strings: %s\n%s", path, file);
                             int i;
                             for (i = 0; path[i] != '\0'; i++) {
                                 result[i] = path[i];
                             }
-                            SDL_Log("%d %d", i, strlen(path));
                             for (int j = 0; file[j] != '\0'; j++) {
                                 result[i++] = file[j];
                             }
 
                             result[i] = '\0';
-                            SDL_bool hi = IMG_SavePNG(layer, result);
-                            if (hi == SDL_FALSE) SDL_Log("Saved here: %s", result);
+                            IMG_SavePNG(layer, result);
                         }
                         break;
                 }
@@ -208,7 +205,6 @@ int main() {
                             points.push_back({mouse.x, mouse.y});
 
                             SDL_LockTextureToSurface(layerT, updateArea, &tempLayer);
-                            SDL_BlitSurface(layer, nullptr, tempLayer, nullptr);
                             // SDL_LockTextureToSurface(workLayerT, updateArea, &workLayer);
 
                             // DrawPixel_CircleBrush(workLayer, points[0], 5, currentColor);
@@ -242,7 +238,7 @@ int main() {
                     if (points.size() > 500) {
                         auto* arr = (Point2*)malloc(sizeof(Point2) * points.size());
                         copy(points.begin(), points.end(), arr);
-                        FitCurve(arr, points.size(), 3.0, tempLayer);
+                        FitCurve(arr, points.size(), 3.0, layer);
 
                         free(arr);
                         points.clear();
@@ -274,16 +270,17 @@ int main() {
                                 }
                             }
                             if (allPointsSame) {
-                                DrawPixel_CircleBrush(tempLayer, firstPoint, strokeSize, currentColor);
+                                DrawPixel_CircleBrush(layer, firstPoint, strokeSize, currentColor);
                             } else {
                                 auto *arr = (Point2 *) malloc(sizeof(Point2) * points.size());
                                 copy(points.begin(), points.end(), arr);
-                                FitCurve(arr, points.size(), 3.0, tempLayer);
+                                FitCurve(arr, points.size(), 3.0, layer);
 
                                 free(arr);
                             }
 
-                            SDL_BlitSurface(tempLayer, nullptr, layer, nullptr);
+                            SDL_FillSurfaceRect(tempLayer, updateArea, SDL_MapRGBA(SDL_GetPixelFormatDetails(layer->format), SDL_GetSurfacePalette(layer), 0, 0, 0, 0));
+                            SDL_BlitSurface(layer, nullptr, tempLayer, nullptr);
 
                             // SDL_UnlockTexture(workLayerT);
                             SDL_UnlockTexture(layerT);

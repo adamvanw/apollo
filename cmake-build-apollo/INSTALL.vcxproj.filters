@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Adam\repos\apollo\cmake-build-apollo\CMakeFiles\02146aaa70ac98baffc73ae7b96399c8\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{2FE1BDC0-B507-3881-B3E5-AC047A46FB6A}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

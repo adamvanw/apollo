@@ -1,0 +1,184 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"vendor/SDL_image/external/aom/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "aom_dsp_encoder::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_version::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_static::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_common::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_rtcd::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_common_sse2_static::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_common_sse2_shared::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_decoder::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_encoder_sse2_shared::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_encoder_avx2_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_mem::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_ports_shared::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_encoder_ssse3_shared::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_scale::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_encoder_ssse3_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_common::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_common_ssse3_shared::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_ports_static::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_util::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_encoder_sse2_static::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_encoder_sse2_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_common_ssse3_static::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_encoder_sse4_1_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_common_avx2_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_common_sse4_1_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_common_sse2_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_common_ssse3_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_encoder_ssse3_static::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_dsp_encoder_avx_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_encoder_sse42_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_encoder_ssse3_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_encoder::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_common_sse4_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_encoder_ssse3_static::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_common_avx2_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "yuv::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_encoder_sse4_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_encoder_ssse3_shared::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_pc::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_encoder_sse3_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_encoder_avx2_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_encoder_sse2_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_decoder::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_encoder_sse2_static::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_common_sse2_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_encoder_sse2_shared::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "aom_av1_common_ssse3_intrinsics::@f87d1d649d07125a0eaf"
+		},
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		}
+	],
+	"folder" : 
+	{
+		"name" : "CMakePredefinedTargets"
+	},
+	"id" : "ALL_BUILD::@f87d1d649d07125a0eaf",
+	"isGeneratorProvided" : true,
+	"name" : "ALL_BUILD",
+	"paths" : 
+	{
+		"build" : "vendor/SDL_image/external/aom",
+		"source" : "vendor/SDL_image/external/aom"
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}
