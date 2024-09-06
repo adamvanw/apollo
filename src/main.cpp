@@ -53,6 +53,7 @@ int main() {
     SDL_FillSurfaceRect(backg, canvasR, white);
     SDL_Texture* backgT = SDL_CreateTextureFromSurface(renderer, backg);
     SDL_Surface* tempLayer;
+    SDL_Surface* tempWorkLayer;
 
     SDL_FillSurfaceRect(layer, canvasR, SDL_MapRGBA(SDL_GetPixelFormatDetails(layer->format), SDL_GetSurfacePalette(layer), 0, 0, 0, 0));
     SDL_FillSurfaceRect(workLayer, canvasR, SDL_MapRGBA(SDL_GetPixelFormatDetails(layer->format), SDL_GetSurfacePalette(layer), 0, 0, 0, 0));
@@ -205,9 +206,10 @@ int main() {
                             points.push_back({mouse.x, mouse.y});
 
                             SDL_LockTextureToSurface(layerT, updateArea, &tempLayer);
-                            // SDL_LockTextureToSurface(workLayerT, updateArea, &workLayer);
+                            SDL_LockTextureToSurface(workLayerT, updateArea, &tempWorkLayer);
 
-                            // DrawPixel_CircleBrush(workLayer, points[0], 5, currentColor);
+                            DrawPixel_CircleBrush(workLayer, points[0], 5, currentColor);
+                            SDL_BlitSurface(workLayer, updateArea, tempWorkLayer, updateArea);
 
                             UndoStack.push(QOISaveFromSurface(layer));
                             while (!RedoStack.empty()) {
@@ -233,7 +235,8 @@ int main() {
                     Point2 mouse = MapPoint(mouseX, mouseY, canvasCenterFP, angle, scale, SDL_FLIP_NONE);
 
                     points.push_back({mouse.x, mouse.y});
-                    // DrawPixel_Line(workLayer, points[points.size() - 1], points[points.size() - 2], 5, currentColor);
+                    DrawPixel_Line(workLayer, points[points.size() - 1], points[points.size() - 2], 5, currentColor);
+                    SDL_BlitSurface(workLayer, updateArea, tempWorkLayer, updateArea);
 
                     if (points.size() > 500) {
                         auto* arr = (Point2*)malloc(sizeof(Point2) * points.size());
@@ -259,7 +262,8 @@ int main() {
 
                             points.push_back({mouse.x, mouse.y});
 
-                            // SDL_FillSurfaceRect(workLayer, updateArea, SDL_MapRGBA(SDL_GetPixelFormatDetails(workLayer->format),SDL_GetSurfacePalette(workLayer), 0, 0, 0, 0));
+                            SDL_FillSurfaceRect(workLayer, updateArea, SDL_MapRGBA(SDL_GetPixelFormatDetails(workLayer->format),SDL_GetSurfacePalette(workLayer), 0, 0, 0, 0));
+                            SDL_FillSurfaceRect(tempWorkLayer, updateArea, SDL_MapRGBA(SDL_GetPixelFormatDetails(workLayer->format),SDL_GetSurfacePalette(workLayer), 0, 0, 0, 0));
 
                             bool allPointsSame = true;
                             Point2 firstPoint = points[0];
@@ -299,6 +303,9 @@ int main() {
         }
 
         if (SDL_GetTicks() % 4 == 0) {
+            // SDL_UnlockTexture(workLayerT);
+            // SDL_LockTextureToSurface(workLayerT, updateArea, &tempWorkLayer);
+
             error = SDL_RenderClear(renderer);
             if (checkError(error, "RenderClear()")) return -1;
 
