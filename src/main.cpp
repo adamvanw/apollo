@@ -9,7 +9,7 @@ const Uint64 refreshDelay = (Uint64)1000 / 360;   // 360 is temporary, but marks
 
 int main() {
     SDL_Init(SDL_INIT_EVENTS | SDL_INIT_VIDEO);
-    SDL_Window* window = SDL_CreateWindow("Apollo", 1280 + sidebar, 720 + menu, SDL_WINDOW_RESIZABLE & SDL_WINDOW_SURFACE_VSYNC_ADAPTIVE);
+    SDL_Window* window = SDL_CreateWindow("Apollo", 1280 + sidebar, 720 + menu, SDL_WINDOW_RESIZABLE & SDL_WINDOW_SURFACE_VSYNC_ADAPTIVE & SDL_WINDOW_OPENGL);
 
     if(checkNull(window)) return 0;
 
@@ -17,7 +17,7 @@ int main() {
         SDL_Log("%s", SDL_GetRenderDriver(i));
     }
 
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, "direct3d12");
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, "opengl");
     if(checkNull(renderer)) return -1;
 
     SDL_Color bgColor = {0x88, 0x88, 0x88, 0xFF};
@@ -81,6 +81,12 @@ int main() {
     canvasArea->h = (float)height;
     canvasArea->x = 0.00f;
     canvasArea->y = (float)menu;
+
+    auto* updateWorkRect = (SDL_Rect*)malloc(sizeof(SDL_Rect));
+    updateWorkRect->w = width;
+    updateWorkRect->h = height;
+    updateWorkRect->x = 0;
+    updateWorkRect->y = 0;
 
     Uint32 currentColor = SDL_MapRGBA(SDL_GetPixelFormatDetails(layer->format), SDL_GetSurfacePalette(layer), 0, 0, 0, 255);
 
@@ -209,7 +215,11 @@ int main() {
                             SDL_LockTextureToSurface(workLayerT, updateArea, &tempWorkLayer);
 
                             DrawPixel_CircleBrush(workLayer, points[0], 5, currentColor);
-                            SDL_BlitSurface(workLayer, updateArea, tempWorkLayer, updateArea);
+                            updateWorkRect->x = mouse.x - (5 + 1);
+                            updateWorkRect->y = mouse.y - (5 + 1);
+                            updateWorkRect->w = (5 + 1) * 2;
+                            updateWorkRect->h = (5 + 1) * 2;
+                            SDL_BlitSurface(workLayer, updateWorkRect, tempWorkLayer, updateWorkRect);
 
                             UndoStack.push(QOISaveFromSurface(layer));
                             while (!RedoStack.empty()) {
@@ -236,12 +246,18 @@ int main() {
 
                     points.push_back({mouse.x, mouse.y});
                     DrawPixel_Line(workLayer, points[points.size() - 1], points[points.size() - 2], 5, currentColor);
-                    SDL_BlitSurface(workLayer, updateArea, tempWorkLayer, updateArea);
+
+                    updateWorkRect->x = min(points[points.size() - 1].x, points[points.size() - 2].x) - (5 + 1);
+                    updateWorkRect->y = min(points[points.size() - 1].y, points[points.size() - 2].y) - (5 + 1);
+                    updateWorkRect->w = abs(points[points.size() - 1].x - points[points.size() - 2].x) + ((5 + 1) * 2);
+                    updateWorkRect->h = abs(points[points.size() - 1].y - points[points.size() - 2].y) + ((5 + 1) * 2);
+
+                    SDL_BlitSurface(workLayer, updateWorkRect, tempWorkLayer, updateWorkRect);
 
                     if (points.size() > 500) {
                         auto* arr = (Point2*)malloc(sizeof(Point2) * points.size());
                         copy(points.begin(), points.end(), arr);
-                        FitCurve(arr, points.size(), 3.0, layer);
+                        FitCurve(arr, points.size(), 2.0, layer);
 
                         free(arr);
                         points.clear();
@@ -262,8 +278,8 @@ int main() {
 
                             points.push_back({mouse.x, mouse.y});
 
-                            SDL_FillSurfaceRect(workLayer, updateArea, SDL_MapRGBA(SDL_GetPixelFormatDetails(workLayer->format),SDL_GetSurfacePalette(workLayer), 0, 0, 0, 0));
-                            SDL_FillSurfaceRect(tempWorkLayer, updateArea, SDL_MapRGBA(SDL_GetPixelFormatDetails(workLayer->format),SDL_GetSurfacePalette(workLayer), 0, 0, 0, 0));
+                            ClearPixels(workLayer);
+                            ClearPixels(tempWorkLayer);
 
                             bool allPointsSame = true;
                             Point2 firstPoint = points[0];
@@ -278,15 +294,15 @@ int main() {
                             } else {
                                 auto *arr = (Point2 *) malloc(sizeof(Point2) * points.size());
                                 copy(points.begin(), points.end(), arr);
-                                FitCurve(arr, points.size(), 3.0, layer);
+                                FitCurve(arr, points.size(), 2.0, layer);
 
                                 free(arr);
                             }
 
-                            SDL_FillSurfaceRect(tempLayer, updateArea, SDL_MapRGBA(SDL_GetPixelFormatDetails(layer->format), SDL_GetSurfacePalette(layer), 0, 0, 0, 0));
+                            ClearPixels(tempLayer);
                             SDL_BlitSurface(layer, nullptr, tempLayer, nullptr);
 
-                            // SDL_UnlockTexture(workLayerT);
+                            SDL_UnlockTexture(workLayerT);
                             SDL_UnlockTexture(layerT);
 
                             points.clear();
@@ -302,24 +318,47 @@ int main() {
             }
         }
 
-        if (SDL_GetTicks() % 4 == 0) {
-            // SDL_UnlockTexture(workLayerT);
-            // SDL_LockTextureToSurface(workLayerT, updateArea, &tempWorkLayer);
+        if (SDL_GetTicks() % 4 == 0  && SDL_GetWindowFlags(window) % 16 != 8) {
+            Uint64 startunlock = SDL_GetTicksNS();
+            if (isDrawing) SDL_UnlockTexture(workLayerT);
+            Uint64 endunlock = SDL_GetTicksNS() - startunlock;
+            SDL_Log("Unlocking took %f ms", static_cast<double>(endunlock) / 1000000.0);
 
+            startunlock = SDL_GetTicksNS();
             error = SDL_RenderClear(renderer);
             if (checkError(error, "RenderClear()")) return -1;
+            endunlock = SDL_GetTicksNS() - startunlock;
+            SDL_Log("Clearing took %f ms", static_cast<double>(endunlock) / 1000000.0);
 
+            startunlock = SDL_GetTicksNS();
             error = SDL_RenderTextureRotated(renderer, backgT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
             if (checkError(error, "RenderTextureRotated(backgT)")) return -1;
+            endunlock = SDL_GetTicksNS() - startunlock;
+            SDL_Log("Clearing took %f ms", static_cast<double>(endunlock) / 1000000.0);
 
+            startunlock = SDL_GetTicksNS();
             error = SDL_RenderTextureRotated(renderer, workLayerT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
             if (checkError(error, "RenderTextureRotated(workLayerT)")) return -1;
+            endunlock = SDL_GetTicksNS() - startunlock;
+            SDL_Log("Rendering workLayer took %f ms", static_cast<double>(endunlock) / 1000000.0);
 
+            startunlock = SDL_GetTicksNS();
             error = SDL_RenderTextureRotated(renderer, layerT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
             if (checkError(error, "RenderTextureRotated(layerT)")) return -1;
+            endunlock = SDL_GetTicksNS() - startunlock;
+            SDL_Log("Rendering layer took %f ms", static_cast<double>(endunlock) / 1000000.0);
 
+            startunlock = SDL_GetTicksNS();
             error = SDL_RenderPresent(renderer);
             if (checkError(error, "RenderPresent()")) return -1;
+            endunlock = SDL_GetTicksNS() - startunlock;
+            SDL_Log("Presenting took %f ms", static_cast<double>(endunlock) / 1000000.0);
+
+            startunlock = SDL_GetTicksNS();
+            if (isDrawing) SDL_LockTextureToSurface(workLayerT, updateArea, &tempWorkLayer);
+            endunlock = SDL_GetTicksNS() - startunlock;
+            SDL_Log("Locking took %f ms", static_cast<double>(endunlock) / 1000000.0);
+
         }
 
         Uint64 frameTime = (SDL_GetPerformanceCounter() - start) / SDL_GetPerformanceFrequency() * 1000;
@@ -335,6 +374,7 @@ int main() {
 
     delete canvasArea;
     delete updateArea;
+    delete updateWorkRect;
 
     SDL_DestroySurface(layer);
     SDL_DestroyTexture(layerT);

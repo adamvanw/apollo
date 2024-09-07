@@ -16,7 +16,9 @@ void DrawPixel_Line(SDL_Surface*, Vector2, Vector2, int, Uint32);
 void DrawPixel_QuadCurve(SDL_Surface*, Vector2, Vector2, Vector2, int, Uint32);
 void DrawPixel_CircleBrush(SDL_Surface*, Vector2, int, Uint32);
 
-void DrawPixel(SDL_Surface* sur, Vector2 mousePos, Uint32 newColor, Uint8 opacity) { // TOHell DO: Will eventually need a PaintMode parameter
+void ClearPixels(SDL_Surface*);
+
+void DrawPixel(SDL_Surface* sur, Vector2 mousePos, Uint32 newColor, Uint8 opacity) { // TODO: Will eventually need a PaintMode parameter
     if (mousePos.x < 0 || mousePos.y < 0 || (int)mousePos.x >= sur->w || (int)mousePos.y >= sur->h) return;
     auto* ptr = (Uint32*)sur->pixels + sur->w*(int)mousePos.y + (int)mousePos.x;
     *ptr = newColor;
@@ -88,5 +90,16 @@ Point2 MapPoint(double x, double y, SDL_FPoint* center, float angle, float scale
 
     return mouse;
 }
+
+// Since we know our pixels are always going to be int32, we can make a fast small function that clears the pixels.
+void ClearPixels(SDL_Surface* sur) {
+    for (int i = 0; i < sur->w; i++) {
+        for (int j = 0; j < sur->h; j++) {
+            auto* ptr = (Uint32*)sur->pixels + sur->w*j + i;
+            *ptr = 0x00000000;
+        }
+    }
+}
+
 
 #endif //APOLLO_DRAW_H
