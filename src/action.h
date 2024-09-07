@@ -32,7 +32,7 @@ public:
     void* data;
     qoi_desc desc;
     int bytes;
-public:
+
     explicit QOISave(void* pixels, qoi_desc description, int size) {
         data = pixels;
         desc = description;

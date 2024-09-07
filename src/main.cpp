@@ -28,11 +28,15 @@ int main() {
     stack<QOISave*> UndoStack;
     stack<QOISave*> RedoStack;
 
+    vector<QOISave*> frames;
+    unsigned int currentFrame = 0;
+
     vector<Point2> points;
 
-    SDL_Texture* layerT = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA32, SDL_TEXTUREACCESS_STREAMING, width, height);
+    SDL_Texture* currentLayerT = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA32, SDL_TEXTUREACCESS_STREAMING, width, height);
 
-    SDL_Surface* layer = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_RGBA32);
+    SDL_Surface* currentLayer = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_RGBA32);
+    frames.push_back(QOISaveFromSurface(currentLayer));
 
     // this will be the layer for any strokes in progress of being made. This will be cleared when a stroke/action is completed.
     SDL_Surface* workLayer = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_RGBA32);
@@ -55,8 +59,11 @@ int main() {
     SDL_Surface* tempLayer;
     SDL_Surface* tempWorkLayer;
 
-    SDL_FillSurfaceRect(layer, canvasR, SDL_MapRGBA(SDL_GetPixelFormatDetails(layer->format), SDL_GetSurfacePalette(layer), 0, 0, 0, 0));
-    SDL_FillSurfaceRect(workLayer, canvasR, SDL_MapRGBA(SDL_GetPixelFormatDetails(layer->format), SDL_GetSurfacePalette(layer), 0, 0, 0, 0));
+    SDL_Surface* newFrame = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_RGBA32);
+    ClearPixels(newFrame);
+
+    SDL_FillSurfaceRect(currentLayer, canvasR, SDL_MapRGBA(SDL_GetPixelFormatDetails(currentLayer->format), SDL_GetSurfacePalette(currentLayer), 0, 0, 0, 0));
+    SDL_FillSurfaceRect(workLayer, canvasR, SDL_MapRGBA(SDL_GetPixelFormatDetails(currentLayer->format), SDL_GetSurfacePalette(currentLayer), 0, 0, 0, 0));
     SDL_FillSurfaceRect(backg, canvasR, SDL_MapRGBA(SDL_GetPixelFormatDetails(backg->format), SDL_GetSurfacePalette(backg), 0, 0, 0, 255));
 
     bool isDrawing = false;
@@ -88,10 +95,10 @@ int main() {
     updateWorkRect->x = 0;
     updateWorkRect->y = 0;
 
-    Uint32 currentColor = SDL_MapRGBA(SDL_GetPixelFormatDetails(layer->format), SDL_GetSurfacePalette(layer), 0, 0, 0, 255);
+    Uint32 currentColor = SDL_MapRGBA(SDL_GetPixelFormatDetails(currentLayer->format), SDL_GetSurfacePalette(currentLayer), 0, 0, 0, 255);
 
     SDL_SetTextureScaleMode(backgT, SDL_SCALEMODE_NEAREST);
-    SDL_SetTextureScaleMode(layerT, SDL_SCALEMODE_NEAREST);
+    SDL_SetTextureScaleMode(currentLayerT, SDL_SCALEMODE_NEAREST);
     SDL_SetTextureScaleMode(workLayerT, SDL_SCALEMODE_NEAREST);
 
     while(!escape) {
@@ -119,11 +126,35 @@ int main() {
                         canvasCenterFP->x += 4;
                         break;
                     case SDLK_B:
-                        currentColor = SDL_MapRGBA(SDL_GetPixelFormatDetails(layer->format), SDL_GetSurfacePalette(layer), 0, 0, 0, 255);
+                        currentColor = SDL_MapRGBA(SDL_GetPixelFormatDetails(currentLayer->format), SDL_GetSurfacePalette(currentLayer), 0, 0, 0, 255);
                         break;
                     case SDLK_KP_MINUS:
                         angle -= 5.0;
                         SDL_Log("%lf, %lf", canvasCenterFP->x, canvasCenterFP->y);
+                        break;
+                    case SDLK_N:
+                        SDL_Log("New frame created!");
+                        frames.push_back(QOISaveFromSurface(newFrame));
+                        break;
+                    case SDLK_RIGHT:
+                        if (currentFrame < frames.size() - 1) {
+                            currentFrame++;
+
+                            SDL_DestroySurface(currentLayer);
+                            currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(frames[currentFrame]->getData(), frames[currentFrame]->getBytes()));
+                            SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
+                            SDL_Log("Entered frame %d.", currentFrame + 1);
+                        }
+                        break;
+                    case SDLK_LEFT:
+                        if (currentFrame > 0) {
+                            currentFrame--;
+
+                            SDL_DestroySurface(currentLayer);
+                            currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(frames[currentFrame]->getData(), frames[currentFrame]->getBytes()));
+                            SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
+                            SDL_Log("Entered frame %d.", currentFrame + 1);
+                        }
                         break;
                     case SDLK_KP_MULTIPLY:
                         scale += 0.05f;
@@ -141,7 +172,7 @@ int main() {
                         SDL_Log("%lf %lf %lf %lf", canvasArea->w, canvasArea->h, canvasArea->x, canvasArea->y);
                         break;
                     case SDLK_E:
-                        currentColor = SDL_MapRGBA(SDL_GetPixelFormatDetails(layer->format), SDL_GetSurfacePalette(layer), 0, 0, 0, 0);
+                        currentColor = SDL_MapRGBA(SDL_GetPixelFormatDetails(currentLayer->format), SDL_GetSurfacePalette(currentLayer), 0, 0, 0, 0);
                         break;
                     case SDLK_ESCAPE:
                         escape = true;
@@ -151,10 +182,10 @@ int main() {
                         if (lctrl && !UndoStack.empty()) {
                             QOISave* qoisave = UndoStack.top();
 
-                            RedoStack.push(QOISaveFromSurface(layer));
-                            SDL_DestroySurface(layer);
-                            layer = IMG_LoadQOI_IO(SDL_IOFromMem(qoisave->getData(), qoisave->getBytes()));
-                            SDL_UpdateTexture(layerT, updateArea, layer->pixels, layer->pitch);
+                            RedoStack.push(QOISaveFromSurface(currentLayer));
+                            SDL_DestroySurface(currentLayer);
+                            currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(qoisave->getData(), qoisave->getBytes()));
+                            SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
                             SDL_Log("Bytes: %d", qoisave->getBytes());
 
                             qoisave->free();
@@ -168,10 +199,10 @@ int main() {
                         if (lctrl && !RedoStack.empty()) {
                             QOISave* qoisave = RedoStack.top();
 
-                            UndoStack.push(QOISaveFromSurface(layer));
-                            SDL_DestroySurface(layer);
-                            layer = IMG_LoadQOI_IO(SDL_IOFromMem(qoisave->getData(), qoisave->getBytes()));
-                            SDL_UpdateTexture(layerT, updateArea, layer->pixels, layer->pitch);
+                            UndoStack.push(QOISaveFromSurface(currentLayer));
+                            SDL_DestroySurface(currentLayer);
+                            currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(qoisave->getData(), qoisave->getBytes()));
+                            SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
 
                             qoisave->free();
 
@@ -196,7 +227,7 @@ int main() {
                             }
 
                             result[i] = '\0';
-                            IMG_SavePNG(layer, result);
+                            IMG_SavePNG(currentLayer, result);
                         }
                         break;
                 }
@@ -211,7 +242,7 @@ int main() {
 
                             points.push_back({mouse.x, mouse.y});
 
-                            SDL_LockTextureToSurface(layerT, updateArea, &tempLayer);
+                            SDL_LockTextureToSurface(currentLayerT, updateArea, &tempLayer);
                             SDL_LockTextureToSurface(workLayerT, updateArea, &tempWorkLayer);
 
                             DrawPixel_CircleBrush(workLayer, points[0], 5, currentColor);
@@ -221,7 +252,7 @@ int main() {
                             updateWorkRect->h = (5 + 1) * 2;
                             SDL_BlitSurface(workLayer, updateWorkRect, tempWorkLayer, updateWorkRect);
 
-                            UndoStack.push(QOISaveFromSurface(layer));
+                            UndoStack.push(QOISaveFromSurface(currentLayer));
                             while (!RedoStack.empty()) {
                                 QOISave *ptr = RedoStack.top();
 
@@ -257,7 +288,7 @@ int main() {
                     if (points.size() > 500) {
                         auto* arr = (Point2*)malloc(sizeof(Point2) * points.size());
                         copy(points.begin(), points.end(), arr);
-                        FitCurve(arr, points.size(), 2.0, layer);
+                        FitCurve(arr, points.size(), 2.0, currentLayer);
 
                         free(arr);
                         points.clear();
@@ -272,11 +303,6 @@ int main() {
                     case SDL_BUTTON_LEFT:
                         if (isDrawing) {
                             isDrawing = false;
-                            SDL_GetMouseState(&mouseX, &mouseY);
-
-                            Point2 mouse = MapPoint(mouseX, mouseY, canvasCenterFP, angle, scale, SDL_FLIP_NONE);
-
-                            points.push_back({mouse.x, mouse.y});
 
                             ClearPixels(workLayer);
                             ClearPixels(tempWorkLayer);
@@ -290,20 +316,22 @@ int main() {
                                 }
                             }
                             if (allPointsSame) {
-                                DrawPixel_CircleBrush(layer, firstPoint, strokeSize, currentColor);
+                                DrawPixel_CircleBrush(currentLayer, firstPoint, strokeSize, currentColor);
                             } else {
                                 auto *arr = (Point2 *) malloc(sizeof(Point2) * points.size());
                                 copy(points.begin(), points.end(), arr);
-                                FitCurve(arr, points.size(), 2.0, layer);
+                                FitCurve(arr, points.size(), 2.0, currentLayer);
 
                                 free(arr);
                             }
 
                             ClearPixels(tempLayer);
-                            SDL_BlitSurface(layer, nullptr, tempLayer, nullptr);
+                            SDL_BlitSurface(currentLayer, nullptr, tempLayer, nullptr);
 
                             SDL_UnlockTexture(workLayerT);
-                            SDL_UnlockTexture(layerT);
+                            SDL_UnlockTexture(currentLayerT);
+
+                            frames[currentFrame] = QOISaveFromSurface(currentLayer);
 
                             points.clear();
                         }
@@ -319,45 +347,24 @@ int main() {
         }
 
         if (SDL_GetTicks() % 4 == 0  && SDL_GetWindowFlags(window) % 16 != 8) {
-            Uint64 startunlock = SDL_GetTicksNS();
             if (isDrawing) SDL_UnlockTexture(workLayerT);
-            Uint64 endunlock = SDL_GetTicksNS() - startunlock;
-            SDL_Log("Unlocking took %f ms", static_cast<double>(endunlock) / 1000000.0);
 
-            startunlock = SDL_GetTicksNS();
             error = SDL_RenderClear(renderer);
             if (checkError(error, "RenderClear()")) return -1;
-            endunlock = SDL_GetTicksNS() - startunlock;
-            SDL_Log("Clearing took %f ms", static_cast<double>(endunlock) / 1000000.0);
 
-            startunlock = SDL_GetTicksNS();
             error = SDL_RenderTextureRotated(renderer, backgT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
             if (checkError(error, "RenderTextureRotated(backgT)")) return -1;
-            endunlock = SDL_GetTicksNS() - startunlock;
-            SDL_Log("Clearing took %f ms", static_cast<double>(endunlock) / 1000000.0);
 
-            startunlock = SDL_GetTicksNS();
             error = SDL_RenderTextureRotated(renderer, workLayerT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
             if (checkError(error, "RenderTextureRotated(workLayerT)")) return -1;
-            endunlock = SDL_GetTicksNS() - startunlock;
-            SDL_Log("Rendering workLayer took %f ms", static_cast<double>(endunlock) / 1000000.0);
 
-            startunlock = SDL_GetTicksNS();
-            error = SDL_RenderTextureRotated(renderer, layerT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
+            error = SDL_RenderTextureRotated(renderer, currentLayerT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
             if (checkError(error, "RenderTextureRotated(layerT)")) return -1;
-            endunlock = SDL_GetTicksNS() - startunlock;
-            SDL_Log("Rendering layer took %f ms", static_cast<double>(endunlock) / 1000000.0);
 
-            startunlock = SDL_GetTicksNS();
             error = SDL_RenderPresent(renderer);
             if (checkError(error, "RenderPresent()")) return -1;
-            endunlock = SDL_GetTicksNS() - startunlock;
-            SDL_Log("Presenting took %f ms", static_cast<double>(endunlock) / 1000000.0);
 
-            startunlock = SDL_GetTicksNS();
             if (isDrawing) SDL_LockTextureToSurface(workLayerT, updateArea, &tempWorkLayer);
-            endunlock = SDL_GetTicksNS() - startunlock;
-            SDL_Log("Locking took %f ms", static_cast<double>(endunlock) / 1000000.0);
 
         }
 
@@ -372,12 +379,30 @@ int main() {
 
     }
 
+    while (!RedoStack.empty()) {
+        QOISave *ptr = RedoStack.top();
+
+        ptr->free();
+
+        RedoStack.pop();
+        delete ptr;
+    }
+
+    while (!UndoStack.empty()) {
+        QOISave *ptr = UndoStack.top();
+
+        ptr->free();
+
+        UndoStack.pop();
+        delete ptr;
+    }
+
     delete canvasArea;
     delete updateArea;
     delete updateWorkRect;
 
-    SDL_DestroySurface(layer);
-    SDL_DestroyTexture(layerT);
+    SDL_DestroySurface(currentLayer);
+    SDL_DestroyTexture(currentLayerT);
 
     SDL_DestroySurface(workLayer);
     SDL_DestroyTexture(workLayerT);
