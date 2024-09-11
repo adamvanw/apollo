@@ -11,6 +11,9 @@
 // C++ containers
 #include <vector>
 #include <stack>
+#include <string>
+#include <utility>
+#include <memory>
 
 // SDL
 #include "SDL3/SDL.h"

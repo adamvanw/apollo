@@ -1,4 +1,3 @@
-#include <string>
 #include "includes.h"
 
 using namespace std;
@@ -25,18 +24,17 @@ int main() {
     SDL_SetRenderDrawColor(renderer, bgColor.r, bgColor.g, bgColor.b, bgColor.a);
     SDL_Event event;
 
-    stack<QOISave*> UndoStack;
-    stack<QOISave*> RedoStack;
+    stack<Action*> UndoStack;
+    stack<Action*> RedoStack;
 
-    vector<QOISave*> frames;
-    unsigned int currentFrame = 0;
+    unsigned int currentLayerNum = 0;
+    unsigned int currentFrameNum = 0;
 
     vector<Point2> points;
 
     SDL_Texture* currentLayerT = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA32, SDL_TEXTUREACCESS_STREAMING, width, height);
 
     SDL_Surface* currentLayer = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_RGBA32);
-    frames.push_back(QOISaveFromSurface(currentLayer));
 
     // this will be the layer for any strokes in progress of being made. This will be cleared when a stroke/action is completed.
     SDL_Surface* workLayer = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_RGBA32);
@@ -65,6 +63,11 @@ int main() {
     SDL_FillSurfaceRect(currentLayer, canvasR, SDL_MapRGBA(SDL_GetPixelFormatDetails(currentLayer->format), SDL_GetSurfacePalette(currentLayer), 0, 0, 0, 0));
     SDL_FillSurfaceRect(workLayer, canvasR, SDL_MapRGBA(SDL_GetPixelFormatDetails(currentLayer->format), SDL_GetSurfacePalette(currentLayer), 0, 0, 0, 0));
     SDL_FillSurfaceRect(backg, canvasR, SDL_MapRGBA(SDL_GetPixelFormatDetails(backg->format), SDL_GetSurfacePalette(backg), 0, 0, 0, 255));
+
+    vector<Layer> layers;
+    Frame frame = Frame(QOISaveFromSurface(currentLayer), 1, false);
+    Layer layer = Layer(frame);
+    layers.emplace_back(layer);
 
     bool isDrawing = false;
     unsigned int strokeSize = 5;
@@ -134,26 +137,28 @@ int main() {
                         break;
                     case SDLK_N:
                         SDL_Log("New frame created!");
-                        frames.push_back(QOISaveFromSurface(newFrame));
+                        SDL_Log("%p", &layers[currentLayerNum].frames[0]);
+                        layers[currentLayerNum].addFrame(Frame(QOISaveFromSurface(newFrame)));
+                        SDL_Log("%p", &layers[currentLayerNum].frames[0]);
                         break;
                     case SDLK_RIGHT:
-                        if (currentFrame < frames.size() - 1) {
-                            currentFrame++;
+                        if (currentFrameNum < layers[currentLayerNum].frames.size() - 1) {
+                            currentFrameNum++;
 
                             SDL_DestroySurface(currentLayer);
-                            currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(frames[currentFrame]->getData(), frames[currentFrame]->getBytes()));
+                            currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum].image->getData(), layers[currentLayerNum].frames[currentFrameNum].image->getBytes()));
                             SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
-                            SDL_Log("Entered frame %d.", currentFrame + 1);
+                            SDL_Log("Entered frame %d.", currentFrameNum + 1);
                         }
                         break;
                     case SDLK_LEFT:
-                        if (currentFrame > 0) {
-                            currentFrame--;
+                        if (currentFrameNum > 0) {
+                            currentFrameNum--;
 
                             SDL_DestroySurface(currentLayer);
-                            currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(frames[currentFrame]->getData(), frames[currentFrame]->getBytes()));
+                            currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum].image->getData(), layers[currentLayerNum].frames[currentFrameNum].image->getBytes()));
                             SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
-                            SDL_Log("Entered frame %d.", currentFrame + 1);
+                            SDL_Log("Entered frame %d.", currentFrameNum + 1);
                         }
                         break;
                     case SDLK_KP_MULTIPLY:
@@ -180,33 +185,42 @@ int main() {
                     case SDLK_Z:
                         // undo code
                         if (lctrl && !UndoStack.empty()) {
-                            QOISave* qoisave = UndoStack.top();
+                            SDL_Log("Starting undo...");
+                            Action* action = UndoStack.top();
+                            auto* frameEdit = dynamic_cast<FrameEditAction*>(action);
+                            SDL_Log("Casted frameEdit");
 
-                            RedoStack.push(QOISaveFromSurface(currentLayer));
-                            SDL_DestroySurface(currentLayer);
-                            currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(qoisave->getData(), qoisave->getBytes()));
-                            SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
-                            SDL_Log("Bytes: %d", qoisave->getBytes());
+                            if (frameEdit) {
+                                RedoStack.push(frameEdit);
+                                swap(frameEdit->framePointer->image, frameEdit->save);
 
-                            qoisave->free();
+                                if (frameEdit->framePointer == &layers[currentLayerNum].frames[currentFrameNum]) {
+                                    SDL_DestroySurface(currentLayer);
+                                    currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum].image->getData(), layers[currentLayerNum].frames[currentFrameNum].image->getBytes()));
+                                    SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
+                                }
+                            }
 
-                            delete qoisave;
                             UndoStack.pop();
                         }
                         break;
                     case SDLK_Y:
                         // redo code
                         if (lctrl && !RedoStack.empty()) {
-                            QOISave* qoisave = RedoStack.top();
+                            Action* action = RedoStack.top();
+                            auto* frameEdit = dynamic_cast<FrameEditAction*>(action);
 
-                            UndoStack.push(QOISaveFromSurface(currentLayer));
-                            SDL_DestroySurface(currentLayer);
-                            currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(qoisave->getData(), qoisave->getBytes()));
-                            SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
+                            if (frameEdit) {
+                                UndoStack.push(frameEdit);
+                                swap(frameEdit->framePointer->image, frameEdit->save);
 
-                            qoisave->free();
+                                if (frameEdit->framePointer == &layers[currentLayerNum].frames[currentFrameNum]) {
+                                    SDL_DestroySurface(currentLayer);
+                                    currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum].image->getData(), layers[currentLayerNum].frames[currentFrameNum].image->getBytes()));
+                                    SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
+                                }
+                            }
 
-                            delete qoisave;
                             RedoStack.pop();
                         }
                         break;
@@ -252,15 +266,17 @@ int main() {
                             updateWorkRect->h = (5 + 1) * 2;
                             SDL_BlitSurface(workLayer, updateWorkRect, tempWorkLayer, updateWorkRect);
 
-                            UndoStack.push(QOISaveFromSurface(currentLayer));
+                            UndoStack.push(new FrameEditAction(FRAME_EDIT, &(layers[currentLayerNum].frames[currentFrameNum]), currentLayer));
+
                             while (!RedoStack.empty()) {
-                                QOISave *ptr = RedoStack.top();
+                                Action* ptr = RedoStack.top();
 
                                 ptr->free();
 
                                 RedoStack.pop();
                                 delete ptr;
                             }
+
                             isDrawing = true;
                         }
                         break;
@@ -288,7 +304,7 @@ int main() {
                     if (points.size() > 500) {
                         auto* arr = (Point2*)malloc(sizeof(Point2) * points.size());
                         copy(points.begin(), points.end(), arr);
-                        FitCurve(arr, points.size(), 2.0, currentLayer);
+                        FitCurve(arr, points.size(), 5.0, currentLayer);
 
                         free(arr);
                         points.clear();
@@ -320,7 +336,7 @@ int main() {
                             } else {
                                 auto *arr = (Point2 *) malloc(sizeof(Point2) * points.size());
                                 copy(points.begin(), points.end(), arr);
-                                FitCurve(arr, points.size(), 2.0, currentLayer);
+                                FitCurve(arr, points.size(), 5.0, currentLayer);
 
                                 free(arr);
                             }
@@ -331,7 +347,7 @@ int main() {
                             SDL_UnlockTexture(workLayerT);
                             SDL_UnlockTexture(currentLayerT);
 
-                            frames[currentFrame] = QOISaveFromSurface(currentLayer);
+                            layers[currentLayerNum].frames[currentFrameNum].image = QOISaveFromSurface(currentLayer);
 
                             points.clear();
                         }
@@ -380,7 +396,7 @@ int main() {
     }
 
     while (!RedoStack.empty()) {
-        QOISave *ptr = RedoStack.top();
+        Action *ptr = RedoStack.top();
 
         ptr->free();
 
@@ -389,7 +405,7 @@ int main() {
     }
 
     while (!UndoStack.empty()) {
-        QOISave *ptr = UndoStack.top();
+        Action *ptr = UndoStack.top();
 
         ptr->free();
 
