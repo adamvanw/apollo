@@ -91,7 +91,6 @@ typedef struct Layer {
 
     Layer(vector<Frame*> layerData, SDL_BlendOperation blendOperation = SDL_BLENDOPERATION_ADD, Uint8 opacity = 0xFF, bool deleted = false) {
         this->frames = std::move(layerData);
-        this->frames.reserve(8192);
         this->blending = blendOperation;
         this->opacity = opacity;
         this->deleted = deleted;
@@ -102,7 +101,6 @@ typedef struct Layer {
         newFrames.push_back(&frame);
 
         this->frames = newFrames;
-        this->frames.reserve(8192);
         this->blending = blendOperation;
         this->opacity = opacity;
         this->deleted = deleted;

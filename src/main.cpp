@@ -6,9 +6,11 @@ const int width = 1280, height = 720;
 const int menu = 20, sidebar = 250;
 const Uint64 refreshDelay = (Uint64)1000 / 360;   // 360 is temporary, but marks the rate the program is refreshed.
 
+typedef enum KeyFlags {LCTRL, RCTRL, LALT, RALT, LSHIFT, RSHIFT, FUNCTION} KeyFlags;
+
 int main() {
     SDL_Init(SDL_INIT_EVENTS | SDL_INIT_VIDEO);
-    SDL_Window* window = SDL_CreateWindow("Apollo", 1280 + sidebar, 720 + menu, SDL_WINDOW_RESIZABLE & SDL_WINDOW_SURFACE_VSYNC_ADAPTIVE & SDL_WINDOW_OPENGL);
+    SDL_Window* window = SDL_CreateWindow("Apollo", 1280 + sidebar, 720 + menu + 50, SDL_WINDOW_RESIZABLE & SDL_WINDOW_SURFACE_VSYNC_ADAPTIVE & SDL_WINDOW_OPENGL);
 
     if(checkNull(window)) return 0;
 
@@ -362,7 +364,7 @@ int main() {
             }
         }
 
-        if (SDL_GetTicks() % 4 == 0  && SDL_GetWindowFlags(window) % 16 != 8) {
+        if (SDL_GetTicks() % 4 == 0 ) {
             if (isDrawing) SDL_UnlockTexture(workLayerT);
 
             error = SDL_RenderClear(renderer);
@@ -376,6 +378,19 @@ int main() {
 
             error = SDL_RenderTextureRotated(renderer, currentLayerT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
             if (checkError(error, "RenderTextureRotated(layerT)")) return -1;
+
+            // very temporary frame indicator
+            for (int i = 0; i < layers[0].frames.size(); ++i) {
+                if (layers[0].frames[i]->deleted) continue;
+
+                if (i == currentFrameNum) SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+                else SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+
+                error = SDL_RenderRect(renderer, new SDL_FRect{(float)i * 25, menu + height + 25, 25, 25});
+                if (checkError(error, "SDL_RenderRect")) return -1;
+                SDL_SetRenderDrawColor(renderer, bgColor.r, bgColor.g, bgColor.b, bgColor.a);
+            }
+
 
             error = SDL_RenderPresent(renderer);
             if (checkError(error, "RenderPresent()")) return -1;
