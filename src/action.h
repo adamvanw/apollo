@@ -84,12 +84,12 @@ public:
  *
  */
 typedef struct Layer {
-    vector<Frame> frames;
+    vector<Frame*> frames;
     SDL_BlendOperation blending;
     Uint8 opacity;
     bool deleted;
 
-    Layer(vector<Frame> layerData, SDL_BlendOperation blendOperation = SDL_BLENDOPERATION_ADD, Uint8 opacity = 0xFF, bool deleted = false) {
+    Layer(vector<Frame*> layerData, SDL_BlendOperation blendOperation = SDL_BLENDOPERATION_ADD, Uint8 opacity = 0xFF, bool deleted = false) {
         this->frames = std::move(layerData);
         this->frames.reserve(8192);
         this->blending = blendOperation;
@@ -98,8 +98,8 @@ typedef struct Layer {
     }
 
     Layer(Frame frame, SDL_BlendOperation blendOperation = SDL_BLENDOPERATION_ADD, Uint8 opacity = 0xFF, bool deleted = false) {
-        vector<Frame> newFrames;
-        newFrames.push_back(frame);
+        vector<Frame*> newFrames;
+        newFrames.push_back(&frame);
 
         this->frames = newFrames;
         this->frames.reserve(8192);
@@ -108,7 +108,7 @@ typedef struct Layer {
         this->deleted = deleted;
     }
 
-    void addFrame(const Frame& frame, int pos = -1) {
+    void addFrame(Frame* frame, int pos = -1) {
         if (pos < 0) {
             this->frames.push_back(frame);
             return;
@@ -119,11 +119,11 @@ typedef struct Layer {
     // does not completely delete the frame for sake of undo/redo
     // will not save in project save however
     void deleteFrame(int pos) {
-        frames[pos].deleted = true;
+        frames[pos]->deleted = true;
     }
 
     void undeleteFrame(int pos) {
-        frames[pos].deleted = false;
+        frames[pos]->deleted = false;
     }
 
     void deleteLayer() {
@@ -136,7 +136,7 @@ typedef struct Layer {
 
     void changeFrameLength(int pos, int newLength) {
         if (newLength < 1) return;
-        frames[pos].length = newLength;
+        frames[pos]->length = newLength;
     }
 
     void setOpacity(Uint8 opacity) {

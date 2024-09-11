@@ -138,7 +138,7 @@ int main() {
                     case SDLK_N:
                         SDL_Log("New frame created!");
                         SDL_Log("%p", &layers[currentLayerNum].frames[0]);
-                        layers[currentLayerNum].addFrame(Frame(QOISaveFromSurface(newFrame)));
+                        layers[currentLayerNum].addFrame(new Frame(QOISaveFromSurface(newFrame)));
                         SDL_Log("%p", &layers[currentLayerNum].frames[0]);
                         break;
                     case SDLK_RIGHT:
@@ -146,7 +146,7 @@ int main() {
                             currentFrameNum++;
 
                             SDL_DestroySurface(currentLayer);
-                            currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum].image->getData(), layers[currentLayerNum].frames[currentFrameNum].image->getBytes()));
+                            currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum]->image->getData(), layers[currentLayerNum].frames[currentFrameNum]->image->getBytes()));
                             SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
                             SDL_Log("Entered frame %d.", currentFrameNum + 1);
                         }
@@ -156,7 +156,7 @@ int main() {
                             currentFrameNum--;
 
                             SDL_DestroySurface(currentLayer);
-                            currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum].image->getData(), layers[currentLayerNum].frames[currentFrameNum].image->getBytes()));
+                            currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum]->image->getData(), layers[currentLayerNum].frames[currentFrameNum]->image->getBytes()));
                             SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
                             SDL_Log("Entered frame %d.", currentFrameNum + 1);
                         }
@@ -194,9 +194,9 @@ int main() {
                                 RedoStack.push(frameEdit);
                                 swap(frameEdit->framePointer->image, frameEdit->save);
 
-                                if (frameEdit->framePointer == &layers[currentLayerNum].frames[currentFrameNum]) {
+                                if (frameEdit->framePointer == layers[currentLayerNum].frames[currentFrameNum]) {
                                     SDL_DestroySurface(currentLayer);
-                                    currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum].image->getData(), layers[currentLayerNum].frames[currentFrameNum].image->getBytes()));
+                                    currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum]->image->getData(), layers[currentLayerNum].frames[currentFrameNum]->image->getBytes()));
                                     SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
                                 }
                             }
@@ -214,9 +214,9 @@ int main() {
                                 UndoStack.push(frameEdit);
                                 swap(frameEdit->framePointer->image, frameEdit->save);
 
-                                if (frameEdit->framePointer == &layers[currentLayerNum].frames[currentFrameNum]) {
+                                if (frameEdit->framePointer == layers[currentLayerNum].frames[currentFrameNum]) {
                                     SDL_DestroySurface(currentLayer);
-                                    currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum].image->getData(), layers[currentLayerNum].frames[currentFrameNum].image->getBytes()));
+                                    currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum]->image->getData(), layers[currentLayerNum].frames[currentFrameNum]->image->getBytes()));
                                     SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
                                 }
                             }
@@ -266,7 +266,7 @@ int main() {
                             updateWorkRect->h = (5 + 1) * 2;
                             SDL_BlitSurface(workLayer, updateWorkRect, tempWorkLayer, updateWorkRect);
 
-                            UndoStack.push(new FrameEditAction(FRAME_EDIT, &(layers[currentLayerNum].frames[currentFrameNum]), currentLayer));
+                            UndoStack.push(new FrameEditAction(FRAME_EDIT, layers[currentLayerNum].frames[currentFrameNum], currentLayer));
 
                             while (!RedoStack.empty()) {
                                 Action* ptr = RedoStack.top();
@@ -347,7 +347,7 @@ int main() {
                             SDL_UnlockTexture(workLayerT);
                             SDL_UnlockTexture(currentLayerT);
 
-                            layers[currentLayerNum].frames[currentFrameNum].image = QOISaveFromSurface(currentLayer);
+                            layers[currentLayerNum].frames[currentFrameNum]->image = QOISaveFromSurface(currentLayer);
 
                             points.clear();
                         }
