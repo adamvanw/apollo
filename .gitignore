@@ -2,4 +2,5 @@ build
 vendor
 cmake-build-debug
 cmake-build-debug-visual-studio
+cmake-build-apollo
 .idea

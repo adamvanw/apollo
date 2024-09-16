@@ -20,8 +20,8 @@ from "Graphics Gems", Academic Press, 1990
 typedef Point2 *BezierCurve;
 
 /* Forward declarations */
-void		        FitCurve(Point2*, int, double, SDL_Surface*);
-static	void		FitCubic(Point2*, int, int, Vector2, Vector2, double, SDL_Surface*);
+void		        FitCurve(Point2*, int, double, SDL_Surface*, Uint32, int);
+static	void		FitCubic(Point2*, int, int, Vector2, Vector2, double, SDL_Surface*, Uint32, int);
 static	double		*Reparameterize(Point2*, int, int, double*, BezierCurve);
 static	double		NewtonRaphsonRootFind(BezierCurve, Point2, double);
 static	Point2		BezierII(int, Point2*, double);
@@ -45,10 +45,10 @@ static  Vector2     *V2Add(Vector2*, Vector2*, Vector2*);
 
 #define MAXPOINTS	1000		/* The most points you can have */
 
-void DrawBezierCurve(int n, BezierCurve curve, SDL_Surface* sur) {
-    int radius = 5;
+void DrawBezierCurve(int n, BezierCurve curve, SDL_Surface* sur, Uint32 color, int stroke) {
     float increment = 0.01;
     if (n == 3) {
+        /*
         if (V2DistanceBetween2Points(&curve[0], &curve[1]) > V2DistanceBetween2Points(&curve[0], &curve[3])) {
             printf("Detected large distance, may result in weird curve. Reduced to line.\n");
             for (int i = 0; i < 4; ++i) {
@@ -56,12 +56,13 @@ void DrawBezierCurve(int n, BezierCurve curve, SDL_Surface* sur) {
             }
             return;
         }
+        */
 
         // we have generated a cubic Bezier curve.
         for (float t = 0.0f; t <= 1; t += increment) {
             double x = pow(1-t, 3)*curve[0].x + 3*t*pow(1-t, 2)*curve[1].x + 3*t*t*(1-t)*curve[2].x + pow(t, 3)*curve[3].x;
             double y = pow(1-t, 3)*curve[0].y + 3*t*pow(1-t, 2)*curve[1].y + 3*t*t*(1-t)*curve[2].y + pow(t, 3)*curve[3].y;
-            DrawPixel_CircleBrush(sur, {x, y}, radius, 0xFF000000);
+            DrawPixel_CircleBrush(sur, {x, y}, stroke, color);
         }
     }
 
@@ -72,7 +73,7 @@ void DrawBezierCurve(int n, BezierCurve curve, SDL_Surface* sur) {
  *  FitCurve :
  *  Fit a Bezier curve to a set of digitized points
  */
-void FitCurve(Point2 *d, int nPts, double error, SDL_Surface* sur) {
+void FitCurve(Point2 *d, int nPts, double error, SDL_Surface* sur, Uint32 color, int stroke) {
 //    Point2	*d;			/*  Array of digitized points	*/
 //    int		nPts;		/*  Number of digitized points	*/
 //    double	error;		/*  User-defined error squared	*/
@@ -81,7 +82,7 @@ void FitCurve(Point2 *d, int nPts, double error, SDL_Surface* sur) {
 
     tHat1 = ComputeLeftTangent(d, 0);
     tHat2 = ComputeRightTangent(d, nPts - 1);
-    FitCubic(d, 0, nPts - 1, tHat1, tHat2, error, sur);
+    FitCubic(d, 0, nPts - 1, tHat1, tHat2, error, sur, color, stroke);
 }
 
 
@@ -90,7 +91,7 @@ void FitCurve(Point2 *d, int nPts, double error, SDL_Surface* sur) {
  *  FitCubic :
  *  	Fit a Bezier curve to a (sub)set of digitized points
  */
-static void FitCubic(Point2* d, int first, int last, Vector2 tHat1, Vector2 tHat2, double error, SDL_Surface* sur) {
+static void FitCubic(Point2* d, int first, int last, Vector2 tHat1, Vector2 tHat2, double error, SDL_Surface* sur, Uint32 color, int stroke) {
 //    Point2	*d;			/*  Array of digitized points */
 //    int		first, last;	/* Indices of first and last pts in region */
 //    Vector2	tHat1, tHat2;	/* Unit tangent vectors at endpoints */
@@ -119,7 +120,7 @@ static void FitCubic(Point2* d, int first, int last, Vector2 tHat1, Vector2 tHat
         bezCurve[3] = d[last];
         V2Add(&bezCurve[0], V2Scale(&tHat1, dist), &bezCurve[1]);
         V2Add(&bezCurve[3], V2Scale(&tHat2, dist), &bezCurve[2]);
-        DrawBezierCurve(3, bezCurve, sur);
+        DrawBezierCurve(3, bezCurve, sur, color, stroke);
         free((void *)bezCurve);
         return;
     }
@@ -131,7 +132,7 @@ static void FitCubic(Point2* d, int first, int last, Vector2 tHat1, Vector2 tHat
     /*  Find max deviation of points to fitted curve */
     maxError = ComputeMaxError(d, first, last, bezCurve, u, &splitPoint);
     if (maxError < error) {
-        DrawBezierCurve(3, bezCurve, sur);
+        DrawBezierCurve(3, bezCurve, sur, color, stroke);
         free((void *)u);
         free((void *)bezCurve);
         return;
@@ -148,7 +149,7 @@ static void FitCubic(Point2* d, int first, int last, Vector2 tHat1, Vector2 tHat
             maxError = ComputeMaxError(d, first, last,
                                        bezCurve, uPrime, &splitPoint);
             if (maxError < error) {
-                DrawBezierCurve(3, bezCurve, sur);
+                DrawBezierCurve(3, bezCurve, sur, color, stroke);
                 free((void *)u);
                 free((void *)bezCurve);
                 free((void *)uPrime);
@@ -163,9 +164,9 @@ static void FitCubic(Point2* d, int first, int last, Vector2 tHat1, Vector2 tHat
     free((void *)u);
     free((void *)bezCurve);
     tHatCenter = ComputeCenterTangent(d, splitPoint);
-    FitCubic(d, first, splitPoint, tHat1, tHatCenter, error, sur);
+    FitCubic(d, first, splitPoint, tHat1, tHatCenter, error, sur, color, stroke);
     V2Negate(&tHatCenter);
-    FitCubic(d, splitPoint, last, tHatCenter, tHat2, error, sur);
+    FitCubic(d, splitPoint, last, tHatCenter, tHat2, error, sur, color, stroke);
 }
 
 

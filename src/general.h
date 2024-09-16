@@ -50,4 +50,21 @@ typedef struct Matrix2 {
     }
 } Matrix2;
 
+const char* addTwoStrings(const char* path, const char* file) {
+        size_t length = strlen(path) + strlen(file) + 1;
+        char* result = (char*)malloc((length) * sizeof(char));
+
+        // Concatenate the two strings
+        int i;
+        for (i = 0; path[i] != '\0'; i++) {
+            result[i] = path[i];
+        }
+        for (int j = 0; file[j] != '\0'; j++) {
+            result[i++] = file[j];
+        }
+
+        result[i] = '\0';
+        return result;
+};
+
 #endif //APOLLO_GENERAL_H

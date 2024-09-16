@@ -17,8 +17,13 @@
 
 // SDL
 #include "SDL3/SDL.h"
+#include "SDL3/SDL_opengl.h"
 #include "SDL3_image/SDL_image.h"
 #include "SDL3_ttf/SDL_ttf.h"
+
+#include "imgui/imgui.h"
+#include "imgui/backends/imgui_impl_sdl3.h"
+#include "imgui/backends/imgui_impl_sdlrenderer3.h"
 
 #include "qoi.h"
 
@@ -29,6 +34,7 @@
 #include "action.h"
 #include "general.h"
 #include "draw.h"
+#include "gui.h"
 
 
 

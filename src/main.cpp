@@ -10,6 +10,15 @@ typedef enum KeyFlags {LCTRL, RCTRL, LALT, RALT, LSHIFT, RSHIFT, FUNCTION} KeyFl
 
 int main() {
     SDL_Init(SDL_INIT_EVENTS | SDL_INIT_VIDEO);
+    if (TTF_Init() == -1) {
+        return -1;
+    }
+
+    TTF_Font* font = TTF_OpenFont("Acme9Regular.ttf", 8);
+    if (font == nullptr) {
+        SDL_LogError(-1, "Could not load font!");
+    }
+
     SDL_Window* window = SDL_CreateWindow("Apollo", 1280 + sidebar, 720 + menu + 50, SDL_WINDOW_RESIZABLE & SDL_WINDOW_SURFACE_VSYNC_ADAPTIVE & SDL_WINDOW_OPENGL);
 
     if(checkNull(window)) return 0;
@@ -20,6 +29,18 @@ int main() {
 
     SDL_Renderer* renderer = SDL_CreateRenderer(window, "opengl");
     if(checkNull(renderer)) return -1;
+
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+
+    io.Fonts->AddFontDefault();
+
+    ImGui::StyleColorsDark();
+
+    ImGui_ImplSDL3_InitForSDLRenderer(window, renderer);
+    ImGui_ImplSDLRenderer3_Init(renderer);
 
     SDL_Color bgColor = {0x88, 0x88, 0x88, 0xFF};
     Uint32 white = 0xFFFFFFFF;
@@ -101,10 +122,13 @@ int main() {
     updateWorkRect->y = 0;
 
     Uint32 currentColor = SDL_MapRGBA(SDL_GetPixelFormatDetails(currentLayer->format), SDL_GetSurfacePalette(currentLayer), 0, 0, 0, 255);
+    float colorFloats[4] = {0.0f, 0.0f, 0.0f, 1.0f};
 
     SDL_SetTextureScaleMode(backgT, SDL_SCALEMODE_NEAREST);
     SDL_SetTextureScaleMode(currentLayerT, SDL_SCALEMODE_NEAREST);
     SDL_SetTextureScaleMode(workLayerT, SDL_SCALEMODE_NEAREST);
+
+    auto* format = const_cast<SDL_PixelFormatDetails *>(SDL_GetPixelFormatDetails(workLayer->format));
 
     while(!escape) {
         Uint64 start = SDL_GetPerformanceCounter();
@@ -112,6 +136,8 @@ int main() {
         SDL_GetMouseState(&mouseX, &mouseY);
 
         while (SDL_PollEvent(&event)) {
+            ImGui_ImplSDL3_ProcessEvent(&event);
+
             if (event.type == SDL_EVENT_KEY_DOWN) {
                 switch (event.key.key) {
                     case SDLK_LCTRL:
@@ -261,11 +287,11 @@ int main() {
                             SDL_LockTextureToSurface(currentLayerT, updateArea, &tempLayer);
                             SDL_LockTextureToSurface(workLayerT, updateArea, &tempWorkLayer);
 
-                            DrawPixel_CircleBrush(workLayer, points[0], 5, currentColor);
-                            updateWorkRect->x = mouse.x - (5 + 1);
-                            updateWorkRect->y = mouse.y - (5 + 1);
-                            updateWorkRect->w = (5 + 1) * 2;
-                            updateWorkRect->h = (5 + 1) * 2;
+                            DrawPixel_CircleBrush(workLayer, points[0], strokeSize, currentColor);
+                            updateWorkRect->x = mouse.x - (strokeSize + 1);
+                            updateWorkRect->y = mouse.y - (strokeSize + 1);
+                            updateWorkRect->w = (strokeSize + 1) * 2;
+                            updateWorkRect->h = (strokeSize + 1) * 2;
                             SDL_BlitSurface(workLayer, updateWorkRect, tempWorkLayer, updateWorkRect);
 
                             UndoStack.push(new FrameEditAction(FRAME_EDIT, layers[currentLayerNum].frames[currentFrameNum], currentLayer));
@@ -294,19 +320,19 @@ int main() {
                     Point2 mouse = MapPoint(mouseX, mouseY, canvasCenterFP, angle, scale, SDL_FLIP_NONE);
 
                     points.push_back({mouse.x, mouse.y});
-                    DrawPixel_Line(workLayer, points[points.size() - 1], points[points.size() - 2], 5, currentColor);
+                    DrawPixel_Line(workLayer, points[points.size() - 1], points[points.size() - 2], strokeSize, currentColor);
 
-                    updateWorkRect->x = min(points[points.size() - 1].x, points[points.size() - 2].x) - (5 + 1);
-                    updateWorkRect->y = min(points[points.size() - 1].y, points[points.size() - 2].y) - (5 + 1);
-                    updateWorkRect->w = abs(points[points.size() - 1].x - points[points.size() - 2].x) + ((5 + 1) * 2);
-                    updateWorkRect->h = abs(points[points.size() - 1].y - points[points.size() - 2].y) + ((5 + 1) * 2);
+                    updateWorkRect->x = min(points[points.size() - 1].x, points[points.size() - 2].x) - (strokeSize + 1);
+                    updateWorkRect->y = min(points[points.size() - 1].y, points[points.size() - 2].y) - (strokeSize + 1);
+                    updateWorkRect->w = abs(points[points.size() - 1].x - points[points.size() - 2].x) + ((strokeSize + 1) * 2);
+                    updateWorkRect->h = abs(points[points.size() - 1].y - points[points.size() - 2].y) + ((strokeSize + 1) * 2);
 
                     SDL_BlitSurface(workLayer, updateWorkRect, tempWorkLayer, updateWorkRect);
 
                     if (points.size() > 500) {
                         auto* arr = (Point2*)malloc(sizeof(Point2) * points.size());
                         copy(points.begin(), points.end(), arr);
-                        FitCurve(arr, points.size(), 5.0, currentLayer);
+                        FitCurve(arr, points.size(), 5.0, currentLayer, currentColor, strokeSize);
 
                         free(arr);
                         points.clear();
@@ -338,7 +364,7 @@ int main() {
                             } else {
                                 auto *arr = (Point2 *) malloc(sizeof(Point2) * points.size());
                                 copy(points.begin(), points.end(), arr);
-                                FitCurve(arr, points.size(), 5.0, currentLayer);
+                                FitCurve(arr, points.size(), 5.0, currentLayer, currentColor, strokeSize);
 
                                 free(arr);
                             }
@@ -365,7 +391,32 @@ int main() {
         }
 
         if (SDL_GetTicks() % 4 == 0 ) {
+            Uint64 start = SDL_GetTicks();
+
             if (isDrawing) SDL_UnlockTexture(workLayerT);
+
+            ImGui_ImplSDLRenderer3_NewFrame();
+            ImGui_ImplSDL3_NewFrame();
+            ImGui::NewFrame();
+
+            {
+                ImGui::Begin("Color Panel");
+
+                ImGui::Text("Select Color");
+                ImGui::ColorPicker4("Color", colorFloats);
+
+                ImGui::SliderInt("Stroke", reinterpret_cast<int *>(&strokeSize), 1, 256);
+
+                ImGui::End();
+            }
+            currentColor = SDL_MapRGBA(format, nullptr, colorFloats[0]*255, colorFloats[1]*255, colorFloats[2]*255, colorFloats[3]*255);
+
+            ImGui::Render();
+
+            Uint64 elapsed = SDL_GetTicks() - start;
+            SDL_Log("%llu", elapsed);
+
+
 
             error = SDL_RenderClear(renderer);
             if (checkError(error, "RenderClear()")) return -1;
@@ -373,11 +424,11 @@ int main() {
             error = SDL_RenderTextureRotated(renderer, backgT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
             if (checkError(error, "RenderTextureRotated(backgT)")) return -1;
 
-            error = SDL_RenderTextureRotated(renderer, workLayerT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
-            if (checkError(error, "RenderTextureRotated(workLayerT)")) return -1;
-
             error = SDL_RenderTextureRotated(renderer, currentLayerT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
             if (checkError(error, "RenderTextureRotated(layerT)")) return -1;
+
+            error = SDL_RenderTextureRotated(renderer, workLayerT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
+            if (checkError(error, "RenderTextureRotated(workLayerT)")) return -1;
 
             // very temporary frame indicator
             for (int i = 0; i < layers[0].frames.size(); ++i) {
@@ -391,12 +442,12 @@ int main() {
                 SDL_SetRenderDrawColor(renderer, bgColor.r, bgColor.g, bgColor.b, bgColor.a);
             }
 
+            ImGui_ImplSDLRenderer3_RenderDrawData(ImGui::GetDrawData(), renderer);
 
             error = SDL_RenderPresent(renderer);
             if (checkError(error, "RenderPresent()")) return -1;
 
             if (isDrawing) SDL_LockTextureToSurface(workLayerT, updateArea, &tempWorkLayer);
-
         }
 
         Uint64 frameTime = (SDL_GetPerformanceCounter() - start) / SDL_GetPerformanceFrequency() * 1000;
@@ -409,6 +460,10 @@ int main() {
         }
 
     }
+
+    ImGui_ImplSDLRenderer3_Shutdown();
+    ImGui_ImplSDL3_Shutdown();
+    ImGui::DestroyContext();
 
     while (!RedoStack.empty()) {
         Action *ptr = RedoStack.top();
