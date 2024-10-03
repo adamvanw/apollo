@@ -48,15 +48,13 @@ static  Vector2     *V2Add(Vector2*, Vector2*, Vector2*);
 void DrawBezierCurve(int n, BezierCurve curve, SDL_Surface* sur, Uint32 color, int stroke) {
     float increment = 0.01;
     if (n == 3) {
-        /*
-        if (V2DistanceBetween2Points(&curve[0], &curve[1]) > V2DistanceBetween2Points(&curve[0], &curve[3])) {
+        if (V2DistanceBetween2Points(&curve[0], &curve[1]) > V2DistanceBetween2Points(&curve[0], &curve[3]) * 2) {
             printf("Detected large distance, may result in weird curve. Reduced to line.\n");
             for (int i = 0; i < 4; ++i) {
-                DrawPixel_Line(sur, curve[3], curve[0], 5, 0xFF000000);
+                DrawPixel_Line(sur, curve[3], curve[0], stroke, color);
             }
             return;
         }
-        */
 
         // we have generated a cubic Bezier curve.
         for (float t = 0.0f; t <= 1; t += increment) {

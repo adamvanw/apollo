@@ -30,9 +30,16 @@ int main() {
     SDL_Renderer* renderer = SDL_CreateRenderer(window, "opengl");
     if(checkNull(renderer)) return -1;
 
+    SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 5 );
+    SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 5 );
+    SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 5 );
+    SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
+    SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
+
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO(); (void)io;
+    io.AddMouseButtonEvent(ImGuiMouseButton_Left, true);
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
     io.Fonts->AddFontDefault();
@@ -62,6 +69,10 @@ int main() {
     // this will be the layer for any strokes in progress of being made. This will be cleared when a stroke/action is completed.
     SDL_Surface* workLayer = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_RGBA32);
     SDL_Texture* workLayerT = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA32, SDL_TEXTUREACCESS_STREAMING, width, height);
+
+    // this will be the layer for a complete stroke to be made, then altered for opacity, to then be blitted onto the actual frame.
+    // TODO: implement this please.
+    SDL_Surface* finalizeLayer = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_RGBA32);
 
     // a white surface for a background. can be customized in the future
     SDL_Surface* backg = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_RGBA32);
@@ -279,7 +290,7 @@ int main() {
             if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
                 switch (event.button.button) {
                     case SDL_BUTTON_LEFT:
-                        if (!isDrawing && (mouseX >= 0 && mouseX < width && mouseY - menu >= 0 && mouseY - menu < height)) {
+                        if (!io.WantCaptureMouse && !isDrawing && (mouseX >= 0 && mouseX < width && mouseY - menu >= 0 && mouseY - menu < height)) {
                             Point2 mouse = MapPoint(mouseX, mouseY, canvasCenterFP, angle, scale, SDL_FLIP_NONE);
 
                             points.push_back({mouse.x, mouse.y});
@@ -391,7 +402,6 @@ int main() {
         }
 
         if (SDL_GetTicks() % 4 == 0 ) {
-            Uint64 start = SDL_GetTicks();
 
             if (isDrawing) SDL_UnlockTexture(workLayerT);
 
@@ -412,11 +422,6 @@ int main() {
             currentColor = SDL_MapRGBA(format, nullptr, colorFloats[0]*255, colorFloats[1]*255, colorFloats[2]*255, colorFloats[3]*255);
 
             ImGui::Render();
-
-            Uint64 elapsed = SDL_GetTicks() - start;
-            SDL_Log("%llu", elapsed);
-
-
 
             error = SDL_RenderClear(renderer);
             if (checkError(error, "RenderClear()")) return -1;
@@ -448,6 +453,7 @@ int main() {
             if (checkError(error, "RenderPresent()")) return -1;
 
             if (isDrawing) SDL_LockTextureToSurface(workLayerT, updateArea, &tempWorkLayer);
+
         }
 
         Uint64 frameTime = (SDL_GetPerformanceCounter() - start) / SDL_GetPerformanceFrequency() * 1000;
