@@ -88,15 +88,17 @@ typedef struct Layer {
     SDL_BlendOperation blending;
     Uint8 opacity;
     bool deleted;
+    unsigned startPos;
 
-    Layer(vector<Frame*> layerData, SDL_BlendOperation blendOperation = SDL_BLENDOPERATION_ADD, Uint8 opacity = 0xFF, bool deleted = false) {
+    Layer(vector<Frame*> layerData, SDL_BlendOperation blendOperation = SDL_BLENDOPERATION_ADD, Uint8 opacity = 0xFF, bool deleted = false, unsigned startPos = 0) {
         this->frames = std::move(layerData);
         this->blending = blendOperation;
         this->opacity = opacity;
         this->deleted = deleted;
+        this->startPos = startPos;
     }
 
-    Layer(Frame frame, SDL_BlendOperation blendOperation = SDL_BLENDOPERATION_ADD, Uint8 opacity = 0xFF, bool deleted = false) {
+    Layer(Frame frame, SDL_BlendOperation blendOperation = SDL_BLENDOPERATION_ADD, Uint8 opacity = 0xFF, bool deleted = false, unsigned startPos = 0) {
         vector<Frame*> newFrames;
         newFrames.push_back(&frame);
 
@@ -104,6 +106,7 @@ typedef struct Layer {
         this->blending = blendOperation;
         this->opacity = opacity;
         this->deleted = deleted;
+        this->startPos = startPos;
     }
 
     void addFrame(Frame* frame, int pos = -1) {
@@ -112,6 +115,20 @@ typedef struct Layer {
             return;
         }
         frames.insert(frames.begin() + pos, frame);
+    }
+
+    int currentTimelineFrame(unsigned int timelinePos) {
+        if (timelinePos < startPos) return -1;
+        unsigned int length = 0;
+        for (int i = 0; i < frames.size(); ++i) {
+            length += frames[i]->length;
+            if (length > timelinePos) {
+                return i;
+            }
+        }
+        SDL_Log("%d", length);
+        // could not find frame pos. likely out of range.
+        return -1;
     }
 
     // does not completely delete the frame for sake of undo/redo

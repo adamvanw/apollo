@@ -11,6 +11,7 @@
 #include <vector>
 #endif
 
+typedef enum PaintMode {DRAW, ERASE, BEHIND};
 void DrawPixel(SDL_Surface*, Vector2, Uint32, Uint8);
 void DrawPixel_Line(SDL_Surface*, Vector2, Vector2, int, Uint32);
 void DrawPixel_QuadCurve(SDL_Surface*, Vector2, Vector2, Vector2, int, Uint32);

@@ -59,6 +59,7 @@ int main() {
 
     unsigned int currentLayerNum = 0;
     unsigned int currentFrameNum = 0;
+    unsigned int currentTimelineNum = 0;
 
     vector<Point2> points;
 
@@ -176,28 +177,79 @@ int main() {
                         break;
                     case SDLK_N:
                         SDL_Log("New frame created!");
-                        SDL_Log("%p", &layers[currentLayerNum].frames[0]);
                         layers[currentLayerNum].addFrame(new Frame(QOISaveFromSurface(newFrame)));
-                        SDL_Log("%p", &layers[currentLayerNum].frames[0]);
+                        break;
+                    case SDLK_M:
+                        SDL_Log("New layer created!");
+                        layers.push_back(Layer(Frame(QOISaveFromSurface(newFrame))));
                         break;
                     case SDLK_RIGHT:
-                        if (currentFrameNum < layers[currentLayerNum].frames.size() - 1) {
-                            currentFrameNum++;
-
-                            SDL_DestroySurface(currentLayer);
-                            currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum]->image->getData(), layers[currentLayerNum].frames[currentFrameNum]->image->getBytes()));
-                            SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
-                            SDL_Log("Entered frame %d.", currentFrameNum + 1);
+                        currentTimelineNum++;
+                        for (int i = 0; i < layers.size(); ++i) {
+                            if (i == currentLayerNum) {
+                                if (layers[i].currentTimelineFrame(currentTimelineNum) == -1) {
+                                    // TODO: Fix.
+                                    SDL_Log("Unhandled exception. Timeline beyond range of frames. Closing...");
+                                    return -1;
+                                } else {
+                                    currentFrameNum = layers[i].currentTimelineFrame(currentTimelineNum);
+                                    SDL_DestroySurface(currentLayer);
+                                    currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum]->image->getData(), layers[currentLayerNum].frames[currentFrameNum]->image->getBytes()));
+                                    SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
+                                }
+                            }
                         }
                         break;
                     case SDLK_LEFT:
-                        if (currentFrameNum > 0) {
-                            currentFrameNum--;
+                        if (currentTimelineNum <= 0) break;
+                        currentTimelineNum--;
+                        for (int i = 0; i < layers.size(); ++i) {
+                            if (i == currentLayerNum) {
+                                if (layers[i].currentTimelineFrame(currentTimelineNum) == -1) {
+                                    // TODO: Fix.
+                                    SDL_Log("Unhandled exception. Timeline beyond range of frames. Closing...");
+                                    return -1;
+                                } else {
+                                    currentFrameNum = layers[i].currentTimelineFrame(currentTimelineNum);
+                                    SDL_DestroySurface(currentLayer);
+                                    currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum]->image->getData(), layers[currentLayerNum].frames[currentFrameNum]->image->getBytes()));
+                                    SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
+                                }
+                            }
+                        }
+                        break;
+                    case SDLK_DOWN:
+                        if (currentLayerNum > 0) {
+                            currentLayerNum--;
+                            if (layers[currentLayerNum].currentTimelineFrame(currentTimelineNum) == -1) {
+                                // TODO: Fix.
+                                SDL_Log("Unhandled exception. Timeline beyond range of frames. Closing...");
+                                return -1;
+                            } else {
+                                currentFrameNum = layers[currentLayerNum].currentTimelineFrame(currentTimelineNum);
+                                SDL_DestroySurface(currentLayer);
+                                currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum]->image->getData(), layers[currentLayerNum].frames[currentFrameNum]->image->getBytes()));
+                                SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
+                            }
 
-                            SDL_DestroySurface(currentLayer);
-                            currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum]->image->getData(), layers[currentLayerNum].frames[currentFrameNum]->image->getBytes()));
-                            SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
-                            SDL_Log("Entered frame %d.", currentFrameNum + 1);
+                            SDL_Log("Entered layer %d.", currentLayerNum + 1);
+                        }
+                        break;
+                    case SDLK_UP:
+                        if (currentLayerNum < layers.size() - 1) {
+                            currentLayerNum++;
+                            if (layers[currentLayerNum].currentTimelineFrame(currentTimelineNum) == -1) {
+                                // TODO: Fix.
+                                SDL_Log("Unhandled exception. Timeline beyond range of frames. Closing...");
+                                return -1;
+                            } else {
+                                currentFrameNum = layers[currentLayerNum].currentTimelineFrame(currentTimelineNum);
+                                SDL_DestroySurface(currentLayer);
+                                currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum]->image->getData(), layers[currentLayerNum].frames[currentFrameNum]->image->getBytes()));
+                                SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
+                            }
+
+                            SDL_Log("Entered layer %d.", currentLayerNum + 1);
                         }
                         break;
                     case SDLK_KP_MULTIPLY:
@@ -220,6 +272,10 @@ int main() {
                         break;
                     case SDLK_ESCAPE:
                         escape = true;
+                        break;
+                    case SDLK_J:
+                        layers[currentLayerNum].frames[currentFrameNum]->length++;
+                        SDL_Log("Current frame's length incremented by 1.");
                         break;
                     case SDLK_Z:
                         // undo code
@@ -361,6 +417,7 @@ int main() {
 
                             ClearPixels(workLayer);
                             ClearPixels(tempWorkLayer);
+                            ClearPixels(finalizeLayer);
 
                             bool allPointsSame = true;
                             Point2 firstPoint = points[0];
@@ -371,14 +428,18 @@ int main() {
                                 }
                             }
                             if (allPointsSame) {
-                                DrawPixel_CircleBrush(currentLayer, firstPoint, strokeSize, currentColor);
+                                DrawPixel_CircleBrush(finalizeLayer, firstPoint, strokeSize, currentColor);
                             } else {
                                 auto *arr = (Point2 *) malloc(sizeof(Point2) * points.size());
                                 copy(points.begin(), points.end(), arr);
-                                FitCurve(arr, points.size(), 5.0, currentLayer, currentColor, strokeSize);
+                                FitCurve(arr, points.size(), 5.0, finalizeLayer, currentColor, strokeSize);
 
                                 free(arr);
                             }
+
+                            SDL_SetSurfaceAlphaMod(finalizeLayer, Uint8(255*colorFloats[3]));
+
+                            SDL_BlitSurface(finalizeLayer, nullptr, currentLayer, nullptr);
 
                             ClearPixels(tempLayer);
                             SDL_BlitSurface(currentLayer, nullptr, tempLayer, nullptr);
@@ -419,7 +480,8 @@ int main() {
 
                 ImGui::End();
             }
-            currentColor = SDL_MapRGBA(format, nullptr, colorFloats[0]*255, colorFloats[1]*255, colorFloats[2]*255, colorFloats[3]*255);
+            currentColor = SDL_MapRGBA(format, nullptr, Uint8(colorFloats[0]*255), Uint8(colorFloats[1]*255), Uint8(colorFloats[2]*255), 255);
+            SDL_SetTextureAlphaModFloat(workLayerT, colorFloats[3]);
 
             ImGui::Render();
 
@@ -429,6 +491,7 @@ int main() {
             error = SDL_RenderTextureRotated(renderer, backgT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
             if (checkError(error, "RenderTextureRotated(backgT)")) return -1;
 
+            // TODO: Implement multi-layer support (create multiple textures per layer (probably)).
             error = SDL_RenderTextureRotated(renderer, currentLayerT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
             if (checkError(error, "RenderTextureRotated(layerT)")) return -1;
 
@@ -436,16 +499,23 @@ int main() {
             if (checkError(error, "RenderTextureRotated(workLayerT)")) return -1;
 
             // very temporary frame indicator
-            for (int i = 0; i < layers[0].frames.size(); ++i) {
-                if (layers[0].frames[i]->deleted) continue;
+            for (int layerCount = 0; layerCount < layers.size(); ++layerCount) {
+                unsigned int x = 0;
+                for (int frameCount = 0; frameCount < layers[layerCount].frames.size(); ++frameCount) {
+                    if (layers[layerCount].frames[frameCount]->deleted) continue;
 
-                if (i == currentFrameNum) SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-                else SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+                    if (frameCount == currentFrameNum && layerCount == currentLayerNum) SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+                    else SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 
-                error = SDL_RenderRect(renderer, new SDL_FRect{(float)i * 25, menu + height + 25, 25, 25});
-                if (checkError(error, "SDL_RenderRect")) return -1;
-                SDL_SetRenderDrawColor(renderer, bgColor.r, bgColor.g, bgColor.b, bgColor.a);
+                    error = SDL_RenderRect(renderer, new SDL_FRect{(float)x * 25, menu + height + 25 - float(25 * layerCount), static_cast<float>(25 * layers[layerCount].frames[frameCount]->length), 25});
+                    if (checkError(error, "SDL_RenderRect")) return -1;
+                    x += layers[layerCount].frames[frameCount]->length;
+                }
             }
+
+            SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+            SDL_RenderRect(renderer, new SDL_FRect{11.5f + float(currentTimelineNum) * 25, menu + height, 2, 50});
+            SDL_SetRenderDrawColor(renderer, bgColor.r, bgColor.g, bgColor.b, bgColor.a);
 
             ImGui_ImplSDLRenderer3_RenderDrawData(ImGui::GetDrawData(), renderer);
 
@@ -492,6 +562,8 @@ int main() {
     delete canvasArea;
     delete updateArea;
     delete updateWorkRect;
+
+    SDL_DestroySurface(finalizeLayer);
 
     SDL_DestroySurface(currentLayer);
     SDL_DestroyTexture(currentLayerT);
