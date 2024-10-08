@@ -76,6 +76,14 @@ public:
         this->deleted = deleted;
     }
 
+    void setLength(unsigned length) {
+        this->length = length;
+    }
+
+    unsigned getLength() {
+        return this->length;
+    }
+
 } Frame;
 
 /**
@@ -85,28 +93,31 @@ public:
  */
 typedef struct Layer {
     vector<Frame*> frames;
-    SDL_BlendOperation blending;
+    SDL_BlendMode blendMode;
     Uint8 opacity;
     bool deleted;
     unsigned startPos;
+    SDL_Texture* texture;
 
-    Layer(vector<Frame*> layerData, SDL_BlendOperation blendOperation = SDL_BLENDOPERATION_ADD, Uint8 opacity = 0xFF, bool deleted = false, unsigned startPos = 0) {
+    Layer(vector<Frame*> layerData, unsigned startPos = 0, SDL_BlendMode blendMode = SDL_BLENDMODE_BLEND, Uint8 opacity = 0xFF, bool deleted = false) {
         this->frames = std::move(layerData);
-        this->blending = blendOperation;
+        this->blendMode = blendMode;
         this->opacity = opacity;
         this->deleted = deleted;
         this->startPos = startPos;
+        this->texture = nullptr;
     }
 
-    Layer(Frame frame, SDL_BlendOperation blendOperation = SDL_BLENDOPERATION_ADD, Uint8 opacity = 0xFF, bool deleted = false, unsigned startPos = 0) {
+    Layer(Frame frame, unsigned startPos = 0, SDL_BlendMode blendMode = SDL_BLENDMODE_BLEND, Uint8 opacity = 0xFF, bool deleted = false) {
         vector<Frame*> newFrames;
         newFrames.push_back(&frame);
 
         this->frames = newFrames;
-        this->blending = blendOperation;
+        this->blendMode = blendMode;
         this->opacity = opacity;
         this->deleted = deleted;
         this->startPos = startPos;
+        this->texture = nullptr;
     }
 
     void addFrame(Frame* frame, int pos = -1) {
@@ -119,14 +130,13 @@ typedef struct Layer {
 
     int currentTimelineFrame(unsigned int timelinePos) {
         if (timelinePos < startPos) return -1;
-        unsigned int length = 0;
+        unsigned int length = startPos;
         for (int i = 0; i < frames.size(); ++i) {
             length += frames[i]->length;
             if (length > timelinePos) {
                 return i;
             }
         }
-        SDL_Log("%d", length);
         // could not find frame pos. likely out of range.
         return -1;
     }
@@ -162,6 +172,26 @@ typedef struct Layer {
         if (opacity > 255) this->opacity = 255;
         else if (opacity < 0) this->opacity = 0;
         else this->opacity = (Uint8)opacity;
+    }
+
+    // this is called when timeline position changes.
+    void refreshTexture(SDL_Renderer* renderer, unsigned int timelinePos) {
+        // if layer isn't even visible, texture is null
+        if (this->opacity == 0) {
+            if (this->texture != nullptr) SDL_DestroyTexture(this->texture);
+            this->texture = nullptr;
+        }
+
+        int framePos = currentTimelineFrame(timelinePos);
+        if (framePos >= 0) {
+            if (this->texture != nullptr) SDL_DestroyTexture(this->texture);
+            SDL_Surface* frameSur = IMG_LoadQOI_IO(SDL_IOFromMem(frames[framePos]->image->getData(), frames[framePos]->image->getBytes()));
+            this->texture = SDL_CreateTextureFromSurface(renderer, frameSur);
+            SDL_DestroySurface(frameSur);
+        } else {
+            if (this->texture != nullptr) SDL_DestroyTexture(this->texture);
+            this->texture = nullptr;
+        }
     }
 
 } Layer;
@@ -263,7 +293,7 @@ int checkNull(void* object) {
 }
 
 int checkError(int returnCode, char* string) {
-    if (returnCode) {
+    if (!returnCode) {
         SDL_LogError(-1, "%s failed. SDL has errored: %s", string, SDL_GetError());
         return 1;
     }

@@ -102,5 +102,37 @@ void ClearPixels(SDL_Surface* sur) {
     }
 }
 
+void PaintOnTop(SDL_Surface* sur, SDL_Surface* newSur, float alpha) {
+    if (alpha == 0.0f) return;
+    // assumed sur and newSur have the same format, w, h, etc.
+    auto* format = SDL_GetPixelFormatDetails(sur->format);
+    for (int i = 0; i < sur->w; ++i) {
+        for (int j = 0; j < sur->h; ++j) {
+            auto* ptr = (Uint32*)sur->pixels + sur->w*j + i;
+            auto* newPtr = (Uint32*)newSur->pixels + newSur->w*j + i;
+
+            Uint8 r, g, b, a;
+            Uint8 nr, ng, nb, na;
+            Uint8 rR, rG, rB, rA;
+
+            SDL_GetRGBA(*ptr, format, nullptr, &r, &g, &b, &a);
+            SDL_GetRGBA(*newPtr, format, nullptr, &nr, &ng, &nb, &na);
+
+            if (na == 0) {
+                rR = r; rG = g; rB = b; rA = a;
+            } else if (a == 0) {
+                rR = nr; rG = ng; rB = nb; rA = Uint8(alpha * 255);
+            } else {
+                rR = (Uint8)(r * (1 - alpha) + nr * alpha);
+                rG = (Uint8)(g * (1 - alpha) + ng * alpha);
+                rB = (Uint8)(b * (1 - alpha) + nb * alpha);
+                rA = (Uint8)(a * (1 - alpha) + na * alpha);
+            }
+
+            *ptr = SDL_MapRGBA(format, nullptr, rR, rG, rB, rA);
+        }
+    }
+}
+
 
 #endif //APOLLO_DRAW_H
