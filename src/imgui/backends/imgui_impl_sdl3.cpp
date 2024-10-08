@@ -47,7 +47,7 @@
 //  2023-02-23: Accept SDL_GetPerformanceCounter() not returning a monotonically increasing value. (#6189, #6114, #3644)
 //  2023-02-07: Forked "imgui_impl_sdl2" into "imgui_impl_sdl3". Removed version checks for old feature. Refer to imgui_impl_sdl2.cpp for older changelog.
 
-#include "../imgui.h"
+#include "imgui.h"
 #ifndef IMGUI_DISABLE
 #include "imgui_impl_sdl3.h"
 
@@ -58,7 +58,7 @@
 #endif
 
 // SDL
-#include "SDL3/SDL.h"
+#include <SDL3/SDL.h>
 #if defined(__APPLE__)
 #include <TargetConditionals.h>
 #endif
@@ -159,7 +159,8 @@ static void ImGui_ImplSDL3_PlatformSetImeData(ImGuiContext*, ImGuiViewport* view
     }
 }
 
-static ImGuiKey ImGui_ImplSDL3_KeyEventToImGuiKey(SDL_Keycode keycode, SDL_Scancode scancode)
+// Not static to allow third-party code to use that if they want to (but undocumented)
+ImGuiKey ImGui_ImplSDL3_KeyEventToImGuiKey(SDL_Keycode keycode, SDL_Scancode scancode)
 {
     // Keypad doesn't have individual key values in SDL3
     switch (scancode)
@@ -563,7 +564,7 @@ static void ImGui_ImplSDL3_UpdateMouseData()
     // We forward mouse input when hovered or captured (via SDL_EVENT_MOUSE_MOTION) or when focused (below)
 #if SDL_HAS_CAPTURE_AND_GLOBAL_MOUSE
     // SDL_CaptureMouse() let the OS know e.g. that our imgui drag outside the SDL window boundaries shouldn't e.g. trigger other operations outside
-    SDL_CaptureMouse((bd->MouseButtonsDown != 0) ? SDL_TRUE : SDL_FALSE);
+    SDL_CaptureMouse(bd->MouseButtonsDown != 0);
     SDL_Window* focused_window = SDL_GetKeyboardFocus();
     const bool is_app_focused = (bd->Window == focused_window);
 #else

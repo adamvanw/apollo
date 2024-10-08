@@ -27,7 +27,7 @@
 //  2024-02-12: Amend to query SDL_RenderViewportSet() and restore viewport accordingly.
 //  2023-05-30: Initial version.
 
-#include "../imgui.h"
+#include "imgui.h"
 #ifndef IMGUI_DISABLE
 #include "imgui_impl_sdlrenderer3.h"
 #include <stdint.h>     // intptr_t
@@ -39,7 +39,7 @@
 #endif
 
 // SDL
-#include "SDL3/SDL.h"
+#include <SDL3/SDL.h>
 #if !SDL_VERSION_ATLEAST(3,0,0)
 #error This backend requires SDL 3.0.0+
 #endif
@@ -158,8 +158,8 @@ void ImGui_ImplSDLRenderer3_RenderDrawData(ImDrawData* draw_data, SDL_Renderer* 
         SDL_Rect    ClipRect;
     };
     BackupSDLRendererState old = {};
-    old.ViewportEnabled = SDL_RenderViewportSet(renderer) == SDL_TRUE;
-    old.ClipEnabled = SDL_RenderClipEnabled(renderer) == SDL_TRUE;
+    old.ViewportEnabled = SDL_RenderViewportSet(renderer);
+    old.ClipEnabled = SDL_RenderClipEnabled(renderer);
     SDL_GetRenderViewport(renderer, &old.Viewport);
     SDL_GetRenderClipRect(renderer, &old.ClipRect);
 
@@ -171,13 +171,13 @@ void ImGui_ImplSDLRenderer3_RenderDrawData(ImDrawData* draw_data, SDL_Renderer* 
     ImGui_ImplSDLRenderer3_SetupRenderState(renderer);
     for (int n = 0; n < draw_data->CmdListsCount; n++)
     {
-        const ImDrawList* cmd_list = draw_data->CmdLists[n];
-        const ImDrawVert* vtx_buffer = cmd_list->VtxBuffer.Data;
-        const ImDrawIdx* idx_buffer = cmd_list->IdxBuffer.Data;
+        const ImDrawList* draw_list = draw_data->CmdLists[n];
+        const ImDrawVert* vtx_buffer = draw_list->VtxBuffer.Data;
+        const ImDrawIdx* idx_buffer = draw_list->IdxBuffer.Data;
 
-        for (int cmd_i = 0; cmd_i < cmd_list->CmdBuffer.Size; cmd_i++)
+        for (int cmd_i = 0; cmd_i < draw_list->CmdBuffer.Size; cmd_i++)
         {
-            const ImDrawCmd* pcmd = &cmd_list->CmdBuffer[cmd_i];
+            const ImDrawCmd* pcmd = &draw_list->CmdBuffer[cmd_i];
             if (pcmd->UserCallback)
             {
                 // User callback, registered via ImDrawList::AddCallback()
@@ -185,7 +185,7 @@ void ImGui_ImplSDLRenderer3_RenderDrawData(ImDrawData* draw_data, SDL_Renderer* 
                 if (pcmd->UserCallback == ImDrawCallback_ResetRenderState)
                     ImGui_ImplSDLRenderer3_SetupRenderState(renderer);
                 else
-                    pcmd->UserCallback(cmd_list, pcmd);
+                    pcmd->UserCallback(draw_list, pcmd);
             }
             else
             {
@@ -212,7 +212,7 @@ void ImGui_ImplSDLRenderer3_RenderDrawData(ImDrawData* draw_data, SDL_Renderer* 
                     xy, (int)sizeof(ImDrawVert),
                     color, (int)sizeof(ImDrawVert),
                     uv, (int)sizeof(ImDrawVert),
-                    cmd_list->VtxBuffer.Size - pcmd->VtxOffset,
+                    draw_list->VtxBuffer.Size - pcmd->VtxOffset,
                     idx_buffer + pcmd->IdxOffset, pcmd->ElemCount, sizeof(ImDrawIdx));
             }
         }
