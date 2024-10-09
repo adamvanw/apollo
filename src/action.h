@@ -108,9 +108,9 @@ typedef struct Layer {
         this->texture = nullptr;
     }
 
-    Layer(Frame frame, unsigned startPos = 0, SDL_BlendMode blendMode = SDL_BLENDMODE_BLEND, Uint8 opacity = 0xFF, bool deleted = false) {
+    Layer(Frame* frame, unsigned startPos = 0, SDL_BlendMode blendMode = SDL_BLENDMODE_BLEND, Uint8 opacity = 0xFF, bool deleted = false) {
         vector<Frame*> newFrames;
-        newFrames.push_back(&frame);
+        newFrames.emplace_back(frame);
 
         this->frames = newFrames;
         this->blendMode = blendMode;

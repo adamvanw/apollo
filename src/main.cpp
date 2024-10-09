@@ -91,7 +91,7 @@ int main() {
     SDL_FillSurfaceRect(backg, canvasR, SDL_MapRGBA(SDL_GetPixelFormatDetails(backg->format), SDL_GetSurfacePalette(backg), 0, 0, 0, 255));
 
     vector<Layer> layers;
-    Frame frame = Frame(QOISaveFromSurface(currentLayer), 1, false);
+    auto* frame = new Frame(QOISaveFromSurface(currentLayer), 1, false);
     Layer layer = Layer(frame);
     layers.emplace_back(layer);
 
@@ -176,7 +176,7 @@ int main() {
                         break;
                     case SDLK_M:
                         SDL_Log("New layer created!");
-                        layers.push_back(Layer(Frame(QOISaveFromSurface(newFrame)), currentTimelineNum));
+                        layers.emplace_back(Layer(new Frame(QOISaveFromSurface(newFrame)), currentTimelineNum));
                         layers[layers.size() - 1].refreshTexture(renderer, currentTimelineNum);
                         break;
                     case SDLK_RIGHT:
