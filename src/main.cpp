@@ -135,11 +135,14 @@ int main() {
 
     layers[0].refreshTexture(renderer, currentTimelineNum);
 
+    PaintMode paintMode = DRAW;
+
     while(!escape) {
-        Uint64 start = SDL_GetTicksNS();
+        // Uint64 start = SDL_GetTicksNS();
 
         SDL_GetMouseState(&mouseX, &mouseY);
 
+        int prevTimelineNum;
 
         while (SDL_PollEvent(&event)) {
             ImGui_ImplSDL3_ProcessEvent(&event);
@@ -163,7 +166,7 @@ int main() {
                         canvasCenterFP->x += 4;
                         break;
                     case SDLK_B:
-                        currentColor = SDL_MapRGBA(format, SDL_GetSurfacePalette(currentLayer), 0, 0, 0, 255);
+                        paintMode = DRAW;
                         break;
                     case SDLK_KP_MINUS:
                         angle -= 5.0;
@@ -180,6 +183,7 @@ int main() {
                         layers[layers.size() - 1].refreshTexture(renderer, currentTimelineNum);
                         break;
                     case SDLK_RIGHT:
+                        prevTimelineNum = currentTimelineNum;
                         currentTimelineNum++;
                         for (int i = 0; i < layers.size(); ++i) {
                             if (i == currentLayerNum) {
@@ -195,9 +199,10 @@ int main() {
                                 SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
                             }
                         }
-                        refreshAllTextures(&layers, renderer, currentTimelineNum);
+                        if (currentTimelineNum != prevTimelineNum) refreshAllTextures(&layers, renderer, currentTimelineNum);
                         break;
                     case SDLK_LEFT:
+                        prevTimelineNum = currentTimelineNum;
                         if (currentTimelineNum <= 0) break;
                         currentTimelineNum--;
                         for (int i = 0; i < layers.size(); ++i) {
@@ -214,9 +219,10 @@ int main() {
                                 SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
                             }
                         }
-                        refreshAllTextures(&layers, renderer, currentTimelineNum);
+                        if (currentTimelineNum != prevTimelineNum) refreshAllTextures(&layers, renderer, currentTimelineNum);
                         break;
                     case SDLK_DOWN:
+                        prevTimelineNum = currentTimelineNum;
                         if (currentLayerNum > 0) {
                             currentLayerNum--;
                             if (layers[currentLayerNum].currentTimelineFrame(currentTimelineNum) == -1) {
@@ -231,11 +237,12 @@ int main() {
                             currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum]->image->getData(), layers[currentLayerNum].frames[currentFrameNum]->image->getBytes()));
                             SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
 
-                            refreshAllTextures(&layers, renderer, currentTimelineNum);
+                            if (currentTimelineNum != prevTimelineNum) refreshAllTextures(&layers, renderer, currentTimelineNum);
                             SDL_Log("Entered layer %d.", currentLayerNum + 1);
                         }
                         break;
                     case SDLK_UP:
+                        prevTimelineNum = currentTimelineNum;
                         if (currentLayerNum < layers.size() - 1) {
                             currentLayerNum++;
                             if (layers[currentLayerNum].currentTimelineFrame(currentTimelineNum) == -1) {
@@ -250,7 +257,7 @@ int main() {
                             currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum]->image->getData(), layers[currentLayerNum].frames[currentFrameNum]->image->getBytes()));
                             SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
 
-                            refreshAllTextures(&layers, renderer, currentTimelineNum);
+                            if (currentTimelineNum != prevTimelineNum) refreshAllTextures(&layers, renderer, currentTimelineNum);
                             SDL_Log("Entered layer %d.", currentLayerNum + 1);
                         }
                         break;
@@ -270,7 +277,7 @@ int main() {
                         SDL_Log("%lf %lf %lf %lf", canvasArea->w, canvasArea->h, canvasArea->x, canvasArea->y);
                         break;
                     case SDLK_E:
-                        currentColor = SDL_MapRGBA(format, SDL_GetSurfacePalette(currentLayer), 0, 0, 0, 0);
+                        paintMode = ERASE;
                         break;
                     case SDLK_ESCAPE:
                         escape = true;
@@ -405,7 +412,7 @@ int main() {
                     if (points.size() > 500) {
                         auto* arr = (Point2*)malloc(sizeof(Point2) * points.size());
                         copy(points.begin(), points.end(), arr);
-                        FitCurve(arr, points.size(), 5.0, currentLayer, currentColor, strokeSize);
+                        FitCurve(arr, points.size(), 5.0, finalizeLayer, currentColor, strokeSize);
 
                         free(arr);
                         points.clear();
@@ -423,7 +430,6 @@ int main() {
 
                             ClearPixels(workLayer);
                             ClearPixels(tempWorkLayer);
-                            ClearPixels(finalizeLayer);
 
                             bool allPointsSame = true;
                             Point2 firstPoint = points[0];
@@ -443,7 +449,8 @@ int main() {
                                 free(arr);
                             }
 
-                            PaintOnTop(currentLayer, finalizeLayer, colorFloats[3]);
+                            if (paintMode == DRAW) PaintOnTop(currentLayer, finalizeLayer, colorFloats[3]);
+                            else if (paintMode == ERASE) EraseOnTop(currentLayer, finalizeLayer, colorFloats[3]);
                             tempLayer = currentLayer;
 
                             SDL_UnlockTexture(workLayerT);
@@ -452,6 +459,8 @@ int main() {
                             layers[currentLayerNum].frames[currentFrameNum]->image = QOISaveFromSurface(currentLayer);
                             layers[currentLayerNum].refreshTexture(renderer, currentTimelineNum);
 
+
+                            ClearPixels(finalizeLayer);
                             points.clear();
                         }
                         break;
@@ -533,7 +542,7 @@ int main() {
             if (isDrawing) SDL_LockTextureToSurface(workLayerT, updateArea, &tempWorkLayer);
         }
 
-        float frameTime = (SDL_GetTicksNS() - start) / 1000000.0f;
+        // float frameTime = (SDL_GetTicksNS() - start) / 1000000.0f;
 
         // SDL_Log("Time taken: %f ms", float(frameTime));
         /*

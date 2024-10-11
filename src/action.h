@@ -177,19 +177,20 @@ typedef struct Layer {
     // this is called when timeline position changes.
     void refreshTexture(SDL_Renderer* renderer, unsigned int timelinePos) {
         // if layer isn't even visible, texture is null
+        if (this->texture != nullptr) SDL_DestroyTexture(this->texture);
         if (this->opacity == 0) {
-            if (this->texture != nullptr) SDL_DestroyTexture(this->texture);
             this->texture = nullptr;
         }
 
         int framePos = currentTimelineFrame(timelinePos);
         if (framePos >= 0) {
-            if (this->texture != nullptr) SDL_DestroyTexture(this->texture);
+            Uint64 start = SDL_GetTicksNS();
             SDL_Surface* frameSur = IMG_LoadQOI_IO(SDL_IOFromMem(frames[framePos]->image->getData(), frames[framePos]->image->getBytes()));
+            SDL_Log("Time taken to load surface: %lf", float(SDL_GetTicksNS() - start) / 1000000.0f);
             this->texture = SDL_CreateTextureFromSurface(renderer, frameSur);
             SDL_DestroySurface(frameSur);
+
         } else {
-            if (this->texture != nullptr) SDL_DestroyTexture(this->texture);
             this->texture = nullptr;
         }
     }

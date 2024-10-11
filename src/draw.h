@@ -109,7 +109,10 @@ void PaintOnTop(SDL_Surface* sur, SDL_Surface* newSur, float alpha) {
     Uint8 rR, rG, rB, rA;
     Uint32 *ptr, *newPtr;
     Uint8 alpha8 = alpha * 255;
+    Uint64 start = SDL_GetTicksNS();
+
     // assumed sur and newSur have the same format, w, h, etc.
+    // if they don't!!! that's bad!!!
     auto* format = SDL_GetPixelFormatDetails(sur->format);
     for (int i = 0; i < sur->w; ++i) {
         for (int j = 0; j < sur->h; ++j) {
@@ -122,7 +125,7 @@ void PaintOnTop(SDL_Surface* sur, SDL_Surface* newSur, float alpha) {
             SDL_GetRGBA(*ptr, format, nullptr, &r, &g, &b, &a);
 
             if (a == 0 || alpha8 == 255) {
-                *ptr = SDL_MapRGBA(format, nullptr, nr, ng, ng, alpha8);
+                *ptr = SDL_MapRGBA(format, nullptr, nr, ng, nb, alpha8);
                 continue;
             } else {
                 rR = (Uint8)(r * (1 - alpha) + nr * alpha);
@@ -133,6 +136,47 @@ void PaintOnTop(SDL_Surface* sur, SDL_Surface* newSur, float alpha) {
             }
         }
     }
+    Uint64 end = SDL_GetTicksNS();
+    SDL_Log("Blitting took: %llf", float((end - start) / 1000000));
+}
+
+void EraseOnTop(SDL_Surface* sur, SDL_Surface* newSur, float alpha) {
+    if (alpha == 0.0f) return;
+    Uint8 r, g, b, a;
+    Uint8 na;
+    Uint8 rA;
+    Uint32 *ptr, *newPtr;
+    Uint64 start = SDL_GetTicksNS();
+
+    // assumed sur and newSur have the same format, w, h, etc.
+    // if they don't!!! that's bad!!!
+    auto* format = SDL_GetPixelFormatDetails(sur->format);
+    for (int i = 0; i < sur->w; ++i) {
+        for (int j = 0; j < sur->h; ++j) {
+            newPtr = (Uint32*)newSur->pixels + newSur->w*j + i;
+            SDL_GetRGBA(*newPtr, format, nullptr, nullptr, nullptr, nullptr, &na);
+
+            // if the working layer has no alpha at that pixel, skip.
+            if (na == 0) continue;
+
+            ptr = (Uint32*)sur->pixels + sur->w*j + i;
+
+            // if the working layer has a full alpha layer, set the current pixel to 0x00000000
+            if (na == 255 && alpha >= 1.0f) {
+                *ptr = 0x00000000;
+                continue;
+            }
+
+            SDL_GetRGBA(*ptr, format, nullptr, &r, &g, &b, &a);
+
+            // r, g, and b are not manipulated in the erase function.
+            rA = Uint8(a * alpha);
+            *ptr = SDL_MapRGBA(format, nullptr, r, g, b, rA);
+        }
+    }
+
+    Uint64 end = SDL_GetTicksNS();
+    SDL_Log("Blitting took: %llf", float((end - start) / 1000000));
 }
 
 
