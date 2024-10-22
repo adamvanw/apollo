@@ -144,7 +144,6 @@ void EraseOnTop(SDL_Surface* sur, SDL_Surface* newSur, float alpha) {
     if (alpha == 0.0f) return;
     Uint8 r, g, b, a;
     Uint8 na;
-    Uint8 rA;
     Uint32 *ptr, *newPtr;
     Uint64 start = SDL_GetTicksNS();
 
@@ -157,6 +156,7 @@ void EraseOnTop(SDL_Surface* sur, SDL_Surface* newSur, float alpha) {
             SDL_GetRGBA(*newPtr, format, nullptr, nullptr, nullptr, nullptr, &na);
 
             // if the working layer has no alpha at that pixel, skip.
+            // (there's nothing to erase, it's virtually empty)
             if (na == 0) continue;
 
             ptr = (Uint32*)sur->pixels + sur->w*j + i;
@@ -167,11 +167,11 @@ void EraseOnTop(SDL_Surface* sur, SDL_Surface* newSur, float alpha) {
                 continue;
             }
 
+            // otherwise, perform an actual erase operation
             SDL_GetRGBA(*ptr, format, nullptr, &r, &g, &b, &a);
 
             // r, g, and b are not manipulated in the erase function.
-            rA = Uint8(a * alpha);
-            *ptr = SDL_MapRGBA(format, nullptr, r, g, b, rA);
+            *ptr = SDL_MapRGBA(format, nullptr, r, g, b, Uint8(a * alpha));
         }
     }
 

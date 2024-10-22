@@ -64,12 +64,12 @@ QOISave* QOISaveFromSurface(SDL_Surface* sur) {
  */
 typedef struct Frame {
 public:
-    QOISave* image;
+    SDL_Surface* image;
     bool deleted;
     unsigned length;
 
-    Frame(QOISave* qoi, unsigned length = 1, bool deleted = false) {
-        this->image = qoi;
+    Frame(SDL_Surface* image, unsigned length = 1, bool deleted = false) {
+        this->image = image;
         this->length = length;
 
         // we're likely never constructing a frame that's deleted on initialization, but just in case...
@@ -177,19 +177,16 @@ typedef struct Layer {
     // this is called when timeline position changes.
     void refreshTexture(SDL_Renderer* renderer, unsigned int timelinePos) {
         // if layer isn't even visible, texture is null
+
         if (this->texture != nullptr) SDL_DestroyTexture(this->texture);
         if (this->opacity == 0) {
             this->texture = nullptr;
+            return;
         }
 
         int framePos = currentTimelineFrame(timelinePos);
         if (framePos >= 0) {
-            Uint64 start = SDL_GetTicksNS();
-            SDL_Surface* frameSur = IMG_LoadQOI_IO(SDL_IOFromMem(frames[framePos]->image->getData(), frames[framePos]->image->getBytes()));
-            SDL_Log("Time taken to load surface: %lf", float(SDL_GetTicksNS() - start) / 1000000.0f);
-            this->texture = SDL_CreateTextureFromSurface(renderer, frameSur);
-            SDL_DestroySurface(frameSur);
-
+            this->texture = SDL_CreateTextureFromSurface(renderer, this->frames[framePos]->image);
         } else {
             this->texture = nullptr;
         }
@@ -197,6 +194,11 @@ typedef struct Layer {
 
 } Layer;
 
+void refreshAllTextures(vector<Layer>* layers, SDL_Renderer* renderer, unsigned timelinePos) {
+    for (auto& layer : *layers) {
+        layer.refreshTexture(renderer, timelinePos);
+    }
+}
 
 typedef class Action {
 
@@ -267,13 +269,13 @@ typedef struct FrameEditAction : FrameAction {
 public:
     QOISave* save = (QOISave*)SDL_malloc(sizeof(QOISave));
 
-    FrameEditAction(ActionType action, Frame* frame, SDL_Surface* sur = nullptr) : FrameAction(action, frame) {
+    FrameEditAction(ActionType action, Frame* frame, SDL_Surface* sur) : FrameAction(action, frame) {
 
         if (frame == nullptr || action != FRAME_EDIT || sur == nullptr) {
             SDL_LogError(-1, "Improperly saved frame information. Please exit the program.");
         }
 
-        save = QOISaveFromSurface(sur);
+        this->save = QOISaveFromSurface(sur);
         SDL_Log("save saved successfully");
     }
 
@@ -299,6 +301,16 @@ int checkError(int returnCode, char* string) {
         return 1;
     }
     return 0;
+}
+
+void swapQOISaveWithSurface(QOISave** qoi, SDL_Surface** sur) {
+    SDL_Surface* sur2 = SDL_DuplicateSurface(*sur);
+    SDL_DestroySurface(*sur);
+    *sur = IMG_LoadQOI_IO(SDL_IOFromMem((*qoi)->getData(), (*qoi)->getBytes()));
+    (*qoi)->free();
+    SDL_free(*qoi);
+    *qoi = QOISaveFromSurface(sur2);
+    SDL_DestroySurface(sur2);
 }
 
 #endif //APOLLO_ACTION_H

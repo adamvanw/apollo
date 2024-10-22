@@ -8,11 +8,6 @@ const Uint64 refreshDelay = (Uint64)1000 / 360;   // 360 is temporary, but marks
 
 typedef enum KeyFlags {LCTRL, RCTRL, LALT, RALT, LSHIFT, RSHIFT, FUNCTION} KeyFlags;
 
-void refreshAllTextures(vector<Layer>* layers, SDL_Renderer* renderer, unsigned timelinePos) {
-    for (auto& layer : *layers) {
-        layer.refreshTexture(renderer, timelinePos);
-    }
-}
 int main() {
     SDL_Init(SDL_INIT_EVENTS | SDL_INIT_VIDEO);
 
@@ -26,6 +21,12 @@ int main() {
 
     SDL_Renderer* renderer = SDL_CreateRenderer(window, "opengl");
     if(checkNull(renderer)) return -1;
+
+    SDL_GL_SetAttribute( SDL_GL_RED_SIZE, 5 );
+    SDL_GL_SetAttribute( SDL_GL_GREEN_SIZE, 5 );
+    SDL_GL_SetAttribute( SDL_GL_BLUE_SIZE, 5 );
+    SDL_GL_SetAttribute( SDL_GL_DEPTH_SIZE, 16 );
+    SDL_GL_SetAttribute( SDL_GL_DOUBLEBUFFER, 1 );
 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -63,7 +64,6 @@ int main() {
     SDL_Texture* workLayerT = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA32, SDL_TEXTUREACCESS_STREAMING, width, height);
 
     // this will be the layer for a complete stroke to be made, then altered for opacity, to then be blitted onto the actual frame.
-    // TODO: implement this please.
     SDL_Surface* finalizeLayer = SDL_CreateSurface(width, height, SDL_PIXELFORMAT_RGBA32);
 
     // a white surface for a background. can be customized in the future
@@ -91,7 +91,7 @@ int main() {
     SDL_FillSurfaceRect(backg, canvasR, SDL_MapRGBA(SDL_GetPixelFormatDetails(backg->format), SDL_GetSurfacePalette(backg), 0, 0, 0, 255));
 
     vector<Layer> layers;
-    auto* frame = new Frame(QOISaveFromSurface(currentLayer), 1, false);
+    auto* frame = new Frame(SDL_DuplicateSurface(newFrame), 1, false);
     Layer layer = Layer(frame);
     layers.emplace_back(layer);
 
@@ -174,12 +174,12 @@ int main() {
                         break;
                     case SDLK_N:
                         SDL_Log("New frame created!");
-                        layers[currentLayerNum].addFrame(new Frame(QOISaveFromSurface(newFrame)));
+                        layers[currentLayerNum].addFrame(new Frame(SDL_DuplicateSurface(newFrame)));
                         layers[currentLayerNum].refreshTexture(renderer, currentTimelineNum);
                         break;
                     case SDLK_M:
                         SDL_Log("New layer created!");
-                        layers.emplace_back(Layer(new Frame(QOISaveFromSurface(newFrame)), currentTimelineNum));
+                        layers.push_back(Layer(new Frame(SDL_DuplicateSurface(newFrame)), currentTimelineNum));
                         layers[layers.size() - 1].refreshTexture(renderer, currentTimelineNum);
                         break;
                     case SDLK_RIGHT:
@@ -195,8 +195,17 @@ int main() {
                                     currentFrameNum = layers[i].currentTimelineFrame(currentTimelineNum);
                                 }
                                 SDL_DestroySurface(currentLayer);
-                                currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum]->image->getData(), layers[currentLayerNum].frames[currentFrameNum]->image->getBytes()));
-                                SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
+                                if (layers[currentLayerNum].frames[currentFrameNum]->image->pixels == nullptr) {
+                                    SDL_Log("dude!!!! WHY!!!!!");
+                                }
+                                currentLayer = SDL_DuplicateSurface(layers[currentLayerNum].frames[currentFrameNum]->image);
+                                if (currentLayer == nullptr) {
+                                    SDL_Log("Reached null pointer. Whoops!");
+                                } else {
+                                    SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
+                                }
+                                SDL_Log(SDL_GetError());
+
                             }
                         }
                         if (currentTimelineNum != prevTimelineNum) refreshAllTextures(&layers, renderer, currentTimelineNum);
@@ -215,8 +224,14 @@ int main() {
                                     currentFrameNum = layers[i].currentTimelineFrame(currentTimelineNum);
                                 }
                                 SDL_DestroySurface(currentLayer);
-                                currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum]->image->getData(), layers[currentLayerNum].frames[currentFrameNum]->image->getBytes()));
-                                SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
+                                currentLayer = SDL_DuplicateSurface(layers[currentLayerNum].frames[currentFrameNum]->image);
+                                if (currentLayer == nullptr) {
+                                    SDL_Log("Reached null pointer. Whoops!");
+                                } else {
+                                    SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
+                                }
+                                SDL_Log(SDL_GetError());
+
                             }
                         }
                         if (currentTimelineNum != prevTimelineNum) refreshAllTextures(&layers, renderer, currentTimelineNum);
@@ -234,8 +249,13 @@ int main() {
                                 currentFrameNum = layers[currentLayerNum].currentTimelineFrame(currentTimelineNum);
                             }
                             SDL_DestroySurface(currentLayer);
-                            currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum]->image->getData(), layers[currentLayerNum].frames[currentFrameNum]->image->getBytes()));
-                            SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
+                            currentLayer = SDL_DuplicateSurface(layers[currentLayerNum].frames[currentFrameNum]->image);
+                            if (currentLayer == nullptr) {
+                                SDL_Log("Reached null pointer. Whoops!");
+                            } else {
+                                SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
+                            }
+                            SDL_Log(SDL_GetError());
 
                             if (currentTimelineNum != prevTimelineNum) refreshAllTextures(&layers, renderer, currentTimelineNum);
                             SDL_Log("Entered layer %d.", currentLayerNum + 1);
@@ -254,8 +274,13 @@ int main() {
                                 currentFrameNum = layers[currentLayerNum].currentTimelineFrame(currentTimelineNum);
                             }
                             SDL_DestroySurface(currentLayer);
-                            currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum]->image->getData(), layers[currentLayerNum].frames[currentFrameNum]->image->getBytes()));
-                            SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
+                            currentLayer = SDL_DuplicateSurface(layers[currentLayerNum].frames[currentFrameNum]->image);
+                            if (currentLayer == nullptr) {
+                                SDL_Log("Reached null pointer. Whoops!");
+                            } else {
+                                SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
+                            }
+                            SDL_Log(SDL_GetError());
 
                             if (currentTimelineNum != prevTimelineNum) refreshAllTextures(&layers, renderer, currentTimelineNum);
                             SDL_Log("Entered layer %d.", currentLayerNum + 1);
@@ -289,20 +314,20 @@ int main() {
                     case SDLK_Z:
                         // undo code
                         if (lctrl && !UndoStack.empty()) {
-                            SDL_Log("Starting undo...");
                             Action* action = UndoStack.top();
                             auto* frameEdit = dynamic_cast<FrameEditAction*>(action);
-                            SDL_Log("Casted frameEdit");
 
                             if (frameEdit) {
                                 RedoStack.push(frameEdit);
-                                swap(frameEdit->framePointer->image, frameEdit->save);
+                                swapQOISaveWithSurface(&frameEdit->save, &frameEdit->framePointer->image);
 
                                 if (frameEdit->framePointer == layers[currentLayerNum].frames[currentFrameNum]) {
                                     SDL_DestroySurface(currentLayer);
-                                    currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum]->image->getData(), layers[currentLayerNum].frames[currentFrameNum]->image->getBytes()));
+                                    currentLayer = SDL_DuplicateSurface(layers[currentLayerNum].frames[currentFrameNum]->image);
                                     SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
                                 }
+                            } else {
+                                RedoStack.push(action);
                             }
 
                             UndoStack.pop();
@@ -318,13 +343,15 @@ int main() {
 
                             if (frameEdit) {
                                 UndoStack.push(frameEdit);
-                                swap(frameEdit->framePointer->image, frameEdit->save);
+                                swapQOISaveWithSurface(&frameEdit->save, &frameEdit->framePointer->image);
 
                                 if (frameEdit->framePointer == layers[currentLayerNum].frames[currentFrameNum]) {
                                     SDL_DestroySurface(currentLayer);
-                                    currentLayer = IMG_LoadQOI_IO(SDL_IOFromMem(layers[currentLayerNum].frames[currentFrameNum]->image->getData(), layers[currentLayerNum].frames[currentFrameNum]->image->getBytes()));
+                                    currentLayer = SDL_DuplicateSurface(layers[currentLayerNum].frames[currentFrameNum]->image);
                                     SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
                                 }
+                            } else {
+                                UndoStack.push(action);
                             }
 
                             RedoStack.pop();
@@ -359,7 +386,8 @@ int main() {
             if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
                 switch (event.button.button) {
                     case SDL_BUTTON_LEFT:
-                        if (!io.WantCaptureMouse && !isDrawing && (mouseX >= 0 && mouseX < width && mouseY - menu >= 0 && mouseY - menu < height)) {
+                        if (!io.WantCaptureMouse && !isDrawing &&
+                            (mouseX >= 0 && mouseX < width && mouseY - menu >= 0 && mouseY - menu < height)) {
                             Point2 mouse = MapPoint(mouseX, mouseY, canvasCenterFP, angle, scale, SDL_FLIP_NONE);
 
                             points.push_back({mouse.x, mouse.y});
@@ -374,12 +402,19 @@ int main() {
                             updateWorkRect->h = (strokeSize + 1) * 2;
                             SDL_BlitSurface(workLayer, updateWorkRect, tempWorkLayer, updateWorkRect);
 
-                            UndoStack.push(new FrameEditAction(FRAME_EDIT, layers[currentLayerNum].frames[currentFrameNum], currentLayer));
+                            UndoStack.push(
+                                    new FrameEditAction(FRAME_EDIT, layers[currentLayerNum].frames[currentFrameNum],
+                                                        currentLayer));
 
                             while (!RedoStack.empty()) {
-                                Action* ptr = RedoStack.top();
+                                Action *ptr = RedoStack.top();
+                                auto *frameEdit = dynamic_cast<FrameEditAction *>(ptr);
 
-                                ptr->free();
+                                if (frameEdit) {
+                                    frameEdit->free();
+                                } else {
+                                    ptr->free();
+                                }
 
                                 RedoStack.pop();
                                 delete ptr;
@@ -451,15 +486,18 @@ int main() {
 
                             if (paintMode == DRAW) PaintOnTop(currentLayer, finalizeLayer, colorFloats[3]);
                             else if (paintMode == ERASE) EraseOnTop(currentLayer, finalizeLayer, colorFloats[3]);
-                            tempLayer = currentLayer;
+                            tempLayer = SDL_DuplicateSurface(currentLayer);
 
                             SDL_UnlockTexture(workLayerT);
                             SDL_UnlockTexture(currentLayerT);
 
-                            layers[currentLayerNum].frames[currentFrameNum]->image = QOISaveFromSurface(currentLayer);
+                            SDL_DestroySurface(layers[currentLayerNum].frames[currentFrameNum]->image);
+                            layers[currentLayerNum].frames[currentFrameNum]->image = SDL_DuplicateSurface(currentLayer);
                             layers[currentLayerNum].refreshTexture(renderer, currentTimelineNum);
 
-
+                            if (currentLayer == nullptr) {
+                                return -2;
+                            }
                             ClearPixels(finalizeLayer);
                             points.clear();
                         }
@@ -474,7 +512,7 @@ int main() {
             }
         }
 
-        if (SDL_GetTicks() % 8 == 0 ) {
+        if (SDL_GetTicks() % 16 == 0 ) {
 
             if (isDrawing) SDL_UnlockTexture(workLayerT);
 
@@ -507,10 +545,10 @@ int main() {
                 if (layers[i].texture != nullptr) {
                     error = SDL_RenderTextureRotated(renderer, layers[i].texture, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
                     if (checkError(error, "RenderTextureRotated(layerT)")) return -1;
-                }
-                if (i == currentLayerNum) {
-                    error = SDL_RenderTextureRotated(renderer, workLayerT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
-                    if (checkError(error, "RenderTextureRotated(workLayerT)")) return -1;
+                    if (i == currentLayerNum) {
+                        error = SDL_RenderTextureRotated(renderer, workLayerT, nullptr, canvasArea, angle, nullptr, SDL_FLIP_NONE);
+                        if (checkError(error, "RenderTextureRotated(workLayerT)")) return -1;
+                    }
                 }
             }
 
@@ -529,6 +567,7 @@ int main() {
                 }
 
             }
+
 
             SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
             SDL_RenderRect(renderer, new SDL_FRect{11.5f + float(currentTimelineNum) * 25, menu + height, 2, 50});
@@ -563,6 +602,13 @@ int main() {
         Action *ptr = RedoStack.top();
 
         ptr->free();
+        auto* frameEdit = dynamic_cast<FrameEditAction*>(ptr);
+
+        if (frameEdit) {
+            frameEdit->free();
+        } else {
+            ptr->free();
+        }
 
         RedoStack.pop();
         delete ptr;
@@ -570,8 +616,13 @@ int main() {
 
     while (!UndoStack.empty()) {
         Action *ptr = UndoStack.top();
+        auto* frameEdit = dynamic_cast<FrameEditAction*>(ptr);
 
-        ptr->free();
+        if (frameEdit) {
+            frameEdit->free();
+        } else {
+            ptr->free();
+        }
 
         UndoStack.pop();
         delete ptr;
