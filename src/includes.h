@@ -26,6 +26,11 @@
 
 #include "qoi.h"
 
+#ifdef _WIN32 // pen tablet fallback for Windows
+#define EASYTAB_IMPLEMENTATION
+#include "easytab/easytab.h"
+#endif
+
 #include "general.h"
 #include "fitcurve.h"
 #include "oneeuro.h"
@@ -33,6 +38,8 @@
 #include "action.h"
 #include "general.h"
 #include "draw.h"
+#include "effects.h"
+#include "ui.h"
 
 
 

@@ -17,6 +17,9 @@ add_executable(${PROJECT_NAME}
         imgui/backends/imgui_impl_sdlrenderer3.h
         imgui/backends/imgui_impl_sdl3.cpp
         imgui/backends/imgui_impl_sdl3.h
+        easytab/easytab.h
+        effects.h
+        ui.h
 )
 target_sources(${PROJECT_NAME} PRIVATE main.cpp)
 target_link_libraries(${PROJECT_NAME} PRIVATE vendor)

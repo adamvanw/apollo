@@ -94,12 +94,21 @@ Point2 MapPoint(double x, double y, SDL_FPoint* center, float angle, float scale
 
 // Since we know our pixels are always going to be int32, we can make a fast small function that clears the pixels.
 void ClearPixels(SDL_Surface* sur) {
-    for (int i = 0; i < sur->w; i++) {
-        for (int j = 0; j < sur->h; j++) {
+    for (int j = 0; j < sur->h; j++) {
+        for (int i = 0; i < sur->w; i++) {
             auto* ptr = (Uint32*)sur->pixels + sur->w*j + i;
             *ptr = 0x00000000;
         }
     }
+}
+
+/**
+ * Utilizes SDL's built-in blit function to save/merge surfaces onto each other.
+ * @param sur SDL_Surface: This surface will be below newSur.
+ * @param newSur SDL_Surface: This surface will be placed on top of sur.
+ */
+void SaveOnTop(SDL_Surface* sur, SDL_Surface* newSur) {
+    SDL_BlitSurface(newSur, nullptr, sur, nullptr);
 }
 
 void PaintOnTop(SDL_Surface* sur, SDL_Surface* newSur, float alpha) {
@@ -114,8 +123,8 @@ void PaintOnTop(SDL_Surface* sur, SDL_Surface* newSur, float alpha) {
     // assumed sur and newSur have the same format, w, h, etc.
     // if they don't!!! that's bad!!!
     auto* format = SDL_GetPixelFormatDetails(sur->format);
-    for (int i = 0; i < sur->w; ++i) {
-        for (int j = 0; j < sur->h; ++j) {
+    for (int j = 0; j < sur->h; j++) {
+        for (int i = 0; i < sur->w; i++) {
             newPtr = (Uint32*)newSur->pixels + newSur->w*j + i;
             SDL_GetRGBA(*newPtr, format, nullptr, &nr, &ng, &nb, &na);
 
@@ -126,7 +135,6 @@ void PaintOnTop(SDL_Surface* sur, SDL_Surface* newSur, float alpha) {
 
             if (a == 0 || alpha8 == 255) {
                 *ptr = SDL_MapRGBA(format, nullptr, nr, ng, nb, alpha8);
-                continue;
             } else {
                 rR = (Uint8)(r * (1 - alpha) + nr * alpha);
                 rG = (Uint8)(g * (1 - alpha) + ng * alpha);
@@ -150,8 +158,8 @@ void EraseOnTop(SDL_Surface* sur, SDL_Surface* newSur, float alpha) {
     // assumed sur and newSur have the same format, w, h, etc.
     // if they don't!!! that's bad!!!
     auto* format = SDL_GetPixelFormatDetails(sur->format);
-    for (int i = 0; i < sur->w; ++i) {
-        for (int j = 0; j < sur->h; ++j) {
+    for (int j = 0; j < sur->h; j++) {
+        for (int i = 0; i < sur->w; i++) {
             newPtr = (Uint32*)newSur->pixels + newSur->w*j + i;
             SDL_GetRGBA(*newPtr, format, nullptr, nullptr, nullptr, nullptr, &na);
 

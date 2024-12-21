@@ -132,6 +132,7 @@ typedef struct Layer {
         if (timelinePos < startPos) return -1;
         unsigned int length = startPos;
         for (int i = 0; i < frames.size(); ++i) {
+            if (frames[i]->deleted) continue;
             length += frames[i]->length;
             if (length > timelinePos) {
                 return i;
@@ -139,6 +140,21 @@ typedef struct Layer {
         }
         // could not find frame pos. likely out of range.
         return -1;
+    }
+
+    // gets new timeline num based on frame.
+    // type = 0 gives the beginning of a frame
+    // type = 1 gives the end of a frame
+    int getNewTimelineNum(unsigned int frameNum, int type) {
+
+    }
+
+    unsigned actualSize() {
+        unsigned size = 0;
+        for (auto& frame : this->frames) {
+            if (!frame->deleted) size++;
+        }
+        return size;
     }
 
     // does not completely delete the frame for sake of undo/redo
@@ -203,19 +219,23 @@ void refreshAllTextures(vector<Layer>* layers, SDL_Renderer* renderer, unsigned 
 typedef class Action {
 
 public:
+    Action(ActionType action, int data) {
+        this->action = action;
+        this->data = data;
+    }
+
     virtual void free() {
 
+    }
+
+    ActionType getActionType() {
+        return this->action;
     }
 
 protected:
 
     int data;
     ActionType action;
-
-    Action(ActionType action, int data) {
-        this->action = action;
-        this->data = data;
-    }
 
 } Action;
 
@@ -246,8 +266,6 @@ public:
     virtual void free() const {
 
     }
-
-protected:
 
     FrameAction(ActionType action, Frame* frame) : Action(action, 0) {
 
@@ -304,13 +322,21 @@ int checkError(int returnCode, char* string) {
 }
 
 void swapQOISaveWithSurface(QOISave** qoi, SDL_Surface** sur) {
-    SDL_Surface* sur2 = SDL_DuplicateSurface(*sur);
-    SDL_DestroySurface(*sur);
-    *sur = IMG_LoadQOI_IO(SDL_IOFromMem((*qoi)->getData(), (*qoi)->getBytes()));
+    auto* qoi2 = (QOISave*)malloc(sizeof(QOISave));
+    qoi2->data = (void*)malloc((*qoi)->getBytes());
+    memcpy(qoi2->data, (*qoi)->getData(), (*qoi)->getBytes());
+    qoi2->bytes = (*qoi)->bytes;
+    qoi2->desc = (*qoi)->desc;
+
     (*qoi)->free();
-    SDL_free(*qoi);
-    *qoi = QOISaveFromSurface(sur2);
-    SDL_DestroySurface(sur2);
+    free(*qoi);
+    *qoi = QOISaveFromSurface(*sur);
+
+    SDL_DestroySurface(*sur);
+    *sur = IMG_LoadQOI_IO(SDL_IOFromMem(qoi2->getData(), qoi2->getBytes()));
+
+    free(qoi2->data);
+    free(qoi2);
 }
 
 #endif //APOLLO_ACTION_H
