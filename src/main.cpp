@@ -22,7 +22,7 @@ LRESULT CALLBACK WindowProc(HWND Window, UINT Message, WPARAM WParam, LPARAM LPa
 int main() {
     SDL_Init(SDL_INIT_EVENTS | SDL_INIT_VIDEO);
 
-    SDL_Window* window = SDL_CreateWindow("Apollo", width + sidebar, height + menu + 50, SDL_WINDOW_RESIZABLE & SDL_WINDOW_SURFACE_VSYNC_ADAPTIVE & SDL_WINDOW_OPENGL);
+    SDL_Window* window = SDL_CreateWindow("Apollo", width + sidebar, height + menu + 50, SDL_WINDOW_RESIZABLE & SDL_WINDOW_OPENGL);
 
     #ifdef _WIN32 // implement easytab.h
     HWND HWNDWindow;
@@ -53,7 +53,7 @@ int main() {
 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
-    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    ImGuiIO& io = ImGui::GetIO();
     io.AddMouseButtonEvent(ImGuiMouseButton_Left, true);
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
@@ -117,11 +117,12 @@ int main() {
 
     vector<Layer> layers;
     auto* frame = new Frame(SDL_DuplicateSurface(newFrame), 1, false);
-    Layer layer = Layer(frame);
-    layers.emplace_back(layer);
+    layers.emplace_back(Layer(frame));
+
+    InputSet inputSet = InputSet();
 
     bool isDrawing = false;
-    unsigned int strokeSize = 5;
+    unsigned strokeSize = 5;
 
     bool escape = false, lctrl = false;
     int error;
@@ -173,10 +174,21 @@ int main() {
 
         int prevTimelineNum;
 
+        // checkInputs();
+        // pass by ptr:
+        // angle, canvasArea, canvasCenter, canvasCenterFP, paintMode, layers, UndoStack, RedoStack
+        // vector<void*> data = {&escape, &layers, &UndoStack, &RedoStack};
+        // checkInputs(&inputSet, data);
+
         while (SDL_PollEvent(&event)) {
             ImGui_ImplSDL3_ProcessEvent(&event);
 
-            if (event.type == SDL_EVENT_KEY_DOWN) {
+            if (event.type == SDL_EVENT_WINDOW_CLOSE_REQUESTED) {
+                // TODO: Request user to save work if unsaved, will be implemented once saving is actually implemented.
+                escape = true;
+                break;
+            }
+            else if (event.type == SDL_EVENT_KEY_DOWN) {
                 switch (event.key.key) {
                     case SDLK_LCTRL:
                         lctrl = true;
@@ -305,18 +317,10 @@ int main() {
                         }
                         break;
                     case SDLK_KP_MULTIPLY:
-                        scale += 0.05f;
-                        canvasArea->w = scale * width;
-                        canvasArea->h = scale * height;
-                        canvasArea->y = canvasCenterFP->y - canvasCenterFP->y * scale + menu * scale;
-                        canvasArea->x = canvasCenterFP->x - canvasCenterFP->x * scale;
+                        canvasScale(&scale, canvasArea, canvasCenterFP, menu, Vector2{width, height}, 0.05f);
                         break;
                     case SDLK_KP_DIVIDE:
-                        scale -= 0.05f;
-                        canvasArea->w = scale * width;
-                        canvasArea->h = scale * height;
-                        canvasArea->y = canvasCenterFP->y - canvasCenterFP->y * scale + menu * scale;
-                        canvasArea->x = canvasCenterFP->x - canvasCenterFP->x * scale;
+                        canvasScale(&scale, canvasArea, canvasCenterFP, menu, Vector2{width, height}, -0.05f);
                         break;
                     case SDLK_E:
                         paintMode = ERASE;
@@ -330,68 +334,11 @@ int main() {
                         break;
                     case SDLK_Z:
                         // undo code
-                        if (lctrl && !UndoStack.empty()) {
-                            Action* action = UndoStack.top();
-                            auto* frameEdit = dynamic_cast<FrameEditAction*>(action);
-                            auto* frameAction = dynamic_cast<FrameAction*>(action);
-
-                            if (frameEdit) {
-                                RedoStack.push(frameEdit);
-                                swapQOISaveWithSurface(&frameEdit->save, &frameEdit->framePointer->image);
-
-                                if (frameEdit->framePointer == layers[currentLayerNum].frames[currentFrameNum]) {
-                                    SDL_DestroySurface(currentLayer);
-                                    currentLayer = SDL_DuplicateSurface(layers[currentLayerNum].frames[currentFrameNum]->image);
-                                    SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
-                                }
-                                SDL_Log("Undo: Edit Frame.");
-                            } else if (frameAction) {
-                                RedoStack.push(frameAction);
-                                if (frameAction->getActionType() == FRAME_DELETE) {
-                                    frameAction->framePointer->deleted = false;
-                                    SDL_Log("Undo: Delete Frame.");
-                                }
-                            } else {
-                                RedoStack.push(action);
-                            }
-
-                            UndoStack.pop();
-                            currentFrameNum = layers[currentLayerNum].currentTimelineFrame(currentTimelineNum);
-                            refreshAllTextures(&layers, renderer, currentTimelineNum);
-                        }
+                        stackSwap(false, lctrl, &UndoStack, &RedoStack, &layers, &currentLayer, currentLayerT, updateArea, currentLayerNum, &currentFrameNum, currentTimelineNum, renderer);
                         break;
                     case SDLK_Y:
                         // redo code
-                        if (lctrl && !RedoStack.empty()) {
-                            Action* action = RedoStack.top();
-                            auto* frameEdit = dynamic_cast<FrameEditAction*>(action);
-                            auto* frameAction = dynamic_cast<FrameAction*>(action);
-
-                            if (frameEdit) {
-                                UndoStack.push(frameEdit);
-                                swapQOISaveWithSurface(&frameEdit->save, &frameEdit->framePointer->image);
-
-                                if (frameEdit->framePointer == layers[currentLayerNum].frames[currentFrameNum]) {
-                                    SDL_DestroySurface(currentLayer);
-                                    currentLayer = SDL_DuplicateSurface(layers[currentLayerNum].frames[currentFrameNum]->image);
-                                    SDL_UpdateTexture(currentLayerT, updateArea, currentLayer->pixels, currentLayer->pitch);
-                                }
-                                SDL_Log("Redo: Edit Frame.");
-                            } else if (frameAction) {
-                                UndoStack.push(frameAction);
-                                if (frameAction->getActionType() == FRAME_DELETE) {
-                                    frameAction->framePointer->deleted = true;
-                                    SDL_Log("Redo: Delete Frame.");
-                                }
-                            } else {
-                                UndoStack.push(action);
-                            }
-
-                            RedoStack.pop();
-
-                            currentFrameNum = layers[currentLayerNum].currentTimelineFrame(currentTimelineNum);
-                            refreshAllTextures(&layers, renderer, currentTimelineNum);
-                        }
+                        stackSwap(true, lctrl, &RedoStack, &UndoStack, &layers, &currentLayer, currentLayerT, updateArea, currentLayerNum, &currentFrameNum, currentTimelineNum, renderer);
                         break;
                     case SDLK_S:
                         if (lctrl) {
@@ -481,8 +428,8 @@ int main() {
 
                     updateWorkRect->x = min(points[points.size() - 1].x, points[points.size() - 2].x) - (strokeSize + 1);
                     updateWorkRect->y = min(points[points.size() - 1].y, points[points.size() - 2].y) - (strokeSize + 1);
-                    updateWorkRect->w = abs(points[points.size() - 1].x - points[points.size() - 2].x) + ((strokeSize + 1) * 2);
-                    updateWorkRect->h = abs(points[points.size() - 1].y - points[points.size() - 2].y) + ((strokeSize + 1) * 2);
+                    updateWorkRect->w = int(abs(points[points.size() - 1].x - points[points.size() - 2].x) + ((strokeSize + 1) * 2));
+                    updateWorkRect->h = int(abs(points[points.size() - 1].y - points[points.size() - 2].y) + ((strokeSize + 1) * 2));
 
                     SDL_BlitSurface(workLayer, updateWorkRect, tempWorkLayer, updateWorkRect);
 
@@ -555,9 +502,6 @@ int main() {
         }
 
         if (SDL_GetTicks() % 16 == 0 ) {
-
-            if (isDrawing) SDL_UnlockTexture(workLayerT);
-
             ImGui_ImplSDLRenderer3_NewFrame();
             ImGui_ImplSDL3_NewFrame();
             ImGui::NewFrame();
@@ -579,6 +523,8 @@ int main() {
 
             ImGui::Render();
 
+            if (isDrawing) SDL_UnlockTexture(workLayerT);
+
             error = SDL_RenderClear(renderer);
             if (checkError(error, "RenderClear()")) return -1;
 
@@ -596,33 +542,14 @@ int main() {
                 }
             }
 
-            // very temporary frame indicator
-            for (int layerCount = 0; layerCount < layers.size(); ++layerCount) {
-                unsigned int x = 0;
-                for (int frameCount = 0; frameCount < layers[layerCount].frames.size(); ++frameCount) {
-                    if (layers[layerCount].frames[frameCount]->deleted) continue;
-
-                    if (frameCount == currentFrameNum && layerCount == currentLayerNum) SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-                    else SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-
-                    error = SDL_RenderRect(renderer, new SDL_FRect{(float)x * 25 + float(layers[layerCount].startPos * 25), menu + height + 25 - float(25 * layerCount), static_cast<float>(25 * layers[layerCount].frames[frameCount]->getLength()), 25});
-                    if (checkError(error, "SDL_RenderRect")) return -1;
-                    x += layers[layerCount].frames[frameCount]->getLength();
-                }
-
-            }
-
-
-            SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
-            SDL_RenderRect(renderer, new SDL_FRect{11.5f + float(currentTimelineNum) * 25, menu + height, 2, 50});
-            SDL_SetRenderDrawColor(renderer, bgColor.r, bgColor.g, bgColor.b, bgColor.a);
-
             ImGui_ImplSDLRenderer3_RenderDrawData(ImGui::GetDrawData(), renderer);
 
             error = SDL_RenderPresent(renderer);
             if (checkError(error, "RenderPresent()")) return -1;
 
             if (isDrawing) SDL_LockTextureToSurface(workLayerT, updateArea, &tempWorkLayer);
+
+            if (!isDrawing) SDL_Delay(40);
         }
 
         // float frameTime = (SDL_GetTicksNS() - start) / 1000000.0f;

@@ -20,6 +20,8 @@ add_executable(${PROJECT_NAME}
         easytab/easytab.h
         effects.h
         ui.h
+        canvas.h
+        input.h
 )
 target_sources(${PROJECT_NAME} PRIVATE main.cpp)
 target_link_libraries(${PROJECT_NAME} PRIVATE vendor)

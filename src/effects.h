@@ -1,5 +1,5 @@
-#ifndef EFFECTS_H
-#define EFFECTS_H
+#ifndef APOLLO_EFFECTS_H
+#define APOLLO_EFFECTS_H
 
 /**
  * Similar to TVPaint's Grain filter, aka Frosted Glass,

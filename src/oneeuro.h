@@ -1,7 +1,10 @@
 #ifndef APOLLO_ONEEURO_H
 #define APOLLO_ONEEURO_H
 
+#ifndef GENERAL_H
+#define GENERAL_H
 #include "general.h"
+#endif
 
 #ifndef SDL3_H
 #define SDL3_H

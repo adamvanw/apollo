@@ -1,8 +1,8 @@
 #ifndef APOLLO_DRAW_H
 #define APOLLO_DRAW_H
 
-#ifndef SDL3_H
-#define SDL3_H
+#ifndef SDL_H
+#define SDL_H
 #include "SDL3/SDL.h"
 #endif
 

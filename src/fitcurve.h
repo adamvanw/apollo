@@ -12,8 +12,16 @@ from "Graphics Gems", Academic Press, 1990
 /*  fit_cubic.c	*/
 /*	Piecewise cubic fitting code	*/
 
+#ifndef GENERAL_H
+#define GENERAL_H
 #include "general.h"
+#endif
+
+#ifndef DRAW_H
+#define DRAW_H
 #include "draw.h"
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 

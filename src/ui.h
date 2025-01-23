@@ -1,7 +1,11 @@
-#ifndef UI_H
-#define UI_H
+#ifndef APOLLO_UI_H
+#define APOLLO_UI_H
 
-#include "includes.h"
+#ifndef SDL_H
+#define SDL_H
+#include "SDL3/SDL.h"
+#endif
+
 using namespace std;
 
 struct TimelineLayer {
@@ -168,4 +172,4 @@ public:
 
 
 
-#endif //UI_H
+#endif //APOLLO_UI_H
